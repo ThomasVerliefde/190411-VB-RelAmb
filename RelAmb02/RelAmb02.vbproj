@@ -149,6 +149,12 @@
     <Compile Include="practiceForm.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Resources\Instructions\ambiForm.Designer.vb">
+      <DependentUpon>ambiForm.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Resources\Instructions\ambiForm.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="subjectForm.vb">
       <SubType>Form</SubType>
     </Compile>
@@ -178,25 +184,25 @@
     <None Include="Resources\Instructions\0_mainInstr.txt" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\Instructions\1_otherInstr.txt" />
+    <None Include="Resources\Instructions\1_collectOthers.txt" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\Instructions\1_otherNeg.txt" />
+    <None Include="Resources\Instructions\1_collectOthersNeg.txt" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\Instructions\1_otherPos.txt" />
+    <None Include="Resources\Instructions\1_collectOthersPos.txt" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\Instructions\2_practiceAneg.txt" />
+    <None Include="Resources\Instructions\2_practiceOthersAneg.txt" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\Instructions\2_practiceApos.txt" />
+    <None Include="Resources\Instructions\2_practiceOthersApos.txt" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\Instructions\3_experimentAneg.txt" />
+    <None Include="Resources\Instructions\3_experimentOthersAneg.txt" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\Instructions\3_experimentApos.txt" />
+    <None Include="Resources\Instructions\3_experimentOthersApos.txt" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\Instructions\4_explicitInstr.txt" />
@@ -205,7 +211,7 @@
     <None Include="Resources\Instructions\5_demoInstr.txt" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\Instructions\6_endInstr.txt" />
+    <None Include="Resources\Instructions\7_endInstr.txt" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\BlockRandomisation.txt" />
@@ -257,6 +263,21 @@
       <ProductName>.NET Framework 3.5 SP1</ProductName>
       <Install>false</Install>
     </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Instructions\1_collectObjects.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Instructions\1_collectObjectsPos.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Instructions\1_collectObjectsNeg.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Instructions\6_ambiInstr.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Instructions\3b_breakInstr.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
 </Project>

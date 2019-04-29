@@ -11,6 +11,7 @@ Module mainModule
 
 	Friend sansSerif72 = New Font("Microsoft Sans Serif", 72)
 	Friend sansSerif60 = New Font("Microsoft Sans Serif", 60)
+	Friend sansSerif40 = New Font("Microsoft Sans Serif", 40)
 	Friend sansSerif25B = New Font("Microsoft Sans Serif", 25, FontStyle.Bold)
 	Friend sansSerif22 = New Font("Microsoft Sans Serif", 22)
 	Friend sansSerif20 = New Font("Microsoft Sans Serif", 20)

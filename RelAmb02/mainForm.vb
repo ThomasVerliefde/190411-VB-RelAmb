@@ -15,6 +15,7 @@ Public Class mainForm
 	Private experimentT As Instant
 	Private explicitT As Instant
 	Private demographicsT As Instant
+	Private ambiT As Instant
 	Private endT As Instant
 
 	'All NodaTime.Duration variables, to check the actual duration (difference in sequential starting points) of each part
@@ -23,12 +24,14 @@ Public Class mainForm
 	Private timeExperiment As Duration
 	Private timeExplicit As Duration
 	Private timeDemographics As Duration
+	Private timeAmbi As Duration
 	Private timeTotal As Duration
 
 	'Variable necessary for grabbing the correct instruction sheet, depending on whether the 'A' key is used to categorize positive adjectives, or for negative adjectives
 	Friend keyAss As String
 	Friend firstValence As String
 	Friend firstBlock As String
+	Private secondBlock As String
 
 	Friend otherPos As New List(Of String)
 	Friend otherNeg As New List(Of String)
@@ -48,7 +51,6 @@ Public Class mainForm
 		objCenter(Me.instrText, 0.42)
 		Me.instrText.Rtf = My.Resources.ResourceManager.GetString("_0_mainInstr")
 
-
 		Me.Controls.Add(Me.contButton)
 		objCenter(Me.contButton)
 
@@ -56,12 +58,12 @@ Public Class mainForm
 
 	Public Sub loadNext(sender As Object, e As EventArgs) Handles contButton.Click
 		Select Case Me.instructionCount
-			Case 0 'Start of Experiment
+			Case 0 'Start of the First Block
 				Me.instrText.Rtf = My.Resources.ResourceManager.GetString("_1_otherInstr")
 				subjectForm.Dispose()
 				Me.startT = time.GetCurrentInstant()
 
-			Case 1 'Collecting Names of 'Significant Others'
+			Case 1 'Collecting Names & Making Primes for the First Block
 				Me.otherT = time.GetCurrentInstant()
 				otherForm.ShowDialog()
 				Me.instrText.Rtf = My.Resources.ResourceManager.GetString("_2_practice" & Me.keyAss)
@@ -189,17 +191,30 @@ Public Class mainForm
 				experimentTrials.ForEach(Sub(x) saveTrials.Add(String.Join(" ", x)))
 				dataFrame("experimentTrials") = String.Join("-", saveTrials)
 
-			Case 2 'Practice Trials
+			Case 2 'Practice Trials for the First Block
 				Me.practiceT = time.GetCurrentInstant()
 				practiceForm.ShowDialog()
 				Me.instrText.Rtf = My.Resources.ResourceManager.GetString("_3_experiment" & Me.keyAss)
 				practiceForm.Dispose()
 
-			Case 3 'Experiment Proper
+			Case 3 'Experiment Proper of the First Block
 				Me.experimentT = time.GetCurrentInstant()
 				experimentForm.ShowDialog()
-				Me.instrText.Rtf = My.Resources.ResourceManager.GetString("_4_explicitInstr")
-				experimentForm.Dispose()
+
+				If String.IsNullOrEmpty(Me.secondBlock) Then
+
+					Me.instrText.Rtf = My.Resources.ResourceManager.GetString("_3b_breakInstr")
+					experimentForm.Dispose()
+
+					'SECOND BLOCK COPY 1,2,3 --> reset instructionCount to 0 (or -1?) & set Me.secondBlock to be the the other thing (objects or others)
+					Dim Blocks As New List(Of String) From {"Objects", "Others"}
+					Blocks.Remove(Me.firstBlock)
+					Me.secondBlock = Blocks(0)
+					Me.instructionCount = -1
+				Else
+					Me.instrText.Rtf = My.Resources.ResourceManager.GetString("_4_explicitInstr")
+					experimentForm.Dispose()
+				End If
 
 			Case 4 'Explicit/Direct Measurements of Ambivalence
 				Me.explicitT = time.GetCurrentInstant()
@@ -210,18 +225,25 @@ Public Class mainForm
 			Case 5 'Demographic Information
 				Me.demographicsT = time.GetCurrentInstant()
 				demographicsForm.ShowDialog()
-				Me.instrText.Rtf = My.Resources.ResourceManager.GetString("_6_endInstr")
+				Me.instrText.Rtf = My.Resources.ResourceManager.GetString("_6_ambiInstr")
 				demographicsForm.Dispose()
 
-				Me.instrText.Font = New Font("Microsoft Sans Serif", 40)
-				Me.contButton.Text = "Abbrechen"
+			Case 6 'Ambivalent Word Collection
+				Me.ambiT = time.GetCurrentInstant()
+				ambiForm.ShowDialog()
+				Me.instrText.Rtf = My.Resources.ResourceManager.GetString("_7_endInstr")
+				ambiForm.Dispose()
+
+				Me.instrText.Font = sansSerif40
+				Me.contButton.Text = "Speichern"
 				Me.endT = time.GetCurrentInstant()
 
 				Me.timeOther = Me.practiceT - Me.otherT
 				Me.timePractice = Me.experimentT - Me.practiceT
 				Me.timeExperiment = Me.explicitT - Me.experimentT
 				Me.timeExplicit = Me.demographicsT - Me.explicitT
-				Me.timeDemographics = Me.endT - Me.demographicsT
+				Me.timeDemographics = Me.ambiT - Me.demographicsT
+				Me.timeAmbi = Me.endT - Me.ambiT
 				Me.timeTotal = Me.endT - Me.startT
 
 				dataFrame("timeOther") = Me.timeOther.TotalMinutes.ToString
