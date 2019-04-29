@@ -27,7 +27,8 @@ Public Class mainForm
 
 	'Variable necessary for grabbing the correct instruction sheet, depending on whether the 'A' key is used to categorize positive adjectives, or for negative adjectives
 	Friend keyAss As String
-	Friend firstOthers As String
+	Friend firstValence As String
+	Friend firstBlock As String
 
 	Friend otherPos As New List(Of String)
 	Friend otherNeg As New List(Of String)

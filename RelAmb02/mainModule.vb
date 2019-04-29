@@ -262,8 +262,8 @@ Module mainModule
 
 	End Sub
 
-	Public Function setCond(subjN As Integer)
-		Return Val(My.Resources.BlockRandomisation((subjN - 1) * 2))
+	Public Function setCond(subjN As String)
+		Return My.Resources.BlockRandomisation.Substring((CInt(subjN) - 1) * 4, 3)
 	End Function
 
 #Disable Warning IDE1006 ' Naming Styles
