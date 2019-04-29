@@ -69,8 +69,10 @@
 			Select Case Val(Me.condN(2))
 				Case 0
 					mainForm.firstBlock = "Others"
+					mainForm.currentBlock = "Others"
 				Case 1
 					mainForm.firstBlock = "Objects"
+					mainForm.currentBlock = "Objects"
 			End Select
 
 			dataFrame("Subject") = Me.subjN

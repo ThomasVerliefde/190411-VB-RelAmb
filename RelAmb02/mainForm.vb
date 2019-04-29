@@ -31,7 +31,8 @@ Public Class mainForm
 	Friend keyAss As String
 	Friend firstValence As String
 	Friend firstBlock As String
-	Private secondBlock As String
+	Friend secondBlock As String
+	Friend currentBlock As String
 
 	Friend otherPos As New List(Of String)
 	Friend otherNeg As New List(Of String)
@@ -59,14 +60,14 @@ Public Class mainForm
 	Public Sub loadNext(sender As Object, e As EventArgs) Handles contButton.Click
 		Select Case Me.instructionCount
 			Case 0 'Start of the First Block
-				Me.instrText.Rtf = My.Resources.ResourceManager.GetString("_1_otherInstr")
+				Me.instrText.Rtf = My.Resources.ResourceManager.GetString("_1_collect" & Me.currentBlock)
 				subjectForm.Dispose()
 				Me.startT = time.GetCurrentInstant()
 
 			Case 1 'Collecting Names & Making Primes for the First Block
 				Me.otherT = time.GetCurrentInstant()
 				otherForm.ShowDialog()
-				Me.instrText.Rtf = My.Resources.ResourceManager.GetString("_2_practice" & Me.keyAss)
+				Me.instrText.Rtf = My.Resources.ResourceManager.GetString("_2_practice" & Me.currentBlock & Me.keyAss)
 				otherForm.Dispose()
 
 				' Creating All Practice & Experiment Trials
@@ -206,10 +207,11 @@ Public Class mainForm
 					Me.instrText.Rtf = My.Resources.ResourceManager.GetString("_3b_breakInstr")
 					experimentForm.Dispose()
 
-					'SECOND BLOCK COPY 1,2,3 --> reset instructionCount to 0 (or -1?) & set Me.secondBlock to be the the other thing (objects or others)
+					'SECOND BLOCK COPY 1,2,3 --> reset instructionCount to -1 & set Me.secondBlock to be the the other thing (objects or others)
 					Dim Blocks As New List(Of String) From {"Objects", "Others"}
 					Blocks.Remove(Me.firstBlock)
 					Me.secondBlock = Blocks(0)
+					Me.currentBlock = Me.secondBlock
 					Me.instructionCount = -1
 				Else
 					Me.instrText.Rtf = My.Resources.ResourceManager.GetString("_4_explicitInstr")
@@ -232,9 +234,9 @@ Public Class mainForm
 				Me.ambiT = time.GetCurrentInstant()
 				ambiForm.ShowDialog()
 				Me.instrText.Rtf = My.Resources.ResourceManager.GetString("_7_endInstr")
+				Me.instrText.Font = sansSerif40
 				ambiForm.Dispose()
 
-				Me.instrText.Font = sansSerif40
 				Me.contButton.Text = "Speichern"
 				Me.endT = time.GetCurrentInstant()
 
@@ -251,11 +253,12 @@ Public Class mainForm
 				dataFrame("timeExperiment") = Me.timeExperiment.TotalMinutes.ToString
 				dataFrame("timeExplicit") = Me.timeExplicit.TotalMinutes.ToString
 				dataFrame("timeDemographics") = Me.timeDemographics.TotalMinutes.ToString
+				dataFrame("timeAmbi") = Me.timeAmbi.TotalMinutes.ToString
 				dataFrame("timeTotal") = Me.timeTotal.TotalMinutes.ToString
 				dataFrame("hostName") = Net.Dns.GetHostName()
 
 				IO.Directory.CreateDirectory("Data")
-				saveCSV(dataFrame, "Data\RelAmb_" & dataFrame("Subject") & "_" & Net.Dns.GetHostName & ".csv")
+				saveCSV(dataFrame, "Data\RelAmb02_" & dataFrame("Subject") & "_" & Net.Dns.GetHostName & ".csv")
 
 			Case Else
 				Me.Close()

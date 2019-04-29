@@ -382,7 +382,7 @@ Module mainModule
 			Try
 				'When there is no dataframe yet, first create a headers row
 				For Each key In dataFrame.Keys
-					colNames += key + ","
+					colNames += key + ";"
 				Next
 				colNames = colNames.Substring(0, colNames.Length - 1) + Environment.NewLine
 
@@ -396,7 +396,7 @@ Module mainModule
 
 		'Putting the dictionary data in the CSV format
 		For Each value In dataFrame.Values
-			fileOutput += value + ","
+			fileOutput += value + ";"
 		Next
 		fileOutput = fileOutput.Substring(0, fileOutput.Length - 1) + Environment.NewLine
 

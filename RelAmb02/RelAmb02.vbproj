@@ -96,6 +96,12 @@
     <Import Include="System.Threading.Tasks" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ambiForm.Designer.vb">
+      <DependentUpon>ambiForm.vb</DependentUpon>
+    </Compile>
+    <Compile Include="ambiForm.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="demographicsForm.Designer.vb">
       <DependentUpon>demographicsForm.vb</DependentUpon>
     </Compile>
@@ -147,12 +153,6 @@
       <DependentUpon>practiceForm.vb</DependentUpon>
     </Compile>
     <Compile Include="practiceForm.vb">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Resources\Instructions\ambiForm.Designer.vb">
-      <DependentUpon>ambiForm.vb</DependentUpon>
-    </Compile>
-    <Compile Include="Resources\Instructions\ambiForm.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="subjectForm.vb">
@@ -278,6 +278,18 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\Instructions\3b_breakInstr.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Instructions\2_practiceObjectsAneg.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Instructions\2_practiceObjectsApos.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Instructions\3_experimentObjectsAneg.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Instructions\3_experimentObjectsApos.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
 </Project>
