@@ -3,7 +3,7 @@
 
 	Private WithEvents contButton As New continueButton(Txt:="Bestätigen")
 	Private WithEvents textBox As New TextBox
-	Private ReadOnly subjPanel As New labelledBox(Me.textBox, "VPNr:")
+	Private WithEvents subjPanel As New labelledBox(textBox, "VPNr:")
 	Private condN As String
 	Private subjN As String
 
@@ -39,7 +39,7 @@
 		End If
 
 		If Me.textBox.Text = "" OrElse Val(Me.textBox.Text) < 1 OrElse Val(Me.textBox.Text) > 500 Then
-			'Interestingly, Val("these are letters") returns 0
+			'Val("these are letters") returns 0
 			MsgBox("Bitte geben Sie eine korrekte VPNr ein!", MsgBoxStyle.Critical, Title:="Fehler!")
 			Exit Sub
 
@@ -85,16 +85,11 @@
 		End If
 	End Sub
 
-	Private Sub confirmEnter(sender As Object, e As KeyEventArgs) Handles textBox.KeyDown
-		If e.KeyCode = Keys.Enter Then
-			Me.contButton.PerformClick()
-		End If
-	End Sub
-
 	Private Sub suppressNonNumeric(sender As Object, e As KeyPressEventArgs) Handles textBox.KeyPress
 		If e.KeyChar <> ControlChars.Back AndAlso Not IsNumeric(e.KeyChar) Then
 			e.Handled = True
 		End If
 	End Sub
+
 
 End Class

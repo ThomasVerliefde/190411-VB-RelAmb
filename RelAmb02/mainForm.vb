@@ -66,9 +66,9 @@ Public Class mainForm
 
 			Case 1 'Collecting Names & Making Primes for the First Block
 				Me.otherT = time.GetCurrentInstant()
-				otherForm.ShowDialog()
+				collectForm.ShowDialog()
 				Me.instrText.Rtf = My.Resources.ResourceManager.GetString("_2_practice" & Me.currentBlock & Me.keyAss)
-				otherForm.Dispose()
+				collectForm.Dispose()
 
 				' Creating All Practice & Experiment Trials
 

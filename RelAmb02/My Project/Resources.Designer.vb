@@ -87,9 +87,9 @@ Namespace My.Resources
         '''Sie werden gebeten, die Vornamen von 4 dieser Art von signifikanten anderen anzugeben. \par
         '''Bitte stellen Sie sicher, dass Sie 4 eindeutige, unterschiedliche Namen ne [rest of string was truncated]&quot;;.
         '''</summary>
-        Friend ReadOnly Property _1_otherInstr() As String
+        Friend ReadOnly Property _1_collectObjects() As String
             Get
-                Return ResourceManager.GetString("_1_otherInstr", resourceCulture)
+                Return ResourceManager.GetString("_1_collectObjects", resourceCulture)
             End Get
         End Property
         
@@ -102,9 +102,9 @@ Namespace My.Resources
         '''und denen gegenüber Sie {\b negative} Gefühle hegen.
         '''}.
         '''</summary>
-        Friend ReadOnly Property _1_otherNeg() As String
+        Friend ReadOnly Property _1_collectObjectsNeg() As String
             Get
-                Return ResourceManager.GetString("_1_otherNeg", resourceCulture)
+                Return ResourceManager.GetString("_1_collectObjectsNeg", resourceCulture)
             End Get
         End Property
         
@@ -117,9 +117,54 @@ Namespace My.Resources
         '''und denen gegenüber Sie {\b positive} Gefühle hegen.
         '''}.
         '''</summary>
-        Friend ReadOnly Property _1_otherPos() As String
+        Friend ReadOnly Property _1_collectObjectsPos() As String
             Get
-                Return ResourceManager.GetString("_1_otherPos", resourceCulture)
+                Return ResourceManager.GetString("_1_collectObjectsPos", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Looks up a localized string similar to {\rtf1 \ansi \par \par \par \par \qc
+        '''In diesem Teil bitten wir Sie, über sogenannte &quot;signifikante Andere&quot; in Ihrem Leben nachzudenken. \par \par
+        '''Damit sind wichtige Bezugspersonen gemeint, die einen grössen Einfluss auf Ihr Leben nehmen. \par
+        '''Dies können beispielsweise (Ex-)Partner, Geschwister, Eltern, oder Freunde sein. \par \par \par
+        '''
+        '''Sie werden gebeten, die Vornamen von 4 dieser Art von signifikanten anderen anzugeben. \par
+        '''Bitte stellen Sie sicher, dass Sie 4 eindeutige, unterschiedliche Namen ne [rest of string was truncated]&quot;;.
+        '''</summary>
+        Friend ReadOnly Property _1_collectOthers() As String
+            Get
+                Return ResourceManager.GetString("_1_collectOthers", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Looks up a localized string similar to {\rtf1\ansi \par \par \qc
+        '''Bitte geben Sie die Namen von zwei {\b unbeliebten} Personen ein. \par \par
+        '''
+        '''Denken Sie an zwei &quot;signifikante Personen&quot;, die Sie {\b am wenigsten} mögen. \par
+        '''Menschen in Ihrem Leben, bei denen Sie sich {\b nicht sehr gut fühlen}, \par
+        '''und denen gegenüber Sie {\b negative} Gefühle hegen.
+        '''}.
+        '''</summary>
+        Friend ReadOnly Property _1_collectOthersNeg() As String
+            Get
+                Return ResourceManager.GetString("_1_collectOthersNeg", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Looks up a localized string similar to {\rtf1\ansi \par \par \qc
+        '''Bitte geben Sie die Namen von zwei {\b beliebten} Personen ein. \par \par
+        '''
+        '''Denken Sie an zwei &quot;signifikante Personen&quot;, die Sie {\b am meisten} mögen. \par
+        '''Menschen in Ihrem Leben, bei denen Sie sich {\b sehr gut fühlen}, \par
+        '''und denen gegenüber Sie {\b positive} Gefühle hegen.
+        '''}.
+        '''</summary>
+        Friend ReadOnly Property _1_collectOthersPos() As String
+            Get
+                Return ResourceManager.GetString("_1_collectOthersPos", resourceCulture)
             End Get
         End Property
         
@@ -131,9 +176,9 @@ Namespace My.Resources
         '''Im Zuge jeder einzelnen Klassifizierung werden Sie zwei Wörter sehen. \par
         '''Das erste Wort wird nur sehr kurz auf dem Bildschirm zu sehen sein, unter Umständen sogar so kurz, \par dass Sie nicht in der Lage sind, es zu identifizier [rest of string was truncated]&quot;;.
         '''</summary>
-        Friend ReadOnly Property _2_practiceAneg() As String
+        Friend ReadOnly Property _2_practiceObjectsAneg() As String
             Get
-                Return ResourceManager.GetString("_2_practiceAneg", resourceCulture)
+                Return ResourceManager.GetString("_2_practiceObjectsAneg", resourceCulture)
             End Get
         End Property
         
@@ -145,9 +190,37 @@ Namespace My.Resources
         '''Im Zuge jeder einzelnen Klassifizierung werden Sie zwei Wörter sehen. \par
         '''Das erste Wort wird nur sehr kurz auf dem Bildschirm zu sehen sein, unter Umständen sogar so kurz, \par dass Sie nicht in der Lage sind, es zu identifizier [rest of string was truncated]&quot;;.
         '''</summary>
-        Friend ReadOnly Property _2_practiceApos() As String
+        Friend ReadOnly Property _2_practiceObjectsApos() As String
             Get
-                Return ResourceManager.GetString("_2_practiceApos", resourceCulture)
+                Return ResourceManager.GetString("_2_practiceObjectsApos", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Looks up a localized string similar to {\rtf1\ansi \par \qc
+        '''In der folgenden Phase möchten wir untersuchen, wie schnell Menschen die Valenz von Wörtern feststellen können. \par
+        '''Damit ist gemeint, wie schnell Menschen darin sind, \par ein präsentiertes Wort als &quot;positiv&quot; oder &quot;negativ&quot; zu klassifizieren. \par \par
+        '''
+        '''Im Zuge jeder einzelnen Klassifizierung werden Sie zwei Wörter sehen. \par
+        '''Das erste Wort wird nur sehr kurz auf dem Bildschirm zu sehen sein, unter Umständen sogar so kurz, \par dass Sie nicht in der Lage sind, es zu identifizier [rest of string was truncated]&quot;;.
+        '''</summary>
+        Friend ReadOnly Property _2_practiceOthersAneg() As String
+            Get
+                Return ResourceManager.GetString("_2_practiceOthersAneg", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Looks up a localized string similar to {\rtf1\ansi \par \qc
+        '''In der folgenden Phase möchten wir untersuchen, wie schnell Menschen die Valenz von Wörtern feststellen können. \par
+        '''Damit ist gemeint, wie schnell Menschen darin sind, \par ein präsentiertes Wort als &quot;positiv&quot; oder &quot;negativ&quot; zu klassifizieren. \par \par
+        '''
+        '''Im Zuge jeder einzelnen Klassifizierung werden Sie zwei Wörter sehen. \par
+        '''Das erste Wort wird nur sehr kurz auf dem Bildschirm zu sehen sein, unter Umständen sogar so kurz, \par dass Sie nicht in der Lage sind, es zu identifizier [rest of string was truncated]&quot;;.
+        '''</summary>
+        Friend ReadOnly Property _2_practiceOthersApos() As String
+            Get
+                Return ResourceManager.GetString("_2_practiceOthersApos", resourceCulture)
             End Get
         End Property
         
@@ -162,9 +235,9 @@ Namespace My.Resources
         '''Drücken Sie bitte die Taste &quot;A&quot; auf Ihrer Tastatur, wenn das präsentierte Wort &quot;negativ&quot; ist. \par
         '''Drücken Sie bitte die Taste &quot;L&quot; auf Ihrer Tastatur, wenn das präsentierte Wort &quot;positiv&quot; ist. \par \par        ''' [rest of string was truncated]&quot;;.
         '''</summary>
-        Friend ReadOnly Property _3_experimentAneg() As String
+        Friend ReadOnly Property _3_experimentObjectsAneg() As String
             Get
-                Return ResourceManager.GetString("_3_experimentAneg", resourceCulture)
+                Return ResourceManager.GetString("_3_experimentObjectsAneg", resourceCulture)
             End Get
         End Property
         
@@ -179,9 +252,59 @@ Namespace My.Resources
         '''Drücken Sie bitte die Taste &quot;A&quot; auf Ihrer Tastatur, wenn das präsentierte Wort &quot;positiv&quot; ist. \par
         '''Drücken Sie bitte die Taste &quot;L&quot; auf Ihrer Tastatur, wenn das präsentierte Wort &quot;negativ&quot; ist. \par \par        ''' [rest of string was truncated]&quot;;.
         '''</summary>
-        Friend ReadOnly Property _3_experimentApos() As String
+        Friend ReadOnly Property _3_experimentObjectsApos() As String
             Get
-                Return ResourceManager.GetString("_3_experimentApos", resourceCulture)
+                Return ResourceManager.GetString("_3_experimentObjectsApos", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Looks up a localized string similar to {\rtf1\ansi \par \par \par \par \qc
+        '''Sie haben die Übungsphase nun beendet. \par \par
+        '''
+        '''Als nächstes folgt die Testphase, welche identisch zur Übungsphase ist, aber länger dauert. \par \par
+        '''
+        '''Die Zuteilung der Tasten zu &quot;positiv&quot; und &quot;negativ&quot; bleibt ebenfalls genauso wie in der Übungsphase: \par \par
+        '''
+        '''Drücken Sie bitte die Taste &quot;A&quot; auf Ihrer Tastatur, wenn das präsentierte Wort &quot;negativ&quot; ist. \par
+        '''Drücken Sie bitte die Taste &quot;L&quot; auf Ihrer Tastatur, wenn das präsentierte Wort &quot;positiv&quot; ist. \par \par        ''' [rest of string was truncated]&quot;;.
+        '''</summary>
+        Friend ReadOnly Property _3_experimentOthersAneg() As String
+            Get
+                Return ResourceManager.GetString("_3_experimentOthersAneg", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Looks up a localized string similar to {\rtf1\ansi \par \par \par \par \qc
+        '''Sie haben die Übungsphase nun beendet. \par \par
+        '''
+        '''Als nächstes folgt die Testphase, welche identisch zur Übungsphase ist, aber länger dauert. \par \par
+        '''
+        '''Die Zuteilung der Tasten zu &quot;positiv&quot; und &quot;negativ&quot; bleibt ebenfalls genauso wie in der Übungsphase: \par \par
+        '''
+        '''Drücken Sie bitte die Taste &quot;A&quot; auf Ihrer Tastatur, wenn das präsentierte Wort &quot;positiv&quot; ist. \par
+        '''Drücken Sie bitte die Taste &quot;L&quot; auf Ihrer Tastatur, wenn das präsentierte Wort &quot;negativ&quot; ist. \par \par        ''' [rest of string was truncated]&quot;;.
+        '''</summary>
+        Friend ReadOnly Property _3_experimentOthersApos() As String
+            Get
+                Return ResourceManager.GetString("_3_experimentOthersApos", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Looks up a localized string similar to {\rtf1 \ansi \par \par \par \par \qc
+        '''
+        '''
+        '''YOU HAVE COMPLETED THE FIRST BLOCK, YOU CAN HAVE A SHORT BREAK, THEN CONTINUE ON
+        '''?? EXACT WORDING??
+        '''
+        '''
+        '''}.
+        '''</summary>
+        Friend ReadOnly Property _3b_breakInstr() As String
+            Get
+                Return ResourceManager.GetString("_3b_breakInstr", resourceCulture)
             End Get
         End Property
         
@@ -189,7 +312,7 @@ Namespace My.Resources
         '''  Looks up a localized string similar to {\rtf1\ansi \par \par \par \par \qc
         '''Sie haben die Klassifizierungsphase nun beendet. \par \par
         '''
-        '''Wir möchten, dass Sie einige Fragen zu Ihren &quot;signifikanten Anderen&quot; beantworten, die Sie uns zu Beginn des Experiments genannt haben. \par \par
+        '''Wir möchten, dass Sie einige Fragen zu Ihren &quot;signifikanten Anderen&quot; und &quot;signifikanten Objekten&quot; beantworten, die Sie uns zu Beginn des Experiments genannt haben. \par \par
         '''
         '''Wichtig: Ziehen Sie den Schieber einfach mit der Maus zur gewünschten Position auf der Skala. \par \par \par
         '''
@@ -204,7 +327,7 @@ Namespace My.Resources
         
         '''<summary>
         '''  Looks up a localized string similar to {\rtf1\ansi \par \par \par \par \qc
-        '''Zum Schluss möchten wir Sie bitten, noch ein paar Angaben zu Ihrer Person zu machen. \par \par \par
+        '''Wir bitten Sie noch ein paar Angaben zu Ihrer Person zu machen. \par \par \par
         '''
         '''Drücken Sie den &quot;Weiter&quot;-Button um fortzufahren.
         '''}.
@@ -217,6 +340,22 @@ Namespace My.Resources
         
         '''<summary>
         '''  Looks up a localized string similar to {\rtf1\ansi \par \par \par \qc
+        '''
+        '''
+        '''WE WOULD LIKE YOU TO SHORTLY THINK ABOUT WORDS THAT YOU FIND AMBIVALENT.
+        '''WRITE THEM DOWN IN THE BOX BELOW (OR SOMETHING LIKE THIS)
+        '''
+        '''
+        '''}.
+        '''</summary>
+        Friend ReadOnly Property _6_ambiInstr() As String
+            Get
+                Return ResourceManager.GetString("_6_ambiInstr", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Looks up a localized string similar to {\rtf1\ansi \par \par \par \qc
         '''Das Experiment ist nun beendet. \par \par
         '''
         '''Nochmals vielen Dank für Ihre Teilnahme! \par \par \par
@@ -224,14 +363,14 @@ Namespace My.Resources
         '''Wenden Sie sich bitte an die Versuchsleitung.
         '''}.
         '''</summary>
-        Friend ReadOnly Property _6_endInstr() As String
+        Friend ReadOnly Property _7_endInstr() As String
             Get
-                Return ResourceManager.GetString("_6_endInstr", resourceCulture)
+                Return ResourceManager.GetString("_7_endInstr", resourceCulture)
             End Get
         End Property
         
         '''<summary>
-        '''  Looks up a localized string similar to 2 3 0 1 2 1 3 0 1 2 0 3 2 3 1 0 0 3 2 1 2 3 1 0 1 0 3 2 0 1 2 3 0 1 3 2 1 2 3 0 2 1 0 3 2 0 1 3 3 0 1 2 3 2 0 1 0 2 1 3 2 0 3 1 2 1 0 3 2 3 1 0 2 1 0 3 3 0 1 2 1 3 2 0 2 1 3 0 3 0 2 1 2 0 3 1 2 3 0 1 2 1 3 0 3 1 0 2 3 2 0 1 0 2 1 3 0 2 1 3 1 0 3 2 0 1 3 2 2 0 3 1 2 3 1 0 3 0 1 2 3 1 0 2 0 3 2 1 0 3 2 1 1 2 0 3 2 3 1 0 1 0 2 3 1 0 3 2 2 3 0 1 1 2 0 3 3 1 2 0 0 2 1 3 0 3 2 1 3 2 1 0 1 2 3 0 0 1 3 2 2 0 3 1 1 3 2 0 0 3 2 1 3 2 1 0 1 2 3 0 3 2 1 0 1 0 2 3 1 0 2 3 0 2 1 3 2 0 1 3 1 3 0 2 0 3 2 1 1 3 0 2 2 1 0 3  [rest of string was truncated]&quot;;.
+        '''  Looks up a localized string similar to 111 100 010 000 011 110 001 101 100 110 101 111 010 001 011 000 101 110 010 111 001 100 011 000 101 011 000 001 010 111 100 110 000 111 100 010 011 001 101 110 100 010 011 110 101 111 000 001 010 101 110 111 011 001 100 000 111 101 001 100 010 000 011 110 111 010 011 100 101 001 110 000 001 000 110 010 011 100 101 111 011 111 100 010 110 101 000 001 011 110 001 000 101 010 111 100 000 100 001 111 010 101 011 110 001 011 000 010 110 111 101 100 111 100 011 001 010 110 000 101 100 101 111 011 000 110 001 010  [rest of string was truncated]&quot;;.
         '''</summary>
         Friend ReadOnly Property BlockRandomisation() As String
             Get

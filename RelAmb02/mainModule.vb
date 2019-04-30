@@ -172,36 +172,65 @@ Module mainModule
 	Public Class labelledBox
 		Inherits Panel
 
+		'I really want to find a way to integrate a textBox in the class, but still have it accessible for eventHandling..
 		Public subjLabel As New Label()
+		Private labelWidth As New Integer
+		Private fieldX As Integer
+		Private adjustTop As Integer
 
-		Public Sub New(textBox As TextBox, labelText As String, Optional boxWidth As Integer = 100, Optional fieldHeight As Integer = 50,
+		Public Sub New(textBox As TextBox, Optional labelText As String = "PLACEHOLDER", Optional boxWidth As Integer = 100, Optional fieldHeight As Integer = 50,
 				Optional fieldLeft As Integer = 250, Optional fieldTop As Integer = 250, Optional setBox As Integer = 0)
 
-			'Dim subjLabel As New Label()
-			Dim labelWidth = TextRenderer.MeasureText(labelText, sansSerif20).Width
-
-			Me.Location = New Point(fieldLeft, fieldTop)
-			Me.Size = New Size((labelWidth + boxWidth + setBox) * 1.1, fieldHeight)
+			Me.fieldX = setBox
+			Me.Height = fieldHeight
 			Me.BorderStyle = BorderStyle.None
 
-			If setBox = 0 Then
-				textBox.Location = New Point(labelWidth + 10, fieldTop * 0.025)
-			Else
-				textBox.Location = New Point(setBox, fieldTop * 0.025)
-			End If
-			textBox.Text = ""
-			textBox.Size = New Size(boxWidth, fieldHeight)
-			textBox.Font = sansSerif20
-
-			Me.subjLabel.Location = New Point(0, fieldTop * 0.025)
-			Me.subjLabel.Size = New Size(labelWidth, fieldHeight)
+			textBox.Width = boxWidth
 			Me.subjLabel.Text = labelText
 			Me.subjLabel.Font = sansSerif20
+
+			Me.labelWidth = TextRenderer.MeasureText(Me.subjLabel.Text, sansSerif20).Width
+
+			Me.Location = New Point(fieldLeft, fieldTop)
+			Me.adjustTop = 0.025
+
+
+			Me.Size = New Size((Me.labelWidth + textBox.Width + Me.fieldX) * 1.1, Me.Height)
+
+			If Me.fieldX = 0 Then
+				textBox.Location = New Point(Me.labelWidth + 10, Me.Location.Y * Me.adjustTop)
+			Else
+				textBox.Location = New Point(Me.fieldX, Me.Location.Y * Me.adjustTop)
+			End If
+
+			textBox.Text = ""
+			textBox.Size = New Size(textBox.Width, Me.Height)
+			textBox.Font = sansSerif20
+
+			Me.subjLabel.Location = New Point(0, Me.Location.Y * Me.adjustTop)
+			Me.subjLabel.Size = New Size(Me.labelWidth, Me.Height)
 
 			Me.Controls.Add(textBox)
 			Me.Controls.Add(Me.subjLabel)
 
 		End Sub
+
+		Public Function reLabel(textBox As TextBox, labelText As String)
+			Me.subjLabel.Text = labelText
+			Me.labelWidth = TextRenderer.MeasureText(Me.subjLabel.Text, sansSerif20).Width
+			Me.Size = New Size((Me.labelWidth + textBox.Width + Me.fieldX) * 1.1, Me.Height)
+
+			If Me.fieldX = 0 Then
+				textBox.Location = New Point(Me.labelWidth + 10, Me.Location.Y * Me.adjustTop)
+			Else
+				textBox.Location = New Point(Me.fieldX, Me.Location.Y * Me.adjustTop)
+			End If
+
+			textBox.Size = New Size(textBox.Width, Me.Height)
+			Me.subjLabel.Size = New Size(Me.labelWidth, Me.Height)
+
+			Return True
+		End Function
 
 	End Class
 

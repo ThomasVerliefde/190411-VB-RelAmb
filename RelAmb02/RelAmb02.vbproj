@@ -143,10 +143,10 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <Compile Include="otherForm.Designer.vb">
-      <DependentUpon>otherForm.vb</DependentUpon>
+    <Compile Include="collectForm.Designer.vb">
+      <DependentUpon>collectForm.vb</DependentUpon>
     </Compile>
-    <Compile Include="otherForm.vb">
+    <Compile Include="collectForm.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="practiceForm.Designer.vb">
@@ -181,37 +181,37 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\Instructions\0_mainInstr.txt" />
+    <EmbeddedResource Include="Resources\Instructions\0_mainInstr.txt" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\Instructions\1_collectOthers.txt" />
+    <EmbeddedResource Include="Resources\Instructions\1_collectOthers.txt" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\Instructions\1_collectOthersNeg.txt" />
+    <EmbeddedResource Include="Resources\Instructions\1_collectOthersNeg.txt" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\Instructions\1_collectOthersPos.txt" />
+    <EmbeddedResource Include="Resources\Instructions\1_collectOthersPos.txt" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\Instructions\2_practiceOthersAneg.txt" />
+    <EmbeddedResource Include="Resources\Instructions\2_practiceOthersAneg.txt" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\Instructions\2_practiceOthersApos.txt" />
+    <EmbeddedResource Include="Resources\Instructions\2_practiceOthersApos.txt" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\Instructions\3_experimentOthersAneg.txt" />
+    <EmbeddedResource Include="Resources\Instructions\3_experimentOthersAneg.txt" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\Instructions\3_experimentOthersApos.txt" />
+    <EmbeddedResource Include="Resources\Instructions\3_experimentOthersApos.txt" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\Instructions\4_explicitInstr.txt" />
+    <EmbeddedResource Include="Resources\Instructions\4_explicitInstr.txt" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\Instructions\5_demoInstr.txt" />
+    <EmbeddedResource Include="Resources\Instructions\5_demoInstr.txt" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\Instructions\7_endInstr.txt" />
+    <EmbeddedResource Include="Resources\Instructions\7_endInstr.txt" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\BlockRandomisation.txt" />
@@ -265,31 +265,31 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\Instructions\1_collectObjects.txt" />
+    <EmbeddedResource Include="Resources\Instructions\1_collectObjects.txt" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\Instructions\1_collectObjectsPos.txt" />
+    <EmbeddedResource Include="Resources\Instructions\1_collectObjectsPos.txt" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\Instructions\1_collectObjectsNeg.txt" />
+    <EmbeddedResource Include="Resources\Instructions\1_collectObjectsNeg.txt" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\Instructions\6_ambiInstr.txt" />
+    <EmbeddedResource Include="Resources\Instructions\6_ambiInstr.txt" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\Instructions\3b_breakInstr.txt" />
+    <EmbeddedResource Include="Resources\Instructions\3b_breakInstr.txt" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\Instructions\2_practiceObjectsAneg.txt" />
+    <EmbeddedResource Include="Resources\Instructions\2_practiceObjectsAneg.txt" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\Instructions\2_practiceObjectsApos.txt" />
+    <EmbeddedResource Include="Resources\Instructions\2_practiceObjectsApos.txt" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\Instructions\3_experimentObjectsAneg.txt" />
+    <EmbeddedResource Include="Resources\Instructions\3_experimentObjectsAneg.txt" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\Instructions\3_experimentObjectsApos.txt" />
+    <EmbeddedResource Include="Resources\Instructions\3_experimentObjectsApos.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
 </Project>
