@@ -82,17 +82,17 @@ Public Class collectForm
 		ElseIf Me.collectPos.Count = 2 OrElse Me.collectNeg.Count = 2 Then
 			Select Case mainForm.firstValence
 				Case "Pos"
-					mainForm.otherNeg.AddRange({StrConv(Me.collectBox1.Text, vbProperCase), StrConv(Me.collectBox2.Text, vbProperCase)})
-					mainForm.otherPos = Me.collectPos
+					mainForm.collectNeg.AddRange({StrConv(Me.collectBox1.Text, vbProperCase), StrConv(Me.collectBox2.Text, vbProperCase)})
+					mainForm.collectPos = Me.collectPos
 				Case "Neg"
-					mainForm.otherPos.AddRange({StrConv(Me.collectBox1.Text, vbProperCase), StrConv(Me.collectBox2.Text, vbProperCase)})
-					mainForm.otherNeg = Me.collectNeg
+					mainForm.collectPos.AddRange({StrConv(Me.collectBox1.Text, vbProperCase), StrConv(Me.collectBox2.Text, vbProperCase)})
+					mainForm.collectNeg = Me.collectNeg
 			End Select
 
-			dataFrame("otherPos1") = mainForm.otherPos(0).ToString
-			dataFrame("otherPos2") = mainForm.otherPos(1).ToString
-			dataFrame("otherNeg1") = mainForm.otherNeg(0).ToString
-			dataFrame("otherNeg2") = mainForm.otherNeg(1).ToString
+			dataFrame("otherPos1") = mainForm.collectPos(0).ToString
+			dataFrame("otherPos2") = mainForm.collectPos(1).ToString
+			dataFrame("otherNeg1") = mainForm.collectNeg(0).ToString
+			dataFrame("otherNeg2") = mainForm.collectNeg(1).ToString
 
 			Me.Close()
 		End If

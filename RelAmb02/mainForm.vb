@@ -10,7 +10,7 @@ Public Class mainForm
 
 	'All NodaTime.Instant variables, to check starting points of each part
 	Private startT As Instant
-	Private otherT As Instant
+	Private collectT As Instant
 	Private practiceT As Instant
 	Private experimentT As Instant
 	Private explicitT As Instant
@@ -19,7 +19,7 @@ Public Class mainForm
 	Private endT As Instant
 
 	'All NodaTime.Duration variables, to check the actual duration (difference in sequential starting points) of each part
-	Private timeOther As Duration
+	Private timeCollect As Duration
 	Private timePractice As Duration
 	Private timeExperiment As Duration
 	Private timeExplicit As Duration
@@ -34,8 +34,8 @@ Public Class mainForm
 	Friend secondBlock As String
 	Friend currentBlock As String
 
-	Friend otherPos As New List(Of String)
-	Friend otherNeg As New List(Of String)
+	Friend collectPos As New List(Of String)
+	Friend collectNeg As New List(Of String)
 
 	Public practicePrimes As List(Of List(Of String))
 	Public experimentPrimes As List(Of List(Of String))
@@ -60,24 +60,26 @@ Public Class mainForm
 	Public Sub loadNext(sender As Object, e As EventArgs) Handles contButton.Click
 		Select Case Me.instructionCount
 			Case 0 'Start of the First Block
+				timeFrame("startT") = time.GetCurrentInstant()
 				Me.instrText.Rtf = My.Resources.ResourceManager.GetString("_1_collect" & Me.currentBlock)
 				subjectForm.Dispose()
-				Me.startT = time.GetCurrentInstant()
+				'Me.startT = time.GetCurrentInstant()
 
 			Case 1 'Collecting Names & Making Primes for the First Block
-				Me.otherT = time.GetCurrentInstant()
+				'Me.collectT = time.GetCurrentInstant()
+				timeFrame("collect" & Me.currentBlock & "T") = time.GetCurrentInstant()
 				collectForm.ShowDialog()
 				Me.instrText.Rtf = My.Resources.ResourceManager.GetString("_2_practice" & Me.currentBlock & Me.keyAss)
 				collectForm.Dispose()
 
-				' Creating All Practice & Experiment Trials
+				' Creating All Practice & Experiment Trials for the Current Block
 
 				' Practice Trials
 
-				Dim otherPractice As New List(Of String)(My.Resources.practiceOthers.Split(" "))
-				otherPractice = compareList(Me.otherNeg, otherPractice)
-				otherPractice = compareList(Me.otherPos, otherPractice)
-				shuffleList(otherPractice)
+				Dim collectPractice As New List(Of String)(My.Resources.practiceOthers.Split(" "))
+				collectPractice = compareList(Me.collectNeg, collectPractice)
+				collectPractice = compareList(Me.collectPos, collectPractice)
+				shuffleList(collectPractice)
 				Dim practicePrime_Pos As New List(Of String)(My.Resources.practicePrime_Pos.Split(" "))
 				shuffleList(practicePrime_Pos)
 				Dim practicePrime_Neg As New List(Of String)(My.Resources.practicePrime_Neg.Split(" "))
@@ -89,21 +91,21 @@ Public Class mainForm
 				Me.practicePrimes = New List(Of List(Of String))({
 								New List(Of String)({practicePrime_Pos(0)}),
 								New List(Of String)({practicePrime_Neg(0)}),
-								New List(Of String)({otherPractice(0)}),
-								New List(Of String)({otherPractice(1)}),
+								New List(Of String)({collectPractice(0)}),
+								New List(Of String)({collectPractice(1)}),
 								New List(Of String)({practicePrime_Str(0)})
 								})
 
-				If debugMode Then
-					Console.WriteLine("- practicePrimes -")
-					For Each c In Me.practicePrimes
-						For Each d In c
-							Console.Write(" * " + d)
-						Next
-						Console.WriteLine("")
-					Next
-					Console.WriteLine("")
-				End If
+				'If debugMode Then
+				'	Console.WriteLine("- practicePrimes -")
+				'	For Each c In Me.practicePrimes
+				'		For Each d In c
+				'			Console.Write(" * " + d)
+				'		Next
+				'		Console.WriteLine("")
+				'	Next
+				'	Console.WriteLine("")
+				'End If
 
 				practiceTrials = createTrials(
 										Me.practicePrimes,
@@ -115,49 +117,49 @@ Public Class mainForm
 										)
 				' Results in 20 Trials (Can shorten to 10 by setting timesPrimes to 1)
 
-				If debugMode Then
-					Console.WriteLine("- practiceTrials -")
-					Dim amount As Integer
-					For Each c In practiceTrials
-						For Each d In c
-							Console.Write(" * " + d)
-						Next
-						amount += c.Count
-						Console.WriteLine("")
-					Next
-					Console.WriteLine("Amount of Trials: " & amount)
-				End If
+				'If debugMode Then
+				'	Console.WriteLine("- practiceTrials -")
+				'	Dim amount As Integer
+				'	For Each c In practiceTrials
+				'		For Each d In c
+				'			Console.Write(" * " + d)
+				'		Next
+				'		amount += c.Count
+				'		Console.WriteLine("")
+				'	Next
+				'	Console.WriteLine("Amount of Trials: " & amount)
+				'End If
 
 				shuffleList(practiceTrials)
 
 				Dim savePrimes As New List(Of String)
 				Me.practicePrimes.ForEach(Sub(x) savePrimes.Add(String.Join(" ", x)))
-				dataFrame("practicePrimes") = String.Join(" ", savePrimes)
+				dataFrame("practicePrimes" & Me.currentBlock) = String.Join(" ", savePrimes)
 
 				Dim saveTrials As New List(Of String)
 				practiceTrials.ForEach(Sub(x) saveTrials.Add(String.Join(" ", x)))
-				dataFrame("practiceTrials") = String.Join("-", saveTrials)
+				dataFrame("practiceTrials" & Me.currentBlock) = String.Join("-", saveTrials)
 
 				' Experiment Trials
 
 				Me.experimentPrimes = createPrimes(
-					Me.otherPos,
-					Me.otherNeg,
+					Me.collectPos,
+					Me.collectNeg,
 					New List(Of String)(My.Resources.experimentPrime_Pos.Split(" ")),
 					New List(Of String)(My.Resources.experimentPrime_Neg.Split(" ")),
 					New List(Of String)(My.Resources.experimentPrime_Str.Split(" "))
 				)
 
-				If debugMode Then
-					Console.WriteLine("- experimentPrimes -")
-					For Each c In Me.experimentPrimes
-						For Each d In c
-							Console.Write(" * " + d)
-						Next
-						Console.WriteLine("")
-					Next
-					Console.WriteLine("")
-				End If
+				'If debugMode Then
+				'	Console.WriteLine("- experimentPrimes -")
+				'	For Each c In Me.experimentPrimes
+				'		For Each d In c
+				'			Console.Write(" * " + d)
+				'		Next
+				'		Console.WriteLine("")
+				'	Next
+				'	Console.WriteLine("")
+				'End If
 
 				experimentTrials = createTrials(
 					Me.experimentPrimes,
@@ -167,71 +169,71 @@ Public Class mainForm
 					}),
 					timesPrimes:=4 'How often each prime is paired with a target from each category
 				)
-				' Results in (12 [Primes] x 2 [Targets] x 4) 96 Trials
+				' Results in 96 Trials (12 [2+2+2+2+4 Primes] x 2 [Targets] x 4 [timesPrimes]) 
 
-				If debugMode Then
-					Console.WriteLine("- experimentTrials -")
-					Dim amount As Integer
-					For Each c In experimentTrials
-						For Each d In c
-							Console.Write(" * " + d)
-						Next
-						amount += c.Count
-						Console.WriteLine("")
-					Next
-					Console.WriteLine("Amount of Trials: " & amount)
-				End If
+				'If debugMode Then
+				'	Console.WriteLine("- experimentTrials -")
+				'	Dim amount As Integer
+				'	For Each c In experimentTrials
+				'		For Each d In c
+				'			Console.Write(" * " + d)
+				'		Next
+				'		amount += c.Count
+				'		Console.WriteLine("")
+				'	Next
+				'	Console.WriteLine("Amount of Trials: " & amount)
+				'End If
 
 				shuffleList(experimentTrials)
 
 				savePrimes.Clear()
 				Me.experimentPrimes.ForEach(Sub(x) savePrimes.Add(String.Join(" ", x)))
-				dataFrame("experimentPrimes") = String.Join(" ", savePrimes)
+				dataFrame("experimentPrimes" & Me.currentBlock) = String.Join(" ", savePrimes)
 
 				saveTrials.Clear()
 				experimentTrials.ForEach(Sub(x) saveTrials.Add(String.Join(" ", x)))
-				dataFrame("experimentTrials") = String.Join("-", saveTrials)
+				dataFrame("experimentTrials" & Me.currentBlock) = String.Join("-", saveTrials)
 
 			Case 2 'Practice Trials for the First Block
-				Me.practiceT = time.GetCurrentInstant()
+				'Me.practiceT = time.GetCurrentInstant()
+				timeFrame("practice" & Me.currentBlock & "T") = time.GetCurrentInstant()
 				practiceForm.ShowDialog()
 				Me.instrText.Rtf = My.Resources.ResourceManager.GetString("_3_experiment" & Me.keyAss)
 				practiceForm.Dispose()
 
 			Case 3 'Experiment Proper of the First Block
-				Me.experimentT = time.GetCurrentInstant()
+				'Me.experimentT = time.GetCurrentInstant()
+				timeFrame("experiment" & Me.currentBlock & "T") = time.GetCurrentInstant()
 				experimentForm.ShowDialog()
 
-				If String.IsNullOrEmpty(Me.secondBlock) Then
-
-					Me.instrText.Rtf = My.Resources.ResourceManager.GetString("_3b_breakInstr")
-					experimentForm.Dispose()
-
-					'SECOND BLOCK COPY 1,2,3 --> reset instructionCount to -1 & set Me.secondBlock to be the the other thing (objects or others)
-					Dim Blocks As New List(Of String) From {"Objects", "Others"}
-					Blocks.Remove(Me.firstBlock)
-					Me.secondBlock = Blocks(0)
-					Me.currentBlock = Me.secondBlock
-					Me.instructionCount = -1
-				Else
-					Me.instrText.Rtf = My.Resources.ResourceManager.GetString("_4_explicitInstr")
-					experimentForm.Dispose()
-				End If
+				' Starting the second Block, or continues to Explicit
+				Select Case Me.currentBlock
+					Case Me.firstBlock
+						Me.instrText.Rtf = My.Resources.ResourceManager.GetString("_3b_breakInstr")
+						Me.instructionCount = -1
+						Me.currentBlock = Me.secondBlock
+					Case Me.secondBlock
+						Me.instrText.Rtf = My.Resources.ResourceManager.GetString("_4_explicitInstr")
+				End Select
+				experimentForm.Dispose()
 
 			Case 4 'Explicit/Direct Measurements of Ambivalence
-				Me.explicitT = time.GetCurrentInstant()
+				'Me.explicitT = time.GetCurrentInstant()
+				timeFrame("explicitT") = time.GetCurrentInstant()
 				explicitForm.ShowDialog()
 				Me.instrText.Rtf = My.Resources.ResourceManager.GetString("_5_demoInstr")
 				explicitForm.Dispose()
 
 			Case 5 'Demographic Information
-				Me.demographicsT = time.GetCurrentInstant()
+				'Me.demographicsT = time.GetCurrentInstant()
+				timeFrame("demographicsT") = time.GetCurrentInstant()
 				demographicsForm.ShowDialog()
 				Me.instrText.Rtf = My.Resources.ResourceManager.GetString("_6_ambiInstr")
 				demographicsForm.Dispose()
 
 			Case 6 'Ambivalent Word Collection
-				Me.ambiT = time.GetCurrentInstant()
+				'Me.ambiT = time.GetCurrentInstant()
+				timeFrame("ambiT") = time.GetCurrentInstant()
 				ambiForm.ShowDialog()
 				Me.instrText.Rtf = My.Resources.ResourceManager.GetString("_7_endInstr")
 				Me.instrText.Font = sansSerif40
@@ -239,8 +241,9 @@ Public Class mainForm
 
 				Me.contButton.Text = "Speichern"
 				Me.endT = time.GetCurrentInstant()
+				timeFrame("endT") = time.GetCurrentInstant()
 
-				Me.timeOther = Me.practiceT - Me.otherT
+				Me.timeCollect = Me.practiceT - Me.collectT
 				Me.timePractice = Me.experimentT - Me.practiceT
 				Me.timeExperiment = Me.explicitT - Me.experimentT
 				Me.timeExplicit = Me.demographicsT - Me.explicitT
@@ -248,7 +251,7 @@ Public Class mainForm
 				Me.timeAmbi = Me.endT - Me.ambiT
 				Me.timeTotal = Me.endT - Me.startT
 
-				dataFrame("timeOther") = Me.timeOther.TotalMinutes.ToString
+				dataFrame("timeCollect") = Me.timeCollect.TotalMinutes.ToString
 				dataFrame("timePractice") = Me.timePractice.TotalMinutes.ToString
 				dataFrame("timeExperiment") = Me.timeExperiment.TotalMinutes.ToString
 				dataFrame("timeExplicit") = Me.timeExplicit.TotalMinutes.ToString

@@ -69,19 +69,32 @@
 			Select Case Val(Me.condN(2))
 				Case 0
 					mainForm.firstBlock = "Others"
+					mainForm.secondBlock = "Objects"
 					mainForm.currentBlock = "Others"
 				Case 1
 					mainForm.firstBlock = "Objects"
+					mainForm.secondBlock = "Others"
 					mainForm.currentBlock = "Objects"
+
+					'Optional on-line way of selecting one without knowing which is the other
+					'Dim Blocks As New List(Of String) From {"Objects", "Others"}
+					'Blocks.Remove(Me.firstBlock)
+					'Me.secondBlock = Blocks(0)
 			End Select
 
 			dataFrame("Subject") = Me.subjN
 			dataFrame("Condition") = Me.condN
 			dataFrame("Key") = mainForm.keyAss
-			dataFrame("firstValence") = mainForm.firstValence
 			dataFrame("firstBlock") = mainForm.firstBlock
+			dataFrame("firstValence") = mainForm.firstValence
 
 			Me.Close()
+		End If
+	End Sub
+
+	Private Sub enterConfirm(sender As Object, e As KeyEventArgs) Handles textBox.KeyDown
+		If e.KeyCode = Keys.Enter Then
+			Me.contButton.PerformClick()
 		End If
 	End Sub
 

@@ -8,6 +8,7 @@ Module mainModule
 
 	Friend dataFrame As New Dictionary(Of String, String) 'main dataframe to save all our data, gets written out at the end of the experiment
 	Friend time As IClock = SystemClock.Instance 'NodaTime clock instance, which keeps time, at the start of every part, gets saved in a variable (see under)
+	Friend timeDict As New Dictionary(Of String, Instant) 'dataframe to store starting times during the experiment
 
 	Friend sansSerif72 = New Font("Microsoft Sans Serif", 72)
 	Friend sansSerif60 = New Font("Microsoft Sans Serif", 60)

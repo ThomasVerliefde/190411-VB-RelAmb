@@ -178,7 +178,6 @@
       <LastGenOutput>Settings.Designer.vb</LastGenOutput>
     </None>
     <None Include="App.config" />
-    <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Resources\Instructions\0_mainInstr.txt" />
@@ -214,6 +213,7 @@
     <EmbeddedResource Include="Resources\Instructions\7_endInstr.txt" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="packages.config" />
     <None Include="Resources\BlockRandomisation.txt" />
   </ItemGroup>
   <ItemGroup>
