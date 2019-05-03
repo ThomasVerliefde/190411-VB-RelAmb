@@ -1,8 +1,10 @@
 ﻿{\rtf1 \ansi \par \par \par \par \qc
 
+Sie haben nun den ersten Block beendet.\par
+Es folgt ein weiterer Block mit anderen Wörtern. \par
+Dieser wird ebenso aus einem kurzen Übungsdurchgang und einer etwas längeren Testphase bestehen.\par \par
 
-YOU HAVE COMPLETED THE FIRST BLOCK, YOU CAN HAVE A SHORT BREAK, THEN CONTINUE ON
-?? EXACT WORDING??
-
+Sie können nun eine kurze Pause machen.\par \par
+Wenn Sie bereit sind, starten Sie mit dem "Weiter"-Button. \par
 
 }

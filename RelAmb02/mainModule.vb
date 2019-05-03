@@ -7,8 +7,10 @@ Module mainModule
 	Public debugMode As Boolean
 
 	Friend dataFrame As New Dictionary(Of String, String) 'main dataframe to save all our data, gets written out at the end of the experiment
+	Friend collectFrame As New Dictionary(Of String, List(Of String)) 'dataframe to store collected others and objects
+
 	Friend time As IClock = SystemClock.Instance 'NodaTime clock instance, which keeps time, at the start of every part, gets saved in a variable (see under)
-	Friend timeDict As New Dictionary(Of String, Instant) 'dataframe to store starting times during the experiment
+	Friend timeFrame As New Dictionary(Of String, Instant) 'dataframe to store starting times during the experiment
 
 	Friend sansSerif72 = New Font("Microsoft Sans Serif", 72)
 	Friend sansSerif60 = New Font("Microsoft Sans Serif", 60)
@@ -297,9 +299,7 @@ Module mainModule
 		Return My.Resources.BlockRandomisation.Substring((CInt(subjN) - 1) * 4, 3)
 	End Function
 
-#Disable Warning IDE1006 ' Naming Styles
-	Public Function IsName(ByVal checkString As String)
-#Enable Warning IDE1006 ' Naming Styles
+	Public Function isNoun(ByVal checkString As String)
 
 		'This Regex monstrosity checks whether the string is:
 		' a) just letters, including weird ones

@@ -62,8 +62,12 @@
 			Select Case Val(Me.condN(1))
 				Case 0
 					mainForm.firstValence = "Pos"
+					mainForm.secondValence = "Neg"
+					mainForm.currentValence = "Pos"
 				Case 1
 					mainForm.firstValence = "Neg"
+					mainForm.secondValence = "Pos"
+					mainForm.currentValence = "Neg"
 			End Select
 
 			Select Case Val(Me.condN(2))

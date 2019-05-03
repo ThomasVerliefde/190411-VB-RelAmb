@@ -1,9 +1,10 @@
 ﻿{\rtf1\ansi \par \par \par \par \qc
-Sie haben die Klassifizierungsphase nun beendet. \par \par
+Vielen Dank! Sie haben die Aufgaben zur Einordnung nun beendet. \par \par
 
-Wir möchten, dass Sie einige Fragen zu Ihren "signifikanten Anderen" und "signifikanten Objekten" beantworten, die Sie uns zu Beginn des Experiments genannt haben. \par \par
+Wir möchten Sie nun bitten, einige Fragen zu den wichtigen Personen und Objekten in Ihrem Leben, \par
+die Sie uns zu Beginn des Experiments genannt haben, zu beantworten. \par \par
 
-Wichtig: Ziehen Sie den Schieber einfach mit der Maus zur gewünschten Position auf der Skala. \par \par \par
+Dafür ziehen Sie den Schieber einer Skale einfach mit der Maus zur gewünschten Position. \par \par \par
 
 Drücken Sie den "Weiter"-Button um fortzufahren.
 }

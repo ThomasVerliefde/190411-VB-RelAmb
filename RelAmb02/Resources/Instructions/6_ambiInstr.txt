@@ -1,8 +1,10 @@
 ﻿{\rtf1\ansi \par \par \par \qc
 
+Wir möchten Sie im folgenden bitten einige Wörter aufzuschreiben, die für Sie {\b ambivalent} sind. \par
+Das bedeutet, dass diese für Sie sowohl "positiv", als auch "negativ" zugleich sind. \par \par
 
-WE WOULD LIKE YOU TO SHORTLY THINK ABOUT WORDS THAT YOU FIND AMBIVALENT.
-WRITE THEM DOWN IN THE BOX BELOW (OR SOMETHING LIKE THIS)
+Nennen Sie dabei bitte {\b Nomen}, für deren Bedeutung Sie sowohl "positive", als auch "negative" Gefühle hegen. \par \par
+Schreiben Sie diese bitte in den unten stehenden Kasten. \par
 
 
 }

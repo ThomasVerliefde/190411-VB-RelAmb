@@ -19,9 +19,12 @@ Public Class mainForm
 	Private endT As Instant
 
 	'All NodaTime.Duration variables, to check the actual duration (difference in sequential starting points) of each part
-	Private timeCollect As Duration
-	Private timePractice As Duration
-	Private timeExperiment As Duration
+	Private timeCollect01 As Duration
+	Private timePractice01 As Duration
+	Private timeExperiment01 As Duration
+	Private timeCollect02 As Duration
+	Private timePractice02 As Duration
+	Private timeExperiment02 As Duration
 	Private timeExplicit As Duration
 	Private timeDemographics As Duration
 	Private timeAmbi As Duration
@@ -30,12 +33,11 @@ Public Class mainForm
 	'Variable necessary for grabbing the correct instruction sheet, depending on whether the 'A' key is used to categorize positive adjectives, or for negative adjectives
 	Friend keyAss As String
 	Friend firstValence As String
+	Friend secondValence As String
+	Friend currentValence As String
 	Friend firstBlock As String
 	Friend secondBlock As String
 	Friend currentBlock As String
-
-	Friend collectPos As New List(Of String)
-	Friend collectNeg As New List(Of String)
 
 	Public practicePrimes As List(Of List(Of String))
 	Public experimentPrimes As List(Of List(Of String))
@@ -77,8 +79,8 @@ Public Class mainForm
 				' Practice Trials
 
 				Dim collectPractice As New List(Of String)(My.Resources.practiceOthers.Split(" "))
-				collectPractice = compareList(Me.collectNeg, collectPractice)
-				collectPractice = compareList(Me.collectPos, collectPractice)
+				collectPractice = compareList(collectFrame("collect" & Me.currentBlock & "Neg"), collectPractice)
+				collectPractice = compareList(collectFrame("collect" & Me.currentBlock & "Pos"), collectPractice)
 				shuffleList(collectPractice)
 				Dim practicePrime_Pos As New List(Of String)(My.Resources.practicePrime_Pos.Split(" "))
 				shuffleList(practicePrime_Pos)
@@ -143,8 +145,8 @@ Public Class mainForm
 				' Experiment Trials
 
 				Me.experimentPrimes = createPrimes(
-					Me.collectPos,
-					Me.collectNeg,
+					collectFrame("collect" & Me.currentBlock & "Pos"),
+					collectFrame("collect" & Me.currentBlock & "Neg"),
 					New List(Of String)(My.Resources.experimentPrime_Pos.Split(" ")),
 					New List(Of String)(My.Resources.experimentPrime_Neg.Split(" ")),
 					New List(Of String)(My.Resources.experimentPrime_Str.Split(" "))
@@ -240,20 +242,26 @@ Public Class mainForm
 				ambiForm.Dispose()
 
 				Me.contButton.Text = "Speichern"
-				Me.endT = time.GetCurrentInstant()
+				'Me.endT = time.GetCurrentInstant()
 				timeFrame("endT") = time.GetCurrentInstant()
 
-				Me.timeCollect = Me.practiceT - Me.collectT
-				Me.timePractice = Me.experimentT - Me.practiceT
-				Me.timeExperiment = Me.explicitT - Me.experimentT
-				Me.timeExplicit = Me.demographicsT - Me.explicitT
-				Me.timeDemographics = Me.ambiT - Me.demographicsT
-				Me.timeAmbi = Me.endT - Me.ambiT
-				Me.timeTotal = Me.endT - Me.startT
+				Me.timeCollect01 = timeFrame("practiceT") - timeFrame("collect" & Me.firstBlock & "T")
+				Me.timePractice01 = timeFrame("experiment" & Me.firstBlock & "T") - timeFrame("practice" & Me.firstBlock & "T")
+				Me.timeExperiment01 = timeFrame("collect" & Me.secondBlock & "") - timeFrame("experiment" & Me.firstBlock & "T")
+				Me.timeCollect02 = timeFrame("practice" & Me.secondBlock & "T") - timeFrame("collect" & Me.secondBlock & "T")
+				Me.timePractice02 = timeFrame("experiment" & Me.secondBlock & "T") - timeFrame("practice" & Me.secondBlock & "T")
+				Me.timeExperiment02 = timeFrame("explicit" & Me.secondBlock & "T") - timeFrame("experiment" & Me.secondBlock & "T")
+				Me.timeExplicit = timeFrame("demographicsT") - timeFrame("explicitT")
+				Me.timeDemographics = timeFrame("ambiT") - timeFrame("demographicsT")
+				Me.timeAmbi = timeFrame("endT") - timeFrame("ambiT")
+				Me.timeTotal = timeFrame("endT") - timeFrame("startT")
 
-				dataFrame("timeCollect") = Me.timeCollect.TotalMinutes.ToString
-				dataFrame("timePractice") = Me.timePractice.TotalMinutes.ToString
-				dataFrame("timeExperiment") = Me.timeExperiment.TotalMinutes.ToString
+				dataFrame("timeCollect01") = Me.timeCollect01.TotalMinutes.ToString
+				dataFrame("timePractice01") = Me.timePractice01.TotalMinutes.ToString
+				dataFrame("timeExperiment01") = Me.timeExperiment01.TotalMinutes.ToString
+				dataFrame("timeCollect02") = Me.timeCollect02.TotalMinutes.ToString
+				dataFrame("timePractice02") = Me.timePractice02.TotalMinutes.ToString
+				dataFrame("timeExperiment02") = Me.timeExperiment02.TotalMinutes.ToString
 				dataFrame("timeExplicit") = Me.timeExplicit.TotalMinutes.ToString
 				dataFrame("timeDemographics") = Me.timeDemographics.TotalMinutes.ToString
 				dataFrame("timeAmbi") = Me.timeAmbi.TotalMinutes.ToString

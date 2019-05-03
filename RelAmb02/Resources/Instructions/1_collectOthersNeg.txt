@@ -1,7 +1,6 @@
 ﻿{\rtf1\ansi \par \par \qc
-Bitte geben Sie die Namen von zwei {\b unbeliebten} Personen ein. \par \par
 
-Denken Sie an zwei "signifikante Personen", die Sie {\b am wenigsten} mögen. \par
-Menschen in Ihrem Leben, bei denen Sie sich {\b nicht sehr gut fühlen}, \par
+Bitte geben Sie die Namen von zwei wichtigen Personen an, die Sie {\b am wenigsten} mögen. \par \par
+Gemeint sind Menschen in Ihrem Leben, bei denen Sie sich {\b nicht sehr gut fühlen} \par
 und denen gegenüber Sie {\b negative} Gefühle hegen.
 }
