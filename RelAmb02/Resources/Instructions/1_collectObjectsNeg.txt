@@ -1,6 +1,7 @@
 ﻿{\rtf1\ansi \par \par \qc
 
-Bitte geben Sie die Bezeichnungen von zwei wichtigen Objekten an, die Sie {\b am wenigsten} mögen. \par \par
+Bitte geben Sie die Bezeichnungen von zwei wichtigen Objekten an,\par
+ die Sie {\b am wenigsten} mögen. \par \par
 Gemeint sind Objekte in Ihrem Leben, die Sie {\b nicht sehr gut finden} \par
 und denen gegenüber Sie {\b negative} Gefühle hegen.
 }

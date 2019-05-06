@@ -66,8 +66,8 @@ Namespace My.Resources
         '''
         '''vielen Dank für Ihre Teilnahme an dieser Studie! \par \par \par
         '''
-        '''Die Studie wird aus mehreren Aufgaben bestehen, die Sie nacheinander bearbeiten. \par \par
-        '''Bitte lesen Sie die Instruktionen immer aufmerksam durch! \par \par \par \par
+        '''Die Studie wird aus mehreren Aufgaben bestehen, die Sie nacheinander bearbeiten werden. \par \par
+        '''Bitte lesen Sie sich die Instruktionen immer aufmerksam durch! \par \par \par \par
         '''
         '''Starten Sie mit dem ersten Teil der Studie, indem Sie den &quot;Weiter&quot;-Button drücken.
         '''}.
@@ -80,12 +80,14 @@ Namespace My.Resources
         
         '''<summary>
         '''  Looks up a localized string similar to {\rtf1 \ansi \par \par \par \par \qc
-        '''In diesem Teil bitten wir Sie, über sogenannte &quot;signifikante Andere&quot; in Ihrem Leben nachzudenken. \par \par
-        '''Damit sind wichtige Bezugspersonen gemeint, die einen grössen Einfluss auf Ihr Leben nehmen. \par
-        '''Dies können beispielsweise (Ex-)Partner, Geschwister, Eltern, oder Freunde sein. \par \par \par
         '''
-        '''Sie werden gebeten, die Vornamen von 4 dieser Art von signifikanten anderen anzugeben. \par
-        '''Bitte stellen Sie sicher, dass Sie 4 eindeutige, unterschiedliche Namen ne [rest of string was truncated]&quot;;.
+        '''In diesem Teil bitten wir Sie, über wichtige {\b Objekte} in Ihrem Leben nachzudenken. \par \par
+        '''Damit sind Dinge gemeint, die einen großen Einfluss auf Ihr Leben nehmen. \par
+        '''Dies können beispielsweise persönliche oder oft genutzte Gegenstände, Nahrungsmittel oder Pflanzen sein. \par
+        '''Bitte geben Sie diese als ein einzelnes Wort ein. \par \par \par
+        '''
+        '''Sie werden gebeten, die Bezeichnungen von 4 solcher wichtigen Dinge anzugeben. \par
+        '''Bitte stellen Sie sicher, dass [rest of string was truncated]&quot;;.
         '''</summary>
         Friend ReadOnly Property _1_collectObjects() As String
             Get
@@ -95,10 +97,9 @@ Namespace My.Resources
         
         '''<summary>
         '''  Looks up a localized string similar to {\rtf1\ansi \par \par \qc
-        '''Bitte geben Sie die Namen von zwei {\b unbeliebten} Personen ein. \par \par
         '''
-        '''Denken Sie an zwei &quot;signifikante Personen&quot;, die Sie {\b am wenigsten} mögen. \par
-        '''Menschen in Ihrem Leben, bei denen Sie sich {\b nicht sehr gut fühlen}, \par
+        '''Bitte geben Sie die Bezeichnungen von zwei wichtigen Objekten an, die Sie {\b am wenigsten} mögen. \par \par
+        '''Gemeint sind Objekte in Ihrem Leben, die Sie {\b nicht sehr gut finden} \par
         '''und denen gegenüber Sie {\b negative} Gefühle hegen.
         '''}.
         '''</summary>
@@ -110,10 +111,9 @@ Namespace My.Resources
         
         '''<summary>
         '''  Looks up a localized string similar to {\rtf1\ansi \par \par \qc
-        '''Bitte geben Sie die Namen von zwei {\b beliebten} Personen ein. \par \par
         '''
-        '''Denken Sie an zwei &quot;signifikante Personen&quot;, die Sie {\b am meisten} mögen. \par
-        '''Menschen in Ihrem Leben, bei denen Sie sich {\b sehr gut fühlen}, \par
+        '''Bitte geben Sie die Bezeichnungen von zwei wichtigen Objekten an, die Sie {\b am meisten} mögen. \par \par
+        '''Gemeint sind Objekte in Ihrem Leben, die Sie {\b sehr gut finden} \par
         '''und denen gegenüber Sie {\b positive} Gefühle hegen.
         '''}.
         '''</summary>
@@ -125,12 +125,13 @@ Namespace My.Resources
         
         '''<summary>
         '''  Looks up a localized string similar to {\rtf1 \ansi \par \par \par \par \qc
-        '''In diesem Teil bitten wir Sie, über sogenannte &quot;signifikante Andere&quot; in Ihrem Leben nachzudenken. \par \par
-        '''Damit sind wichtige Bezugspersonen gemeint, die einen grössen Einfluss auf Ihr Leben nehmen. \par
-        '''Dies können beispielsweise (Ex-)Partner, Geschwister, Eltern, oder Freunde sein. \par \par \par
+        '''In diesem Teil bitten wir Sie, über wichtige Personen in Ihrem Leben nachzudenken. \par \par
+        '''Damit sind Bezugspersonen gemeint, die einen großen Einfluss auf Ihr Leben nehmen. \par
+        '''Dies können beispielsweise (Ex-)Partner, Familienmitglieder, Freunde oder Konkurrenten sein. \par \par \par
         '''
-        '''Sie werden gebeten, die Vornamen von 4 dieser Art von signifikanten anderen anzugeben. \par
-        '''Bitte stellen Sie sicher, dass Sie 4 eindeutige, unterschiedliche Namen ne [rest of string was truncated]&quot;;.
+        '''Sie werden gebeten, die Vornamen von 4 solcher wichtigen Personen anzugeben. \par
+        '''Bitte stellen Sie sicher, dass Sie 4 eindeutige und unterschiedliche Namen nennen.
+        '''}.
         '''</summary>
         Friend ReadOnly Property _1_collectOthers() As String
             Get
@@ -140,10 +141,9 @@ Namespace My.Resources
         
         '''<summary>
         '''  Looks up a localized string similar to {\rtf1\ansi \par \par \qc
-        '''Bitte geben Sie die Namen von zwei {\b unbeliebten} Personen ein. \par \par
         '''
-        '''Denken Sie an zwei &quot;signifikante Personen&quot;, die Sie {\b am wenigsten} mögen. \par
-        '''Menschen in Ihrem Leben, bei denen Sie sich {\b nicht sehr gut fühlen}, \par
+        '''Bitte geben Sie die Namen von zwei wichtigen Personen an, die Sie {\b am wenigsten} mögen. \par \par
+        '''Gemeint sind Menschen in Ihrem Leben, bei denen Sie sich {\b nicht sehr gut fühlen} \par
         '''und denen gegenüber Sie {\b negative} Gefühle hegen.
         '''}.
         '''</summary>
@@ -155,10 +155,9 @@ Namespace My.Resources
         
         '''<summary>
         '''  Looks up a localized string similar to {\rtf1\ansi \par \par \qc
-        '''Bitte geben Sie die Namen von zwei {\b beliebten} Personen ein. \par \par
         '''
-        '''Denken Sie an zwei &quot;signifikante Personen&quot;, die Sie {\b am meisten} mögen. \par
-        '''Menschen in Ihrem Leben, bei denen Sie sich {\b sehr gut fühlen}, \par
+        '''Bitte geben Sie die Namen von zwei wichtigen Personen an, die Sie {\b am meisten} mögen. \par \par
+        '''Gemeint sind Menschen in Ihrem Leben, bei denen Sie sich {\b sehr gut fühlen} \par
         '''und denen gegenüber Sie {\b positive} Gefühle hegen.
         '''}.
         '''</summary>
@@ -170,11 +169,13 @@ Namespace My.Resources
         
         '''<summary>
         '''  Looks up a localized string similar to {\rtf1\ansi \par \qc
-        '''In der folgenden Phase möchten wir untersuchen, wie schnell Menschen die Valenz von Wörtern feststellen können. \par
-        '''Damit ist gemeint, wie schnell Menschen darin sind, \par ein präsentiertes Wort als &quot;positiv&quot; oder &quot;negativ&quot; zu klassifizieren. \par \par
+        '''In der folgenden Phase möchten wir untersuchen, wie schnell Menschen \par 
+        '''ein präsentiertes Wort als &quot;positiv&quot; oder &quot;negativ&quot; einordnen können. \par \par
         '''
-        '''Im Zuge jeder einzelnen Klassifizierung werden Sie zwei Wörter sehen. \par
-        '''Das erste Wort wird nur sehr kurz auf dem Bildschirm zu sehen sein, unter Umständen sogar so kurz, \par dass Sie nicht in der Lage sind, es zu identifizier [rest of string was truncated]&quot;;.
+        '''Im Zuge jedes einzelnen Durchgangs werden Sie zwei Wörter sehen. \par
+        '''Das erste Wort wird nur sehr kurz auf dem Bildschirm zu sehen sein, unter Umständen sogar so kurz, \par 
+        '''dass Sie nicht in der Lage sind, es zu erkennen. \par
+        '''Das zweite Wort wird so lange zu sehen sein, bis Sie es entweder als &quot;positiv&quot; oder &quot;negativ&quot; einge [rest of string was truncated]&quot;;.
         '''</summary>
         Friend ReadOnly Property _2_practiceObjectsAneg() As String
             Get
@@ -184,11 +185,14 @@ Namespace My.Resources
         
         '''<summary>
         '''  Looks up a localized string similar to {\rtf1\ansi \par \qc
-        '''In der folgenden Phase möchten wir untersuchen, wie schnell Menschen die Valenz von Wörtern feststellen können. \par
-        '''Damit ist gemeint, wie schnell Menschen darin sind, \par ein präsentiertes Wort als &quot;positiv&quot; oder &quot;negativ&quot; zu klassifizieren. \par \par
         '''
-        '''Im Zuge jeder einzelnen Klassifizierung werden Sie zwei Wörter sehen. \par
-        '''Das erste Wort wird nur sehr kurz auf dem Bildschirm zu sehen sein, unter Umständen sogar so kurz, \par dass Sie nicht in der Lage sind, es zu identifizier [rest of string was truncated]&quot;;.
+        '''In der folgenden Phase möchten wir untersuchen, wie schnell Menschen \par 
+        '''ein präsentiertes Wort als &quot;positiv&quot; oder &quot;negativ&quot; einordnen können. \par \par
+        '''
+        '''Im Zuge jedes einzelnen Durchgangs werden Sie zwei Wörter sehen. \par
+        '''Das erste Wort wird nur sehr kurz auf dem Bildschirm zu sehen sein, unter Umständen sogar so kurz, \par 
+        '''dass Sie nicht in der Lage sind, es zu erkennen. \par
+        '''Das zweite Wort wird so lange zu sehen sein, bis Sie es entweder als &quot;positiv&quot; oder &quot;negativ&quot; ein [rest of string was truncated]&quot;;.
         '''</summary>
         Friend ReadOnly Property _2_practiceObjectsApos() As String
             Get
@@ -198,11 +202,14 @@ Namespace My.Resources
         
         '''<summary>
         '''  Looks up a localized string similar to {\rtf1\ansi \par \qc
-        '''In der folgenden Phase möchten wir untersuchen, wie schnell Menschen die Valenz von Wörtern feststellen können. \par
-        '''Damit ist gemeint, wie schnell Menschen darin sind, \par ein präsentiertes Wort als &quot;positiv&quot; oder &quot;negativ&quot; zu klassifizieren. \par \par
         '''
-        '''Im Zuge jeder einzelnen Klassifizierung werden Sie zwei Wörter sehen. \par
-        '''Das erste Wort wird nur sehr kurz auf dem Bildschirm zu sehen sein, unter Umständen sogar so kurz, \par dass Sie nicht in der Lage sind, es zu identifizier [rest of string was truncated]&quot;;.
+        '''In der folgenden Phase möchten wir untersuchen, wie schnell Menschen \par 
+        '''ein präsentiertes Wort als &quot;positiv&quot; oder &quot;negativ&quot; einordnen können. \par \par
+        '''
+        '''Im Zuge jedes einzelnen Durchgangs werden Sie zwei Wörter sehen. \par
+        '''Das erste Wort wird nur sehr kurz auf dem Bildschirm zu sehen sein, unter Umständen sogar so kurz, \par 
+        '''dass Sie nicht in der Lage sind, es zu erkennen. \par
+        '''Das zweite Wort wird so lange zu sehen sein, bis Sie es entweder als &quot;positiv&quot; oder &quot;negativ&quot; ein [rest of string was truncated]&quot;;.
         '''</summary>
         Friend ReadOnly Property _2_practiceOthersAneg() As String
             Get
@@ -212,11 +219,14 @@ Namespace My.Resources
         
         '''<summary>
         '''  Looks up a localized string similar to {\rtf1\ansi \par \qc
-        '''In der folgenden Phase möchten wir untersuchen, wie schnell Menschen die Valenz von Wörtern feststellen können. \par
-        '''Damit ist gemeint, wie schnell Menschen darin sind, \par ein präsentiertes Wort als &quot;positiv&quot; oder &quot;negativ&quot; zu klassifizieren. \par \par
         '''
-        '''Im Zuge jeder einzelnen Klassifizierung werden Sie zwei Wörter sehen. \par
-        '''Das erste Wort wird nur sehr kurz auf dem Bildschirm zu sehen sein, unter Umständen sogar so kurz, \par dass Sie nicht in der Lage sind, es zu identifizier [rest of string was truncated]&quot;;.
+        '''In der folgenden Phase möchten wir untersuchen, wie schnell Menschen \par 
+        '''ein präsentiertes Wort als &quot;positiv&quot; oder &quot;negativ&quot; einordnen können. \par \par
+        '''
+        '''Im Zuge jedes einzelnen Durchgangs werden Sie zwei Wörter sehen. \par
+        '''Das erste Wort wird nur sehr kurz auf dem Bildschirm zu sehen sein, unter Umständen sogar so kurz, \par 
+        '''dass Sie nicht in der Lage sind, es zu erkennen. \par
+        '''Das zweite Wort wird so lange zu sehen sein, bis Sie es entweder als &quot;positiv&quot; oder &quot;negativ&quot; ein [rest of string was truncated]&quot;;.
         '''</summary>
         Friend ReadOnly Property _2_practiceOthersApos() As String
             Get
@@ -228,12 +238,12 @@ Namespace My.Resources
         '''  Looks up a localized string similar to {\rtf1\ansi \par \par \par \par \qc
         '''Sie haben die Übungsphase nun beendet. \par \par
         '''
-        '''Als nächstes folgt die Testphase, welche identisch zur Übungsphase ist, aber länger dauert. \par \par
+        '''Als nächstes folgt die Testphase. Diese wird circa 10 Minuten dauern und ist ansonsten identisch zur Übungsphase. \par \par
         '''
         '''Die Zuteilung der Tasten zu &quot;positiv&quot; und &quot;negativ&quot; bleibt ebenfalls genauso wie in der Übungsphase: \par \par
         '''
         '''Drücken Sie bitte die Taste &quot;A&quot; auf Ihrer Tastatur, wenn das präsentierte Wort &quot;negativ&quot; ist. \par
-        '''Drücken Sie bitte die Taste &quot;L&quot; auf Ihrer Tastatur, wenn das präsentierte Wort &quot;positiv&quot; ist. \par \par        ''' [rest of string was truncated]&quot;;.
+        '''Drücken Sie bitte die Taste &quot;L&quot; auf Ihrer Tastatur, wenn das präsentierte Wort &quot;po [rest of string was truncated]&quot;;.
         '''</summary>
         Friend ReadOnly Property _3_experimentObjectsAneg() As String
             Get
@@ -245,12 +255,12 @@ Namespace My.Resources
         '''  Looks up a localized string similar to {\rtf1\ansi \par \par \par \par \qc
         '''Sie haben die Übungsphase nun beendet. \par \par
         '''
-        '''Als nächstes folgt die Testphase, welche identisch zur Übungsphase ist, aber länger dauert. \par \par
+        '''Als nächstes folgt die Testphase. Diese wird circa 10 Minuten dauern und ist ansonsten identisch zur Übungsphase. \par \par
         '''
         '''Die Zuteilung der Tasten zu &quot;positiv&quot; und &quot;negativ&quot; bleibt ebenfalls genauso wie in der Übungsphase: \par \par
         '''
         '''Drücken Sie bitte die Taste &quot;A&quot; auf Ihrer Tastatur, wenn das präsentierte Wort &quot;positiv&quot; ist. \par
-        '''Drücken Sie bitte die Taste &quot;L&quot; auf Ihrer Tastatur, wenn das präsentierte Wort &quot;negativ&quot; ist. \par \par        ''' [rest of string was truncated]&quot;;.
+        '''Drücken Sie bitte die Taste &quot;L&quot; auf Ihrer Tastatur, wenn das präsentierte Wort &quot;ne [rest of string was truncated]&quot;;.
         '''</summary>
         Friend ReadOnly Property _3_experimentObjectsApos() As String
             Get
@@ -262,12 +272,12 @@ Namespace My.Resources
         '''  Looks up a localized string similar to {\rtf1\ansi \par \par \par \par \qc
         '''Sie haben die Übungsphase nun beendet. \par \par
         '''
-        '''Als nächstes folgt die Testphase, welche identisch zur Übungsphase ist, aber länger dauert. \par \par
+        '''Als nächstes folgt die Testphase. Diese wird circa 10 Minuten dauern und ist ansonsten identisch zur Übungsphase. \par \par
         '''
         '''Die Zuteilung der Tasten zu &quot;positiv&quot; und &quot;negativ&quot; bleibt ebenfalls genauso wie in der Übungsphase: \par \par
         '''
         '''Drücken Sie bitte die Taste &quot;A&quot; auf Ihrer Tastatur, wenn das präsentierte Wort &quot;negativ&quot; ist. \par
-        '''Drücken Sie bitte die Taste &quot;L&quot; auf Ihrer Tastatur, wenn das präsentierte Wort &quot;positiv&quot; ist. \par \par        ''' [rest of string was truncated]&quot;;.
+        '''Drücken Sie bitte die Taste &quot;L&quot; auf Ihrer Tastatur, wenn das präsentierte Wort &quot;po [rest of string was truncated]&quot;;.
         '''</summary>
         Friend ReadOnly Property _3_experimentOthersAneg() As String
             Get
@@ -279,12 +289,12 @@ Namespace My.Resources
         '''  Looks up a localized string similar to {\rtf1\ansi \par \par \par \par \qc
         '''Sie haben die Übungsphase nun beendet. \par \par
         '''
-        '''Als nächstes folgt die Testphase, welche identisch zur Übungsphase ist, aber länger dauert. \par \par
+        '''Als nächstes folgt die Testphase. Diese wird circa 10 Minuten dauern und ist ansonsten identisch zur Übungsphase. \par \par
         '''
         '''Die Zuteilung der Tasten zu &quot;positiv&quot; und &quot;negativ&quot; bleibt ebenfalls genauso wie in der Übungsphase: \par \par
         '''
         '''Drücken Sie bitte die Taste &quot;A&quot; auf Ihrer Tastatur, wenn das präsentierte Wort &quot;positiv&quot; ist. \par
-        '''Drücken Sie bitte die Taste &quot;L&quot; auf Ihrer Tastatur, wenn das präsentierte Wort &quot;negativ&quot; ist. \par \par        ''' [rest of string was truncated]&quot;;.
+        '''Drücken Sie bitte die Taste &quot;L&quot; auf Ihrer Tastatur, wenn das präsentierte Wort &quot;ne [rest of string was truncated]&quot;;.
         '''</summary>
         Friend ReadOnly Property _3_experimentOthersApos() As String
             Get
@@ -295,10 +305,12 @@ Namespace My.Resources
         '''<summary>
         '''  Looks up a localized string similar to {\rtf1 \ansi \par \par \par \par \qc
         '''
+        '''Sie haben nun den ersten Block beendet.\par
+        '''Es folgt ein weiterer Block mit anderen Wörtern. \par
+        '''Dieser wird ebenso aus einem kurzen Übungsdurchgang und einer etwas längeren Testphase bestehen.\par \par
         '''
-        '''YOU HAVE COMPLETED THE FIRST BLOCK, YOU CAN HAVE A SHORT BREAK, THEN CONTINUE ON
-        '''?? EXACT WORDING??
-        '''
+        '''Sie können nun eine kurze Pause machen.\par \par
+        '''Wenn Sie bereit sind, starten Sie mit dem &quot;Weiter&quot;-Button. \par
         '''
         '''}.
         '''</summary>
@@ -310,11 +322,12 @@ Namespace My.Resources
         
         '''<summary>
         '''  Looks up a localized string similar to {\rtf1\ansi \par \par \par \par \qc
-        '''Sie haben die Klassifizierungsphase nun beendet. \par \par
+        '''Vielen Dank! Sie haben die Aufgaben zur Einordnung nun beendet. \par \par
         '''
-        '''Wir möchten, dass Sie einige Fragen zu Ihren &quot;signifikanten Anderen&quot; und &quot;signifikanten Objekten&quot; beantworten, die Sie uns zu Beginn des Experiments genannt haben. \par \par
+        '''Wir möchten Sie nun bitten, einige Fragen zu den wichtigen Personen und Objekten in Ihrem Leben, \par
+        '''die Sie uns zu Beginn des Experiments genannt haben, zu beantworten. \par \par
         '''
-        '''Wichtig: Ziehen Sie den Schieber einfach mit der Maus zur gewünschten Position auf der Skala. \par \par \par
+        '''Dafür ziehen Sie den Schieber einer Skale einfach mit der Maus zur gewünschten Position. \par \par \par
         '''
         '''Drücken Sie den &quot;Weiter&quot;-Button um fortzufahren.
         '''}.
@@ -341,9 +354,11 @@ Namespace My.Resources
         '''<summary>
         '''  Looks up a localized string similar to {\rtf1\ansi \par \par \par \qc
         '''
+        '''Wir möchten Sie im folgenden bitten einige Wörter aufzuschreiben, die für Sie {\b ambivalent} sind. \par
+        '''Das bedeutet, dass diese für Sie sowohl &quot;positiv&quot;, als auch &quot;negativ&quot; zugleich sind. \par \par
         '''
-        '''WE WOULD LIKE YOU TO SHORTLY THINK ABOUT WORDS THAT YOU FIND AMBIVALENT.
-        '''WRITE THEM DOWN IN THE BOX BELOW (OR SOMETHING LIKE THIS)
+        '''Nennen Sie dabei bitte {\b Nomen}, für deren Bedeutung Sie sowohl &quot;positive&quot;, als auch &quot;negative&quot; Gefühle hegen. \par \par
+        '''Schreiben Sie diese bitte in den unten stehenden Kasten. \par
         '''
         '''
         '''}.
@@ -356,11 +371,11 @@ Namespace My.Resources
         
         '''<summary>
         '''  Looks up a localized string similar to {\rtf1\ansi \par \par \par \qc
-        '''Das Experiment ist nun beendet. \par \par
+        '''Das Experiment ist hiermit beendet. \par \par
         '''
         '''Nochmals vielen Dank für Ihre Teilnahme! \par \par \par
         '''
-        '''Wenden Sie sich bitte an die Versuchsleitung.
+        '''Wenden Sie sich nun bitte an die Versuchsleitung.
         '''}.
         '''</summary>
         Friend ReadOnly Property _7_endInstr() As String
@@ -430,6 +445,15 @@ Namespace My.Resources
             Get
                 Dim obj As Object = ResourceManager.GetObject("iconExp", resourceCulture)
                 Return CType(obj,System.Drawing.Icon)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Looks up a localized string similar to Achim Dana Hannelore Kaspar Nicolaus Valerie.
+        '''</summary>
+        Friend ReadOnly Property practiceObjects() As String
+            Get
+                Return ResourceManager.GetString("practiceObjects", resourceCulture)
             End Get
         End Property
         

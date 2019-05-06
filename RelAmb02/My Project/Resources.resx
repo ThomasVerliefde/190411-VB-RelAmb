@@ -217,4 +217,7 @@
   <data name="_7_endInstr" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\resources\instructions\7_endinstr.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
   </data>
+  <data name="practiceObjects" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Stimuli\practiceObjects.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
+  </data>
 </root>

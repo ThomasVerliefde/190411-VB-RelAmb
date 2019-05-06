@@ -22,12 +22,15 @@ Public Class explicitForm
 	Private numBox As New labelledBox(Me.numText, "Wie viele Leute kennen Sie mit diesem Vornamen?")
 
 	Private WithEvents contButton As New continueButton
-	Private otherKeys As New List(Of String)({"otherPos1", "otherPos2", "otherNeg1", "otherNeg2"})
-	Private otherCount As Integer
+	Private correctRel As Boolean
+	Private correctNum As Boolean
+
+	Private collectKeys As New List(Of String)({"Pos1", "Pos2", "Neg1", "Neg2"})
+	Private collectCount As Integer
 	Private questionCount As Integer
 
-	Private otherKey As String
-	Private otherName As String
+	Private collectKey As String
+	Private collectName As String
 
 	Private tempFrame As New SortedDictionary(Of String, String)
 
@@ -35,17 +38,21 @@ Public Class explicitForm
 	Private B2 As Boolean
 	Private B3 As Boolean
 
+	Private amountQuestions As Integer = 2
+
 	Private Sub formLoad(sender As Object, e As EventArgs) Handles MyBase.Load
 
 		Me.WindowState = FormWindowState.Maximized
 		Me.FormBorderStyle = FormBorderStyle.None
 		Me.BackColor = Color.White
 
+		mainForm.currentBlock = mainForm.firstBlock
+
 		Me.trackB1.Name = "B1"
 		Me.trackB2.Name = "B2"
 		Me.trackB3.Name = "B3"
 
-		shuffleList(Me.otherKeys)
+		shuffleList(Me.collectKeys)
 
 		With Me.labIntro
 			.Text = "Bitte beantworten Sie die folgenden Fragen zu:"
@@ -74,153 +81,113 @@ Public Class explicitForm
 		Me.Controls.Add(Me.contButton)
 		objCenter(Me.contButton)
 
-		Me.labB1.Visible = False
-		Me.labB2.Visible = False
-		Me.labB3.Visible = False
-		Me.numBox.Visible = False
-		Me.relBox.Visible = True
+		'Me.labB1.Visible = False
+		'Me.labB2.Visible = False
+		'Me.labB3.Visible = False
+		'Me.numBox.Visible = False
+		'Me.relBox.Visible = False
 
-		Me.contButton.PerformClick()
+
+		'Me.contButton.PerformClick()
+
+		Me.setQuestion()
 
 	End Sub
 
 	Private Sub contButton_Click(sender As Object, e As EventArgs) Handles contButton.Click
 
-
-		If Me.questionCount <> 0 Then 'Saving all the data (except the initial time); utilises the previous iterations of otherKey
-			Select Case (Me.questionCount - 1) Mod 5 'Because this triggers at the start of a new buttonpush, events are lagged by 1
-
-				Case 0 ' Relation towards SO
-
-					Me.tempFrame(Me.otherKey & "_Rel") = Me.relText.Text.ToString
-
-				Case 1 ' Positive SRI
-
-					Me.tempFrame(Me.otherKey & "_SRI_Pos1_Adv") = Me.trackB1.Value.ToString
-					Me.tempFrame(Me.otherKey & "_SRI_Pos2_Und") = Me.trackB2.Value.ToString
-					Me.tempFrame(Me.otherKey & "_SRI_Pos3_Fav") = Me.trackB3.Value.ToString
-
-				Case 2 ' Negative SRI		
-
-					Me.tempFrame(Me.otherKey & "_SRI_Neg1_Adv") = Me.trackB1.Value.ToString
-					Me.tempFrame(Me.otherKey & "_SRI_Neg2_Und") = Me.trackB2.Value.ToString
-					Me.tempFrame(Me.otherKey & "_SRI_Neg3_Fav") = Me.trackB3.Value.ToString
-
-				Case 3 ' Other
-
-					Me.tempFrame(Me.otherKey & "_Dir_Pos") = Me.trackB1.Value.ToString
-					Me.tempFrame(Me.otherKey & "_Dir_Neg") = Me.trackB2.Value.ToString
-					Me.tempFrame(Me.otherKey & "_Dir_Amb") = Me.trackB3.Value.ToString
-
-				Case 4 ' How many?
-					Me.tempFrame(Me.otherKey & "_Num") = Me.numText.Text.ToString
-
-			End Select
-
-
+		If Me.questionCount Mod Me.amountQuestions = 0 Then
+			Me.tempFrame(mainForm.currentBlock & "_" & Me.collectKey & "_Rel") = Me.relText.Text.ToString
+			Me.tempFrame(mainForm.currentBlock & "_" & Me.collectKey & "_Num") = Me.numText.Text.ToString
+			Me.tempFrame(mainForm.currentBlock & "_" & Me.collectKey & "_Dir_Pos") = Me.trackB1.Value.ToString
+			Me.tempFrame(mainForm.currentBlock & "_" & Me.collectKey & "_Dir_Neg") = Me.trackB2.Value.ToString
+			Me.tempFrame(mainForm.currentBlock & "_" & Me.collectKey & "_Dir_Amb") = Me.trackB3.Value.ToString
 		End If
 
-		If Me.otherCount >= Me.otherKeys.Count Then
+		If Me.collectCount >= Me.collectKeys.Count Then
 
-			For Each item In Me.tempFrame
-				dataFrame.Add(item.Key, item.Value)
-			Next
-
-			Me.Close()
+			If mainForm.currentBlock = mainForm.firstBlock Then
+				mainForm.currentBlock = mainForm.secondBlock
+				Me.collectCount = 0
+				shuffleList(Me.collectKeys)
+			Else
+				For Each item In Me.tempFrame
+					dataFrame.Add(item.Key, item.Value)
+				Next
+				Me.Close()
+			End If
 
 		Else
 
-			Me.otherKey = Me.otherKeys(Me.otherCount)
-			Me.otherName = dataFrame(Me.otherKey)
-
-			With Me.labName
-				.Text = Me.otherName
-				.Font = sansSerif25B
-				.Width = TextRenderer.MeasureText(.Text, sansSerif25B).Width
-				.Height = TextRenderer.MeasureText(.Text, sansSerif25B).Height
-			End With
-
-			'Resetting the checks whether the trackbars have received attention
-			Me.B1 = False
-			Me.B2 = False
-			Me.B3 = False
-			Me.contButton.Enabled = debugMode 'False if debugMode is off, True if debugMode is on
-
-			Select Case Me.questionCount Mod 5
-
-				Case 0
-
-					Me.numBox.Visible = False
-					Me.relBox.Visible = True
-
-					Me.relText.ResetText()
-					Me.relText.Select()
-
-					If debugMode Then
-						Me.relText.Text = "DEBUG"
-					End If
-
-				Case 1
-
-					Me.labB1.Visible = True
-					Me.labB2.Visible = True
-					Me.labB3.Visible = True
-					Me.relBox.Visible = False
-
-					' Positive SRI
-					' How helpful is XXX when you need advice/understanding/a favour? | willing to help, or useful
-
-					Me.labB1.reInit("Wie hilfreich ist " & Me.otherName & ", wenn Sie Rat brauchen?", Me.trackB1)
-					Me.labB2.reInit("Wie hilfreich ist " & Me.otherName & ", wenn Sie Verständnis brauchen?", Me.trackB2)
-					Me.labB3.reInit("Wie hilfreich ist " & Me.otherName & ", wenn Sie einen Gefallen brauchen?", Me.trackB3)
-
-				Case 2
-
-					' Negative SRI
-					' How upsetting is XXX when you need advice/understanding/a favour | upsetting: making someone feel worried, unhappy, or angry (cambridge dictionary)
-					' Should come up with a better word still
-					' Kathis suggestion: "in Aufregung versetzen"
-					' Max' suggestion: "erschütternd"
-					' Other interesting ideas: "ärgerlich", "umständlich", "beunruhigend", "erschwerend", "vesrchlimmernd", "agitierend", "verwirrend"
-					' Currently a big fan of "umständlich", although "schwierig" could also be pretty nice
-
-					Me.labB1.reInit("Wie umständlich ist " & Me.otherName & ", wenn Sie Rat brauchen?", Me.trackB1)
-					Me.labB2.reInit("Wie umständlich ist " & Me.otherName & ", wenn Sie Verständnis brauchen?", Me.trackB2)
-					Me.labB3.reInit("Wie umständlich ist " & Me.otherName & ", wenn Sie einen Gefallen brauchen?", Me.trackB3)
-
-				Case 3 ' Explicit positive, negative, and ambivalent
-
-					Me.labB1.reInit("Wie positiv finden Sie " & Me.otherName & "?" & vbCrLf &
-									" Konzentrieren Sie sich für Ihr Urteil bitte nur auf die positiven Aspekte" & vbCrLf &
-									"und ignorieren Sie mögliche negative Aspekte.", Me.trackB1, 0.5, "neutral", "sehr positiv", minVal:=0, maxVal:=100, freqVal:=50, defVal:=0)
-					Me.labB2.reInit("Wie negativ finden Sie " & Me.otherName & "?" & vbCrLf &
-									" Konzentrieren Sie sich für Ihr Urteil bitte nur auf die negativen Aspekte" & vbCrLf &
-									"und ignorieren Sie mögliche positive Aspekte.", Me.trackB2, 0.5, "neutral", "sehr negativ", minVal:=0, maxVal:=100, freqVal:=50, defVal:=0)
-					Me.labB3.reInit("Wie hin- und hergerissen fühlen Sie sich angesichts " & Me.otherName, Me.trackB3,, "überhaupt nicht", "sehr", minVal:=0, maxVal:=100, freqVal:=50, defVal:=0)
-
-				Case 4 ' What is your relation towards this significant other, & How many do you know?
-
-					Me.labB1.Visible = False
-					Me.labB2.Visible = False
-					Me.labB3.Visible = False
-					Me.numBox.Visible = True
-
-					Me.numText.ResetText()
-					Me.numText.Focus()
-
-					If debugMode Then
-						Me.numText.Text = 1
-					End If
-
-					Me.otherCount += 1
-
-			End Select
-
-			Me.questionCount += 1
+			Me.setQuestion()
 
 		End If
 
 	End Sub
+
+	Private Sub setQuestion()
+
+		Me.collectKey = Me.collectKeys(Me.collectCount)
+		Me.collectName = dataFrame("collect" & mainForm.currentBlock & Me.collectKey)
+
+		With Me.labName
+			.Text = Me.collectName
+			.Font = sansSerif25B
+			.Width = TextRenderer.MeasureText(.Text, sansSerif25B).Width
+			.Height = TextRenderer.MeasureText(.Text, sansSerif25B).Height
+		End With
+
+		'Resetting the checks whether the questions have received attention
+		Me.B1 = False
+		Me.B2 = False
+		Me.B3 = False
+		Me.correctRel = False
+		Me.correctNum = mainForm.currentBlock = "Objects" 'This needs to be True if we are not showing the numBox, in order to make contButton enabled
+		Me.contButton.Enabled = debugMode 'False if debugMode is off, True if debugMode is on
+
+		Select Case Me.questionCount Mod Me.amountQuestions
+
+			Case 0
+
+				Me.labB1.Visible = False
+				Me.labB2.Visible = Me.labB1.Visible
+				Me.labB3.Visible = Me.labB1.Visible
+				Me.relBox.Visible = True
+				Me.numBox.Visible = mainForm.currentBlock = "Others"
+
+				Me.relText.ResetText()
+				Me.relText.Select()
+				Me.numText.ResetText()
+
+					'If debugMode Then
+					'	Me.relText.Text = "DEBUG"
+					'	Me.numText.Text = 1
+					'End If
+
+			Case 1 ' Explicit positive, negative, and ambivalent
+
+				Me.labB1.Visible = True
+				Me.labB2.Visible = Me.labB1.Visible
+				Me.labB3.Visible = Me.labB1.Visible
+				Me.relBox.Visible = False
+				Me.numBox.Visible = Me.relBox.Visible
+
+				Me.labB1.reInit("Wie positiv finden Sie " & Me.collectName & "?" & vbCrLf &
+								" Konzentrieren Sie sich für Ihr Urteil bitte nur auf die positiven Aspekte" & vbCrLf &
+								"und ignorieren Sie mögliche negative Aspekte.", Me.trackB1, 0.5, "neutral", "sehr positiv", minVal:=0, maxVal:=100, freqVal:=50, defVal:=0)
+				Me.labB2.reInit("Wie negativ finden Sie " & Me.collectName & "?" & vbCrLf &
+								" Konzentrieren Sie sich für Ihr Urteil bitte nur auf die negativen Aspekte" & vbCrLf &
+								"und ignorieren Sie mögliche positive Aspekte.", Me.trackB2, 0.5, "neutral", "sehr negativ", minVal:=0, maxVal:=100, freqVal:=50, defVal:=0)
+				Me.labB3.reInit("Wie hin- und hergerissen fühlen Sie sich angesichts " & Me.collectName, Me.trackB3,, "überhaupt nicht", "sehr", minVal:=0, maxVal:=100, freqVal:=50, defVal:=0)
+
+				Me.collectCount += 1
+
+		End Select
+
+		Me.questionCount += 1
+
+	End Sub
+
 
 	Private Sub enableTrack(sender As Object, e As EventArgs) Handles trackB1.MouseDown, trackB2.MouseDown, trackB3.MouseDown
 
@@ -244,28 +211,30 @@ Public Class explicitForm
 
 	Private Sub enableNum(sender As Object, e As EventArgs) Handles numText.TextChanged
 		If Val(Me.numText.Text) < 1 OrElse Val(Me.numText.Text) > 25 Then
-			Me.contButton.Enabled = False
+			Me.correctNum = False
 		ElseIf Val(Me.numText.Text) > 0 Then
-			Me.contButton.Enabled = True
+			Me.correctNum = True
 		End If
+		Me.contButton.Enabled = Me.correctNum AndAlso Me.correctRel
 	End Sub
 
 	Private Sub enableRel(sender As Object, e As EventArgs) Handles relText.TextChanged
 		If Me.relText.Text.Length > 1 Then
-			Me.contButton.Enabled = True
+			Me.correctRel = True
 		ElseIf Me.relText.Text.Length <= 1 Then
-			Me.contButton.Enabled = False
+			Me.correctRel = False
 		End If
-	End Sub
-
-	Private Sub confirmEnter(sender As Object, e As KeyEventArgs) Handles numText.KeyDown, relText.KeyDown
-		If e.KeyCode = Keys.Enter Then
-			Me.contButton.PerformClick()
-		End If
+		Me.contButton.Enabled = Me.correctNum AndAlso Me.correctRel
 	End Sub
 
 	Private Sub suppressNonNumeric(sender As Object, e As KeyPressEventArgs) Handles numText.KeyPress
 		If e.KeyChar <> ControlChars.Back AndAlso Not IsNumeric(e.KeyChar) Then
+			e.Handled = True
+		End If
+	End Sub
+
+	Private Sub suppressDotComma(sender As Object, e As KeyEventArgs) Handles relText.KeyDown
+		If e.KeyCode = Keys.OemSemicolon Then
 			e.Handled = True
 		End If
 	End Sub

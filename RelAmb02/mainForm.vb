@@ -78,7 +78,7 @@ Public Class mainForm
 
 				' Practice Trials
 
-				Dim collectPractice As New List(Of String)(My.Resources.practiceOthers.Split(" "))
+				Dim collectPractice As New List(Of String)(My.Resources.ResourceManager.GetString("practice" & Me.currentBlock).Split(" "))
 				collectPractice = compareList(collectFrame("collect" & Me.currentBlock & "Neg"), collectPractice)
 				collectPractice = compareList(collectFrame("collect" & Me.currentBlock & "Pos"), collectPractice)
 				shuffleList(collectPractice)
@@ -200,7 +200,7 @@ Public Class mainForm
 				'Me.practiceT = time.GetCurrentInstant()
 				timeFrame("practice" & Me.currentBlock & "T") = time.GetCurrentInstant()
 				practiceForm.ShowDialog()
-				Me.instrText.Rtf = My.Resources.ResourceManager.GetString("_3_experiment" & Me.keyAss)
+				Me.instrText.Rtf = My.Resources.ResourceManager.GetString("_3_experiment" & Me.currentBlock & Me.keyAss)
 				practiceForm.Dispose()
 
 			Case 3 'Experiment Proper of the First Block

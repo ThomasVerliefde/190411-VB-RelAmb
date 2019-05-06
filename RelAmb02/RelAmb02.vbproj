@@ -291,5 +291,8 @@
   <ItemGroup>
     <EmbeddedResource Include="Resources\Instructions\3_experimentObjectsApos.txt" />
   </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\Stimuli\practiceObjects.txt" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
 </Project>

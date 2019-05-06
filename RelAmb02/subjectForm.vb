@@ -35,19 +35,13 @@
 
 		If Me.textBox.Text = "999" Then
 			debugMode = True
-			Me.textBox.Text = "499"
-		End If
-
-		If Me.textBox.Text = "" OrElse Val(Me.textBox.Text) < 1 OrElse Val(Me.textBox.Text) > 500 Then
-			'Val("these are letters") returns 0
-			MsgBox("Bitte geben Sie eine korrekte VPNr ein!", MsgBoxStyle.Critical, Title:="Fehler!")
+			'Me.textBox.Text = "499"
+		ElseIf Me.textBox.Text = "" OrElse Val(Me.textBox.Text) < 1 OrElse Val(Me.textBox.Text) > 500 Then
+		'Val("these are letters") returns 0
+		MsgBox("Bitte geben Sie eine korrekte VPNr ein!", MsgBoxStyle.Critical, Title:="Fehler!")
 			Exit Sub
 
 		Else
-
-			If debugMode = True Then
-				Me.textBox.Text = "999"
-			End If
 
 			Me.subjN = Me.textBox.Text
 			Me.condN = setCond(Me.subjN)
@@ -79,11 +73,6 @@
 					mainForm.firstBlock = "Objects"
 					mainForm.secondBlock = "Others"
 					mainForm.currentBlock = "Objects"
-
-					'Optional on-line way of selecting one without knowing which is the other
-					'Dim Blocks As New List(Of String) From {"Objects", "Others"}
-					'Blocks.Remove(Me.firstBlock)
-					'Me.secondBlock = Blocks(0)
 			End Select
 
 			dataFrame("Subject") = Me.subjN

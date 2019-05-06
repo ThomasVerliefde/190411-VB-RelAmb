@@ -1,8 +1,9 @@
 ﻿{\rtf1 \ansi \par \par \par \par \qc
 In diesem Teil bitten wir Sie, über wichtige Personen in Ihrem Leben nachzudenken. \par \par
 Damit sind Bezugspersonen gemeint, die einen großen Einfluss auf Ihr Leben nehmen. \par
-Dies können beispielsweise (Ex-)Partner, Familienmitglieder, Freunde oder Konkurrenten sein. \par \par \par
+Dies können beispielsweise (Ex-)Partner, Familienmitglieder, Freunde, Konkurrenten,... sein. \par \par \par
 
 Sie werden gebeten, die Vornamen von 4 solcher wichtigen Personen anzugeben. \par
+Bitte geben Sie jedes als ein einzelnes Wort ein. \par
 Bitte stellen Sie sicher, dass Sie 4 eindeutige und unterschiedliche Namen nennen.
 }

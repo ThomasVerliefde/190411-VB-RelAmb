@@ -8,8 +8,6 @@ Public Class collectForm
 	Private collectPanel1 As New labelledBox(Me.collectBox1, boxWidth:=180)
 	Private collectPanel2 As New labelledBox(Me.collectBox2, boxWidth:=180)
 	Private WithEvents contButton As New continueButton
-	'Private collectPos As New List(Of String)
-	'Private collectNeg As New List(Of String)
 
 	Private Sub formLoad(sender As Object, e As EventArgs) Handles MyBase.Load
 
@@ -19,7 +17,6 @@ Public Class collectForm
 
 		Me.Controls.Add(Me.collectInstr)
 		objCenter(Me.collectInstr, 0.25)
-		Me.collectInstr.Rtf = My.Resources.ResourceManager.GetString("_1_collect" & mainForm.currentBlock & mainForm.currentValence)
 
 		Me.Controls.Add(Me.contButton)
 		objCenter(Me.contButton, 0.8)
@@ -29,39 +26,14 @@ Public Class collectForm
 		Me.Controls.Add(Me.collectPanel2)
 		objCenter(Me.collectPanel2, 0.6, 0.45)
 
-		'PLACEHOLDERS FOR LABELS, SHOULD BE CHANGED FOR FINAL
-		Select Case mainForm.currentBlock
-			Case "Others"
-				Me.collectPanel1.reLabel(collectBox1, "Name des 1. signifikanten anderen :")
-				Me.collectPanel2.reLabel(collectBox2, "Name des 2. signifikanten anderen :")
-
-				'If debugMode Then
-				'	Me.otherBox1.Text = "Adam"
-				'	Me.otherBox2.Text = "Chloe"
-				'End If
-
-			Case "Objects"
-				Me.collectPanel1.reLabel(collectBox1, "Name des 1. signifikanten objekten :")
-				Me.collectPanel2.reLabel(collectBox2, "Name des 2. signifikanten objekten :")
-
-				'If debugMode Then
-				'	Me.otherBox1.Text = "Piano"
-				'	Me.otherBox2.Text = "Teddy"
-				'End If
-
-		End Select
-
 		Me.collectBox1.MaxLength = 14
 		Me.collectBox2.MaxLength = 14
 
-		Me.collectBox1.Select()
+		Me.setQuestion()
 
 	End Sub
 
 	Private Sub contButton_Click(sender As Object, e As EventArgs) Handles contButton.Click
-
-
-		'I need to change detection for other primes
 
 		For Each list In collectFrame.Values
 			If list.Contains(Me.collectBox1.Text) OrElse list.Contains(Me.collectBox2.Text) Then
@@ -71,6 +43,7 @@ Public Class collectForm
 		Next
 
 		If Me.collectBox1.Text = "" OrElse Me.collectBox2.Text = "" OrElse
+				Me.collectBox1.Text.ToLower = Me.collectBox2.Text.ToLower OrElse
 			Not isNoun(Me.collectBox1.Text) OrElse Not isNoun(Me.collectBox2.Text) OrElse
 				Me.collectBox1.Text.Length < 2 OrElse Me.collectBox2.Text.Length < 2 Then
 			MsgBox("Bitte geben Sie gültige Namen ein!" & vbCrLf &
@@ -81,67 +54,55 @@ Public Class collectForm
 		ElseIf mainForm.currentValence = mainForm.firstValence Then
 
 			collectFrame("collect" & mainForm.currentBlock & mainForm.currentValence) = New List(Of String) From {StrConv(Me.collectBox1.Text, vbProperCase), StrConv(Me.collectBox2.Text, vbProperCase)}
-
-			Me.collectInstr.Rtf = My.Resources.ResourceManager.GetString("_1_collect" & mainForm.currentBlock & mainForm.currentValence)
-
-			'Select Case mainForm.firstValence
-			'	Case "Pos"
-			'		Me.collectPos.AddRange({StrConv(Me.collectBox1.Text, vbProperCase), StrConv(Me.collectBox2.Text, vbProperCase)})
-			'		Me.collectInstr.Rtf = My.Resources.ResourceManager.GetString("_1_otherNeg")
-			'	Case "Neg"
-			'		Me.collectNeg.AddRange({StrConv(Me.collectBox1.Text, vbProperCase), StrConv(Me.collectBox2.Text, vbProperCase)})
-			'		Me.collectInstr.Rtf = My.Resources.ResourceManager.GetString("_1_otherPos")
-			'End Select
-
-			Me.collectBox1.Text = ""
-			Me.collectBox2.Text = ""
-
-			'If debugMode Then
-			'	Me.otherBox1.Text = "Xavier"
-			'	Me.otherBox2.Text = "Zoe"
-			'End If
-
 			mainForm.currentValence = mainForm.secondValence
-			Me.collectBox1.Select()
+
+			Me.setQuestion()
 
 		ElseIf mainForm.currentValence = mainForm.secondValence Then
 
 			collectFrame("collect" & mainForm.currentBlock & mainForm.currentValence) = New List(Of String) From {StrConv(Me.collectBox1.Text, vbProperCase), StrConv(Me.collectBox2.Text, vbProperCase)}
-
-			'Select Case mainForm.firstValence
-			'	Case "Pos"
-			'		mainForm.collectNeg.AddRange({StrConv(Me.collectBox1.Text, vbProperCase), StrConv(Me.collectBox2.Text, vbProperCase)})
-			'		mainForm.collectPos = Me.collectPos
-			'	Case "Neg"
-			'		mainForm.collectPos.AddRange({StrConv(Me.collectBox1.Text, vbProperCase), StrConv(Me.collectBox2.Text, vbProperCase)})
-			'		mainForm.collectNeg = Me.collectNeg
-			'End Select
+			mainForm.currentValence = mainForm.firstValence
 
 			dataFrame("collect" & mainForm.currentBlock & "Pos1") = collectFrame("collect" & mainForm.currentBlock & "Pos")(0).ToString
 			dataFrame("collect" & mainForm.currentBlock & "Pos2") = collectFrame("collect" & mainForm.currentBlock & "Pos")(1).ToString
 			dataFrame("collect" & mainForm.currentBlock & "Neg1") = collectFrame("collect" & mainForm.currentBlock & "Neg")(0).ToString
 			dataFrame("collect" & mainForm.currentBlock & "Neg2") = collectFrame("collect" & mainForm.currentBlock & "Neg")(1).ToString
 
-			mainForm.currentValence = mainForm.firstValence
-
 			Me.Close()
 		End If
 	End Sub
 
-	'Private Sub pressEnter(sender As Object, e As KeyEventArgs) Handles collectBox1.KeyDown, collectBox2.KeyDown
-	'	If e.KeyCode = Keys.Enter Then
-	'		If 0 Then
-	'		ElseIf Me.collectBox1.Text = "" Then
-	'			Me.collectBox1.Select()
-	'		ElseIf Me.collectBox2.Text = "" Then
-	'			Me.collectBox2.Select()
-	'		Else Me.contButton.PerformClick()
-	'		End If
-	'	End If
-	'End Sub
+	Private Sub setQuestion()
+
+		Dim CBlock As New String("")
+		Dim CVal As New String("")
+
+		Select Case mainForm.currentBlock
+			Case "Others"
+				CBlock = "anderen"
+			Case "Objects"
+				CBlock = "Objekts"
+		End Select
+		Select Case mainForm.currentValence
+			Case "Pos"
+				CVal = "positiven"
+			Case "Neg"
+				CVal = "negativen"
+		End Select
+
+		Me.collectPanel1.reLabel(collectBox1, "Name des 1. " & CVal & " signifikanten " & CBlock & ":")
+		Me.collectPanel2.reLabel(collectBox2, "Name des 2. " & CVal & " signifikanten " & CBlock & ":")
+
+		Me.collectBox1.Text = ""
+		Me.collectBox2.Text = ""
+		Me.collectBox1.Select()
+
+		Me.collectInstr.Rtf = My.Resources.ResourceManager.GetString("_1_collect" & mainForm.currentBlock & mainForm.currentValence)
+
+	End Sub
 
 	Private Sub suppressNonAlpha(sender As Object, e As KeyPressEventArgs) Handles collectBox1.KeyPress, collectBox2.KeyPress
-		If e.KeyChar <> ControlChars.Back AndAlso Not isNoun(Me.collectBox1.Text & e.KeyChar) AndAlso Not isNoun(Me.collectBox2.Text & e.KeyChar) Then
+		If e.KeyChar <> ControlChars.Back AndAlso Not isNoun(Me.collectBox1.Text & e.KeyChar) AndAlso Not isNoun(Me.collectBox2.Text & e.KeyChar) AndAlso Not e.KeyChar = ";" Then
 			e.Handled = True
 		End If
 	End Sub
