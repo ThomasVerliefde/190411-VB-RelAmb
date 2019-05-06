@@ -12,6 +12,11 @@ Module mainModule
 	Friend time As IClock = SystemClock.Instance 'NodaTime clock instance, which keeps time, at the start of every part, gets saved in a variable (see under)
 	Friend timeFrame As New Dictionary(Of String, Instant) 'dataframe to store starting times during the experiment
 
+	Friend durationITI As Integer = 700
+	Friend durationFix As Integer = 500
+	Friend durationPrime As Integer = 200
+	Friend durationMask As Integer = 100
+
 	Friend sansSerif72 = New Font("Microsoft Sans Serif", 72)
 	Friend sansSerif60 = New Font("Microsoft Sans Serif", 60)
 	Friend sansSerif40 = New Font("Microsoft Sans Serif", 40)
@@ -398,7 +403,7 @@ Module mainModule
 		Next
 
 		Return Trials 'Trials is a List of Lists of Strings -> Each List of Strings is a Trial
-		'-> Each Trial contains 4 items: Prime, Target, PrimeCategory [0 = PositiveNoun, 1 = NegativeNoun, 2 = PositiveOther, 3 = NegativeOther, 4 = LetterString], TargetCategory [0 = Positive, 1 = Negative]
+		'-> Each Trial contains 4 items: Prime, Target, PrimeCategory [0 = PositiveNoun, 1 = NegativeNoun, 2 = PositiveCollect, 3 = NegativeCollect, 4 = LetterString], TargetCategory [0 = Positive, 1 = Negative]
 	End Function
 
 	Public Sub saveCSV(ByVal dataFrame As Dictionary(Of String, String), Optional ByVal path As String = "rawData.csv")

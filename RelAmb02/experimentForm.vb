@@ -8,6 +8,7 @@ Public Class experimentForm
 	Private WithEvents timerITI As New Timer
 	Private WithEvents timerFix As New Timer
 	Private WithEvents timerPrime As New Timer
+	Private WithEvents timerMask As New Timer
 
 	Private leftLab As New Label
 	Private rightLab As New Label
@@ -26,15 +27,16 @@ Public Class experimentForm
 		Me.BackColor = Color.White
 
 		Cursor.Hide()
-		Me.timerITI.Interval = 1500
-		Me.timerFix.Interval = 500
-		Me.timerPrime.Interval = 150
+		Me.timerITI.Interval = durationITI
+		Me.timerFix.Interval = durationFix
+		Me.timerPrime.Interval = durationPrime
+		Me.timerMask.Interval = durationMask
 
-		If debugMode Then
-			Me.timerITI.Interval = 50
-			Me.timerFix.Interval = 50
-			Me.timerPrime.Interval = 50
-		End If
+		'If debugMode Then
+		'	Me.timerITI.Interval = 50
+		'	Me.timerFix.Interval = 50
+		'	Me.timerPrime.Interval = 50
+		'End If
 
 		Me.Controls.AddRange({Me.leftLab, Me.rightLab, Me.slowLab, Me.fixLab, Me.primeLab, Me.targetLab})
 
@@ -107,19 +109,25 @@ Public Class experimentForm
 
 	Private Sub timerPrime_Tick(sender As Object, e As EventArgs) Handles timerPrime.Tick
 		Me.timerPrime.Stop()
+		Me.timerMask.Start()
+		Me.primeLab.Visible = False
+	End Sub
+
+	Private Sub timerMask_Tick(sender As Object, e As EventArgs) Handles timerMask.Tick
+		Me.timerMask.Stop()
 		Me.stopwatchTarget.Start()
 		If Me.trialCounter < experimentTrials.Count Then
 			Me.targetLab.Text = experimentTrials(Me.trialCounter)(1)
 		End If
-		Me.primeLab.Visible = False
 		Me.targetLab.Visible = True
 		Me.ignoreKeys = False
 
-		If debugMode Then
-			SendKeys.SendWait("A")
-		End If
+		'If debugMode Then
+		'	SendKeys.SendWait("A")
+		'End If
 
 	End Sub
+
 
 	Private Sub responseAL(sender As Object, e As KeyEventArgs) Handles Me.KeyDown
 
@@ -133,12 +141,12 @@ Public Class experimentForm
 			Me.slowLab.Visible = Me.answeringTime > 1500
 			Me.ignoreKeys = True
 
-			dataFrame("experiment_" & Me.trialCounter & "_answer") = e.KeyCode.ToString
-			dataFrame("experiment_" & Me.trialCounter & "_time") = Me.answeringTime.ToString
-			dataFrame("experiment_" & Me.trialCounter & "_prime") = experimentTrials(Me.trialCounter)(0)
-			dataFrame("experiment_" & Me.trialCounter & "_target") = experimentTrials(Me.trialCounter)(1)
-			dataFrame("experiment_" & Me.trialCounter & "_primeCat") = experimentTrials(Me.trialCounter)(2)
-			dataFrame("experiment_" & Me.trialCounter & "_targetCat") = experimentTrials(Me.trialCounter)(3)
+			dataFrame("experiment_" & mainForm.currentBlock & Me.trialCounter & "_answer") = e.KeyCode.ToString
+			dataFrame("experiment_" & mainForm.currentBlock & Me.trialCounter & "_time") = Me.answeringTime.ToString
+			dataFrame("experiment_" & mainForm.currentBlock & Me.trialCounter & "_prime") = experimentTrials(Me.trialCounter)(0)
+			dataFrame("experiment_" & mainForm.currentBlock & Me.trialCounter & "_target") = experimentTrials(Me.trialCounter)(1)
+			dataFrame("experiment_" & mainForm.currentBlock & Me.trialCounter & "_primeCat") = experimentTrials(Me.trialCounter)(2)
+			dataFrame("experiment_" & mainForm.currentBlock & Me.trialCounter & "_targetCat") = experimentTrials(Me.trialCounter)(3)
 
 			Me.trialCounter += 1
 

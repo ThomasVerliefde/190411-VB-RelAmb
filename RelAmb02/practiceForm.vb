@@ -8,6 +8,7 @@ Public Class practiceForm
 	Private WithEvents timerITI As New Timer
 	Private WithEvents timerFix As New Timer
 	Private WithEvents timerPrime As New Timer
+	Private WithEvents timerMask As New Timer
 
 	Private leftLab As New Label
 	Private rightLab As New Label
@@ -27,15 +28,17 @@ Public Class practiceForm
 
 		Cursor.Hide()
 
-		Me.timerITI.Interval = 1500
-		Me.timerFix.Interval = 500
-		Me.timerPrime.Interval = 150
+		Me.timerITI.Interval = durationITI
+		Me.timerFix.Interval = durationFix
+		Me.timerPrime.Interval = durationPrime
+		Me.timerMask.Interval = durationMask
 
-		If debugMode Then
-			Me.timerITI.Interval = 150
-			Me.timerFix.Interval = 150
-			Me.timerPrime.Interval = 150
-		End If
+		'If debugMode Then
+		'	Me.timerITI.Interval = 250
+		'	Me.timerFix.Interval = 200
+		'	Me.timerPrime.Interval = 150
+		'	Me.timerMask.Interval = 100
+		'End If
 
 		Me.Controls.AddRange({Me.leftLab, Me.rightLab, Me.slowLab, Me.fixLab, Me.primeLab, Me.targetLab})
 
@@ -108,11 +111,16 @@ Public Class practiceForm
 
 	Private Sub timerPrime_Tick(sender As Object, e As EventArgs) Handles timerPrime.Tick
 		Me.timerPrime.Stop()
+		Me.timerMask.Start()
+		Me.primeLab.Visible = False
+	End Sub
+
+	Private Sub timerMask_Tick(sender As Object, e As EventArgs) Handles timerMask.Tick
+		Me.timerMask.Stop()
 		Me.stopwatchTarget.Start()
 		If Me.trialCounter < practiceTrials.Count Then
 			Me.targetLab.Text = practiceTrials(Me.trialCounter)(1)
 		End If
-		Me.primeLab.Visible = False
 		Me.targetLab.Visible = True
 		Me.ignoreKeys = False
 	End Sub
@@ -129,12 +137,12 @@ Public Class practiceForm
 			Me.slowLab.Visible = Me.answeringTime > 1500
 			Me.ignoreKeys = True
 
-			dataFrame("practice_" & Me.trialCounter & "_answer") = e.KeyCode.ToString
-			dataFrame("practice_" & Me.trialCounter & "_time") = Me.answeringTime.ToString
-			dataFrame("practice_" & Me.trialCounter & "_prime") = practiceTrials(Me.trialCounter)(0)
-			dataFrame("practice_" & Me.trialCounter & "_target") = practiceTrials(Me.trialCounter)(1)
-			dataFrame("practice_" & Me.trialCounter & "_primeCat") = practiceTrials(Me.trialCounter)(2)
-			dataFrame("practice_" & Me.trialCounter & "_targetCat") = practiceTrials(Me.trialCounter)(3)
+			dataFrame("practice_" & mainForm.currentBlock & Me.trialCounter & "_answer") = e.KeyCode.ToString
+			dataFrame("practice_" & mainForm.currentBlock & Me.trialCounter & "_time") = Me.answeringTime.ToString
+			dataFrame("practice_" & mainForm.currentBlock & Me.trialCounter & "_prime") = practiceTrials(Me.trialCounter)(0)
+			dataFrame("practice_" & mainForm.currentBlock & Me.trialCounter & "_target") = practiceTrials(Me.trialCounter)(1)
+			dataFrame("practice_" & mainForm.currentBlock & Me.trialCounter & "_primeCat") = practiceTrials(Me.trialCounter)(2)
+			dataFrame("practice_" & mainForm.currentBlock & Me.trialCounter & "_targetCat") = practiceTrials(Me.trialCounter)(3)
 
 			Me.trialCounter += 1
 
