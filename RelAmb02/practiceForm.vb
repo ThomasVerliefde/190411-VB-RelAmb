@@ -33,12 +33,12 @@ Public Class practiceForm
 		Me.timerPrime.Interval = durationPrime
 		Me.timerMask.Interval = durationMask
 
-		'If debugMode Then
-		'	Me.timerITI.Interval = 250
-		'	Me.timerFix.Interval = 200
-		'	Me.timerPrime.Interval = 150
-		'	Me.timerMask.Interval = 100
-		'End If
+		If debugMode Then
+			Me.timerITI.Interval = 250
+			Me.timerFix.Interval = 200
+			Me.timerPrime.Interval = 150
+			Me.timerMask.Interval = 100
+		End If
 
 		Me.Controls.AddRange({Me.leftLab, Me.rightLab, Me.slowLab, Me.fixLab, Me.primeLab, Me.targetLab})
 

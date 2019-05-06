@@ -49,7 +49,7 @@ Public Class demographicsForm
 
 	Private Sub contButton_Click(sender As Object, e As EventArgs) Handles contButton.Click
 
-		If Me.ageText.Text = "" OrElse Val(Me.ageText.Text) < 14 OrElse Val(Me.ageText.Text) > 99 Then
+		If Me.ageText.Text = "" OrElse Val(Me.ageText.Text) < 16 OrElse Val(Me.ageText.Text) > 99 Then
 			MsgBox("Bitte geben Sie Ihr Alter korrekt an!", MsgBoxStyle.Critical, Title:="Fehler!")
 			Exit Sub
 		ElseIf Not Me.genderBox.madeSelection Then
@@ -82,14 +82,8 @@ Public Class demographicsForm
 		End If
 	End Sub
 
-	Private Sub pressEnter(sender As Object, e As KeyEventArgs) Handles ageText.KeyDown, studyText.KeyDown
-		If e.KeyCode = Keys.Enter Then
-			If Not Me.ageText.Text = "" AndAlso Me.ageText.ContainsFocus Then
-				Me.genderBox.Select()
-			ElseIf Not Me.studyText.Text = "" Then
-				Me.contButton.PerformClick()
-			End If
-		End If
+	Private Sub suppressSemiColon(sender As Object, e As KeyEventArgs) Handles studyText.KeyDown
+		e.Handled = e.KeyCode = Keys.OemSemicolon
 	End Sub
 
 End Class

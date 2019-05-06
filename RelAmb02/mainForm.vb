@@ -9,14 +9,14 @@ Public Class mainForm
 	Private ReadOnly instrText As New instructionBox 'main method of displaying the instructions to participants; disabled & readonly
 
 	'All NodaTime.Instant variables, to check starting points of each part
-	Private startT As Instant
-	Private collectT As Instant
-	Private practiceT As Instant
-	Private experimentT As Instant
-	Private explicitT As Instant
-	Private demographicsT As Instant
-	Private ambiT As Instant
-	Private endT As Instant
+	'Private startT As Instant
+	'Private collectT As Instant
+	'Private practiceT As Instant
+	'Private experimentT As Instant
+	'Private explicitT As Instant
+	'Private demographicsT As Instant
+	'Private ambiT As Instant
+	'Private endT As Instant
 
 	'All NodaTime.Duration variables, to check the actual duration (difference in sequential starting points) of each part
 	Private timeCollect01 As Duration
@@ -67,6 +67,11 @@ Public Class mainForm
 				subjectForm.Dispose()
 				'Me.startT = time.GetCurrentInstant()
 
+				Me.instrText.Rtf = My.Resources.ResourceManager.GetString("_6_ambiInstr")
+				ambiForm.ShowDialog()
+
+
+
 			Case 1 'Collecting Names & Making Primes for the First Block
 				'Me.collectT = time.GetCurrentInstant()
 				timeFrame("collect" & Me.currentBlock & "T") = time.GetCurrentInstant()
@@ -98,16 +103,17 @@ Public Class mainForm
 								New List(Of String)({practicePrime_Str(0)})
 								})
 
-				'If debugMode Then
-				'	Console.WriteLine("- practicePrimes -")
-				'	For Each c In Me.practicePrimes
-				'		For Each d In c
-				'			Console.Write(" * " + d)
-				'		Next
-				'		Console.WriteLine("")
-				'	Next
-				'	Console.WriteLine("")
-				'End If
+				If debugMode Then
+					Console.WriteLine("------" & Me.currentBlock & "------")
+					Console.WriteLine("- practicePrimes -")
+					For Each c In Me.practicePrimes
+						For Each d In c
+							Console.Write(" * " + d)
+						Next
+						Console.WriteLine("")
+					Next
+					Console.WriteLine("")
+				End If
 
 				practiceTrials = createTrials(
 										Me.practicePrimes,
@@ -119,18 +125,18 @@ Public Class mainForm
 										)
 				' Results in 20 Trials (Can shorten to 10 by setting timesPrimes to 1)
 
-				'If debugMode Then
-				'	Console.WriteLine("- practiceTrials -")
-				'	Dim amount As Integer
-				'	For Each c In practiceTrials
-				'		For Each d In c
-				'			Console.Write(" * " + d)
-				'		Next
-				'		amount += c.Count
-				'		Console.WriteLine("")
-				'	Next
-				'	Console.WriteLine("Amount of Trials: " & amount)
-				'End If
+				If debugMode Then
+					Console.WriteLine("- practiceTrials -")
+					Dim amount As Integer
+					For Each c In practiceTrials
+						For Each d In c
+							Console.Write(" * " + d)
+						Next
+						amount += c.Count
+						Console.WriteLine("")
+					Next
+					Console.WriteLine("Amount of Trials: " & amount)
+				End If
 
 				shuffleList(practiceTrials)
 
@@ -152,16 +158,16 @@ Public Class mainForm
 					New List(Of String)(My.Resources.experimentPrime_Str.Split(" "))
 				)
 
-				'If debugMode Then
-				'	Console.WriteLine("- experimentPrimes -")
-				'	For Each c In Me.experimentPrimes
-				'		For Each d In c
-				'			Console.Write(" * " + d)
-				'		Next
-				'		Console.WriteLine("")
-				'	Next
-				'	Console.WriteLine("")
-				'End If
+				If debugMode Then
+					Console.WriteLine("- experimentPrimes -")
+					For Each c In Me.experimentPrimes
+						For Each d In c
+							Console.Write(" * " + d)
+						Next
+						Console.WriteLine("")
+					Next
+					Console.WriteLine("")
+				End If
 
 				experimentTrials = createTrials(
 					Me.experimentPrimes,
@@ -173,18 +179,18 @@ Public Class mainForm
 				)
 				' Results in 96 Trials (12 [2+2+2+2+4 Primes] x 2 [Targets] x 4 [timesPrimes]) 
 
-				'If debugMode Then
-				'	Console.WriteLine("- experimentTrials -")
-				'	Dim amount As Integer
-				'	For Each c In experimentTrials
-				'		For Each d In c
-				'			Console.Write(" * " + d)
-				'		Next
-				'		amount += c.Count
-				'		Console.WriteLine("")
-				'	Next
-				'	Console.WriteLine("Amount of Trials: " & amount)
-				'End If
+				If debugMode Then
+					Console.WriteLine("- experimentTrials -")
+					Dim amount As Integer
+					For Each c In experimentTrials
+						For Each d In c
+							Console.Write(" * " + d)
+						Next
+						amount += c.Count
+						Console.WriteLine("")
+					Next
+					Console.WriteLine("Amount of Trials: " & amount)
+				End If
 
 				shuffleList(experimentTrials)
 
@@ -245,9 +251,9 @@ Public Class mainForm
 				'Me.endT = time.GetCurrentInstant()
 				timeFrame("endT") = time.GetCurrentInstant()
 
-				Me.timeCollect01 = timeFrame("practiceT") - timeFrame("collect" & Me.firstBlock & "T")
+				Me.timeCollect01 = timeFrame("practice" & Me.firstBlock & "T") - timeFrame("collect" & Me.firstBlock & "T")
 				Me.timePractice01 = timeFrame("experiment" & Me.firstBlock & "T") - timeFrame("practice" & Me.firstBlock & "T")
-				Me.timeExperiment01 = timeFrame("collect" & Me.secondBlock & "") - timeFrame("experiment" & Me.firstBlock & "T")
+				Me.timeExperiment01 = timeFrame("collect" & Me.secondBlock & "T") - timeFrame("experiment" & Me.firstBlock & "T")
 				Me.timeCollect02 = timeFrame("practice" & Me.secondBlock & "T") - timeFrame("collect" & Me.secondBlock & "T")
 				Me.timePractice02 = timeFrame("experiment" & Me.secondBlock & "T") - timeFrame("practice" & Me.secondBlock & "T")
 				Me.timeExperiment02 = timeFrame("explicit" & Me.secondBlock & "T") - timeFrame("experiment" & Me.secondBlock & "T")

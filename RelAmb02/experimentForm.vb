@@ -32,11 +32,11 @@ Public Class experimentForm
 		Me.timerPrime.Interval = durationPrime
 		Me.timerMask.Interval = durationMask
 
-		'If debugMode Then
-		'	Me.timerITI.Interval = 50
-		'	Me.timerFix.Interval = 50
-		'	Me.timerPrime.Interval = 50
-		'End If
+		If debugMode Then
+			Me.timerITI.Interval = 50
+			Me.timerFix.Interval = 50
+			Me.timerPrime.Interval = 50
+		End If
 
 		Me.Controls.AddRange({Me.leftLab, Me.rightLab, Me.slowLab, Me.fixLab, Me.primeLab, Me.targetLab})
 
@@ -122,9 +122,9 @@ Public Class experimentForm
 		Me.targetLab.Visible = True
 		Me.ignoreKeys = False
 
-		'If debugMode Then
-		'	SendKeys.SendWait("A")
-		'End If
+		If debugMode Then
+			SendKeys.SendWait("A")
+		End If
 
 	End Sub
 

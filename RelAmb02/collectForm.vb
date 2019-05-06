@@ -102,7 +102,7 @@ Public Class collectForm
 	End Sub
 
 	Private Sub suppressNonAlpha(sender As Object, e As KeyPressEventArgs) Handles collectBox1.KeyPress, collectBox2.KeyPress
-		If e.KeyChar <> ControlChars.Back AndAlso Not isNoun(Me.collectBox1.Text & e.KeyChar) AndAlso Not isNoun(Me.collectBox2.Text & e.KeyChar) AndAlso Not e.KeyChar = ";" Then
+		If e.KeyChar <> ControlChars.Back AndAlso Not isNoun(Me.collectBox1.Text & e.KeyChar) AndAlso Not isNoun(Me.collectBox2.Text & e.KeyChar) AndAlso Not e.KeyChar = Keys.OemSemicolon.ToString Then
 			e.Handled = True
 		End If
 	End Sub

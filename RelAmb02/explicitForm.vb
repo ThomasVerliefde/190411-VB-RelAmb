@@ -233,10 +233,8 @@ Public Class explicitForm
 		End If
 	End Sub
 
-	Private Sub suppressDotComma(sender As Object, e As KeyEventArgs) Handles relText.KeyDown
-		If e.KeyCode = Keys.OemSemicolon Then
-			e.Handled = True
-		End If
+	Private Sub suppressSemicolon(sender As Object, e As KeyEventArgs) Handles relText.KeyDown
+		e.Handled = e.KeyCode = Keys.OemSemicolon
 	End Sub
 
 End Class

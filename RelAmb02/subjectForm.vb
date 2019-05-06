@@ -17,8 +17,8 @@
 
 		Me.Size = New Point(250, 200)
 		Me.BackColor = Color.Gray
-		Me.Top = (3 * screenHeight / 4) - (Me.Height / 2)
-		Me.Left = (screenWidth / 2) - (Me.Width / 2)
+		Me.Top = (screenHeight * 0.75) - (Me.Height * 0.5)
+		Me.Left = (screenWidth * 0.5) - (Me.Width * 0.5)
 
 		Me.Controls.Add(Me.contButton)
 		objCenter(Me.contButton)
@@ -33,16 +33,13 @@
 
 	Private Sub contButton_Click(sender As Object, e As EventArgs) Handles contButton.Click
 
-		If Me.textBox.Text = "999" Then
-			debugMode = True
-			'Me.textBox.Text = "499"
-		ElseIf Me.textBox.Text = "" OrElse Val(Me.textBox.Text) < 1 OrElse Val(Me.textBox.Text) > 500 Then
-		'Val("these are letters") returns 0
-		MsgBox("Bitte geben Sie eine korrekte VPNr ein!", MsgBoxStyle.Critical, Title:="Fehler!")
+		debugMode = Me.textBox.Text = "999"
+
+		If Me.textBox.Text = "" OrElse Val(Me.textBox.Text) < 1 OrElse (Val(Me.textBox.Text) > 500 AndAlso Not Me.textBox.Text = "999") Then
+			'Val("these are letters") returns 0
+			MsgBox("Bitte geben Sie eine korrekte VPNr ein!", MsgBoxStyle.Critical, Title:="Fehler!")
 			Exit Sub
-
 		Else
-
 			Me.subjN = Me.textBox.Text
 			Me.condN = setCond(Me.subjN)
 
