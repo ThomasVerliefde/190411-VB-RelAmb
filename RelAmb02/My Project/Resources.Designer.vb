@@ -80,14 +80,13 @@ Namespace My.Resources
         
         '''<summary>
         '''  Looks up a localized string similar to {\rtf1 \ansi \par \par \par \par \qc
-        '''
         '''In diesem Teil bitten wir Sie, über wichtige {\b Objekte} in Ihrem Leben nachzudenken. \par \par
         '''Damit sind Dinge gemeint, die einen großen Einfluss auf Ihr Leben nehmen. \par
-        '''Dies können beispielsweise persönliche oder oft genutzte Gegenstände, Nahrungsmittel oder Pflanzen sein. \par
-        '''Bitte geben Sie diese als ein einzelnes Wort ein. \par \par \par
+        '''Dies können beispielsweise persönliche oder oft genutzte Gegenstände, Nahrungsmittel, Pflanzen,... sein. \par \par \par
         '''
         '''Sie werden gebeten, die Bezeichnungen von 4 solcher wichtigen Dinge anzugeben. \par
-        '''Bitte stellen Sie sicher, dass [rest of string was truncated]&quot;;.
+        '''Bitte geben Sie jedes als ein einzelnes Wort ein. \par \par \par
+        '''Bitte stellen Sie sich [rest of string was truncated]&quot;;.
         '''</summary>
         Friend ReadOnly Property _1_collectObjects() As String
             Get
@@ -98,7 +97,8 @@ Namespace My.Resources
         '''<summary>
         '''  Looks up a localized string similar to {\rtf1\ansi \par \par \qc
         '''
-        '''Bitte geben Sie die Bezeichnungen von zwei wichtigen Objekten an, die Sie {\b am wenigsten} mögen. \par \par
+        '''Bitte geben Sie die Bezeichnungen von zwei wichtigen Objekten an,\par
+        ''' die Sie {\b am wenigsten} mögen. \par \par
         '''Gemeint sind Objekte in Ihrem Leben, die Sie {\b nicht sehr gut finden} \par
         '''und denen gegenüber Sie {\b negative} Gefühle hegen.
         '''}.
@@ -112,7 +112,8 @@ Namespace My.Resources
         '''<summary>
         '''  Looks up a localized string similar to {\rtf1\ansi \par \par \qc
         '''
-        '''Bitte geben Sie die Bezeichnungen von zwei wichtigen Objekten an, die Sie {\b am meisten} mögen. \par \par
+        '''Bitte geben Sie die Bezeichnungen von zwei wichtigen Objekten an,\par
+        ''' die Sie {\b am meisten} mögen. \par \par
         '''Gemeint sind Objekte in Ihrem Leben, die Sie {\b sehr gut finden} \par
         '''und denen gegenüber Sie {\b positive} Gefühle hegen.
         '''}.
@@ -125,13 +126,13 @@ Namespace My.Resources
         
         '''<summary>
         '''  Looks up a localized string similar to {\rtf1 \ansi \par \par \par \par \qc
-        '''In diesem Teil bitten wir Sie, über wichtige Personen in Ihrem Leben nachzudenken. \par \par
+        '''In diesem Teil bitten wir Sie, über wichtige {\b Personen} in Ihrem Leben nachzudenken. \par \par
         '''Damit sind Bezugspersonen gemeint, die einen großen Einfluss auf Ihr Leben nehmen. \par
-        '''Dies können beispielsweise (Ex-)Partner, Familienmitglieder, Freunde oder Konkurrenten sein. \par \par \par
+        '''Dies können beispielsweise (Ex-)Partner, Familienmitglieder, Freunde, Konkurrenten,... sein. \par \par \par
         '''
         '''Sie werden gebeten, die Vornamen von 4 solcher wichtigen Personen anzugeben. \par
-        '''Bitte stellen Sie sicher, dass Sie 4 eindeutige und unterschiedliche Namen nennen.
-        '''}.
+        '''Bitte geben Sie jedes als ein einzelnes Wort ein. \par \par \par
+        '''Bitte stellen Sie sicher,  [rest of string was truncated]&quot;;.
         '''</summary>
         Friend ReadOnly Property _1_collectOthers() As String
             Get
@@ -173,132 +174,29 @@ Namespace My.Resources
         '''ein präsentiertes Wort als &quot;positiv&quot; oder &quot;negativ&quot; einordnen können. \par \par
         '''
         '''Im Zuge jedes einzelnen Durchgangs werden Sie zwei Wörter sehen. \par
-        '''Das erste Wort wird nur sehr kurz auf dem Bildschirm zu sehen sein, unter Umständen sogar so kurz, \par 
-        '''dass Sie nicht in der Lage sind, es zu erkennen. \par
-        '''Das zweite Wort wird so lange zu sehen sein, bis Sie es entweder als &quot;positiv&quot; oder &quot;negativ&quot; einge [rest of string was truncated]&quot;;.
+        '''Das erste Wort wird nur kurz auf dem Bildschirm zu sehen sein. \par \par
+        '''Das zweite Wort, das kurz nach dem ersten in GROSSBUCHSTABEN dargestellt wird, ist am wichtigsten. \par
+        '''Das zweite Wort wird so lange zu sehen sein, bis Sie es entweder als &quot;positiv&quot; od [rest of string was truncated]&quot;;.
         '''</summary>
-        Friend ReadOnly Property _2_practiceObjectsAneg() As String
+        Friend ReadOnly Property _2_practiceAneg() As String
             Get
-                Return ResourceManager.GetString("_2_practiceObjectsAneg", resourceCulture)
+                Return ResourceManager.GetString("_2_practiceAneg", resourceCulture)
             End Get
         End Property
         
         '''<summary>
         '''  Looks up a localized string similar to {\rtf1\ansi \par \qc
-        '''
         '''In der folgenden Phase möchten wir untersuchen, wie schnell Menschen \par 
         '''ein präsentiertes Wort als &quot;positiv&quot; oder &quot;negativ&quot; einordnen können. \par \par
         '''
         '''Im Zuge jedes einzelnen Durchgangs werden Sie zwei Wörter sehen. \par
-        '''Das erste Wort wird nur sehr kurz auf dem Bildschirm zu sehen sein, unter Umständen sogar so kurz, \par 
-        '''dass Sie nicht in der Lage sind, es zu erkennen. \par
-        '''Das zweite Wort wird so lange zu sehen sein, bis Sie es entweder als &quot;positiv&quot; oder &quot;negativ&quot; ein [rest of string was truncated]&quot;;.
+        '''Das erste Wort wird nur kurz auf dem Bildschirm zu sehen sein. \par \par
+        '''Das zweite Wort, das kurz nach dem ersten in GROSSBUCHSTABEN dargestellt wird, ist am wichtigsten. \par
+        '''Das zweite Wort wird so lange zu sehen sein, bis Sie es entweder als &quot;positiv&quot; od [rest of string was truncated]&quot;;.
         '''</summary>
-        Friend ReadOnly Property _2_practiceObjectsApos() As String
+        Friend ReadOnly Property _2_practiceApos() As String
             Get
-                Return ResourceManager.GetString("_2_practiceObjectsApos", resourceCulture)
-            End Get
-        End Property
-        
-        '''<summary>
-        '''  Looks up a localized string similar to {\rtf1\ansi \par \qc
-        '''
-        '''In der folgenden Phase möchten wir untersuchen, wie schnell Menschen \par 
-        '''ein präsentiertes Wort als &quot;positiv&quot; oder &quot;negativ&quot; einordnen können. \par \par
-        '''
-        '''Im Zuge jedes einzelnen Durchgangs werden Sie zwei Wörter sehen. \par
-        '''Das erste Wort wird nur sehr kurz auf dem Bildschirm zu sehen sein, unter Umständen sogar so kurz, \par 
-        '''dass Sie nicht in der Lage sind, es zu erkennen. \par
-        '''Das zweite Wort wird so lange zu sehen sein, bis Sie es entweder als &quot;positiv&quot; oder &quot;negativ&quot; ein [rest of string was truncated]&quot;;.
-        '''</summary>
-        Friend ReadOnly Property _2_practiceOthersAneg() As String
-            Get
-                Return ResourceManager.GetString("_2_practiceOthersAneg", resourceCulture)
-            End Get
-        End Property
-        
-        '''<summary>
-        '''  Looks up a localized string similar to {\rtf1\ansi \par \qc
-        '''
-        '''In der folgenden Phase möchten wir untersuchen, wie schnell Menschen \par 
-        '''ein präsentiertes Wort als &quot;positiv&quot; oder &quot;negativ&quot; einordnen können. \par \par
-        '''
-        '''Im Zuge jedes einzelnen Durchgangs werden Sie zwei Wörter sehen. \par
-        '''Das erste Wort wird nur sehr kurz auf dem Bildschirm zu sehen sein, unter Umständen sogar so kurz, \par 
-        '''dass Sie nicht in der Lage sind, es zu erkennen. \par
-        '''Das zweite Wort wird so lange zu sehen sein, bis Sie es entweder als &quot;positiv&quot; oder &quot;negativ&quot; ein [rest of string was truncated]&quot;;.
-        '''</summary>
-        Friend ReadOnly Property _2_practiceOthersApos() As String
-            Get
-                Return ResourceManager.GetString("_2_practiceOthersApos", resourceCulture)
-            End Get
-        End Property
-        
-        '''<summary>
-        '''  Looks up a localized string similar to {\rtf1\ansi \par \par \par \par \qc
-        '''Sie haben die Übungsphase nun beendet. \par \par
-        '''
-        '''Als nächstes folgt die Testphase. Diese wird circa 10 Minuten dauern und ist ansonsten identisch zur Übungsphase. \par \par
-        '''
-        '''Die Zuteilung der Tasten zu &quot;positiv&quot; und &quot;negativ&quot; bleibt ebenfalls genauso wie in der Übungsphase: \par \par
-        '''
-        '''Drücken Sie bitte die Taste &quot;A&quot; auf Ihrer Tastatur, wenn das präsentierte Wort &quot;negativ&quot; ist. \par
-        '''Drücken Sie bitte die Taste &quot;L&quot; auf Ihrer Tastatur, wenn das präsentierte Wort &quot;po [rest of string was truncated]&quot;;.
-        '''</summary>
-        Friend ReadOnly Property _3_experimentObjectsAneg() As String
-            Get
-                Return ResourceManager.GetString("_3_experimentObjectsAneg", resourceCulture)
-            End Get
-        End Property
-        
-        '''<summary>
-        '''  Looks up a localized string similar to {\rtf1\ansi \par \par \par \par \qc
-        '''Sie haben die Übungsphase nun beendet. \par \par
-        '''
-        '''Als nächstes folgt die Testphase. Diese wird circa 10 Minuten dauern und ist ansonsten identisch zur Übungsphase. \par \par
-        '''
-        '''Die Zuteilung der Tasten zu &quot;positiv&quot; und &quot;negativ&quot; bleibt ebenfalls genauso wie in der Übungsphase: \par \par
-        '''
-        '''Drücken Sie bitte die Taste &quot;A&quot; auf Ihrer Tastatur, wenn das präsentierte Wort &quot;positiv&quot; ist. \par
-        '''Drücken Sie bitte die Taste &quot;L&quot; auf Ihrer Tastatur, wenn das präsentierte Wort &quot;ne [rest of string was truncated]&quot;;.
-        '''</summary>
-        Friend ReadOnly Property _3_experimentObjectsApos() As String
-            Get
-                Return ResourceManager.GetString("_3_experimentObjectsApos", resourceCulture)
-            End Get
-        End Property
-        
-        '''<summary>
-        '''  Looks up a localized string similar to {\rtf1\ansi \par \par \par \par \qc
-        '''Sie haben die Übungsphase nun beendet. \par \par
-        '''
-        '''Als nächstes folgt die Testphase. Diese wird circa 10 Minuten dauern und ist ansonsten identisch zur Übungsphase. \par \par
-        '''
-        '''Die Zuteilung der Tasten zu &quot;positiv&quot; und &quot;negativ&quot; bleibt ebenfalls genauso wie in der Übungsphase: \par \par
-        '''
-        '''Drücken Sie bitte die Taste &quot;A&quot; auf Ihrer Tastatur, wenn das präsentierte Wort &quot;negativ&quot; ist. \par
-        '''Drücken Sie bitte die Taste &quot;L&quot; auf Ihrer Tastatur, wenn das präsentierte Wort &quot;po [rest of string was truncated]&quot;;.
-        '''</summary>
-        Friend ReadOnly Property _3_experimentOthersAneg() As String
-            Get
-                Return ResourceManager.GetString("_3_experimentOthersAneg", resourceCulture)
-            End Get
-        End Property
-        
-        '''<summary>
-        '''  Looks up a localized string similar to {\rtf1\ansi \par \par \par \par \qc
-        '''Sie haben die Übungsphase nun beendet. \par \par
-        '''
-        '''Als nächstes folgt die Testphase. Diese wird circa 10 Minuten dauern und ist ansonsten identisch zur Übungsphase. \par \par
-        '''
-        '''Die Zuteilung der Tasten zu &quot;positiv&quot; und &quot;negativ&quot; bleibt ebenfalls genauso wie in der Übungsphase: \par \par
-        '''
-        '''Drücken Sie bitte die Taste &quot;A&quot; auf Ihrer Tastatur, wenn das präsentierte Wort &quot;positiv&quot; ist. \par
-        '''Drücken Sie bitte die Taste &quot;L&quot; auf Ihrer Tastatur, wenn das präsentierte Wort &quot;ne [rest of string was truncated]&quot;;.
-        '''</summary>
-        Friend ReadOnly Property _3_experimentOthersApos() As String
-            Get
-                Return ResourceManager.GetString("_3_experimentOthersApos", resourceCulture)
+                Return ResourceManager.GetString("_2_practiceApos", resourceCulture)
             End Get
         End Property
         
@@ -306,17 +204,52 @@ Namespace My.Resources
         '''  Looks up a localized string similar to {\rtf1 \ansi \par \par \par \par \qc
         '''
         '''Sie haben nun den ersten Block beendet.\par
-        '''Es folgt ein weiterer Block mit anderen Wörtern. \par
+        '''Sie können nun eine kurze Pause machen.\par \par
+        '''
+        '''Danach folgt ein weiterer Block. \par
         '''Dieser wird ebenso aus einem kurzen Übungsdurchgang und einer etwas längeren Testphase bestehen.\par \par
         '''
-        '''Sie können nun eine kurze Pause machen.\par \par
-        '''Wenn Sie bereit sind, starten Sie mit dem &quot;Weiter&quot;-Button. \par
+        '''Wenn Sie bereit sind, fahren Sie mit dem &quot;Weiter&quot;-Button fort. \par
         '''
         '''}.
         '''</summary>
-        Friend ReadOnly Property _3b_breakInstr() As String
+        Friend ReadOnly Property _3_breakInstr() As String
             Get
-                Return ResourceManager.GetString("_3b_breakInstr", resourceCulture)
+                Return ResourceManager.GetString("_3_breakInstr", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Looks up a localized string similar to {\rtf1\ansi \par \par \par \par \qc
+        '''Sie haben die Übungsphase nun beendet. \par \par
+        '''
+        '''Als nächstes folgt die Testphase. Diese wird circa 7 Minuten dauern und ist ansonsten identisch zur Übungsphase. \par \par
+        '''
+        '''Die Zuteilung der Tasten zu &quot;positiv&quot; und &quot;negativ&quot; bleibt ebenfalls genauso wie in der Übungsphase: \par \par
+        '''
+        '''Drücken Sie bitte die Taste &quot;A&quot; auf Ihrer Tastatur, wenn das präsentierte Wort &quot;negativ&quot; ist. \par
+        '''Drücken Sie bitte die Taste &quot;L&quot; auf Ihrer Tastatur, wenn das präsentierte Wort &quot;pos [rest of string was truncated]&quot;;.
+        '''</summary>
+        Friend ReadOnly Property _3_experimentAneg() As String
+            Get
+                Return ResourceManager.GetString("_3_experimentAneg", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Looks up a localized string similar to {\rtf1\ansi \par \par \par \par \qc
+        '''Sie haben die Übungsphase nun beendet. \par \par
+        '''
+        '''Als nächstes folgt die Testphase. Diese wird circa 7 Minuten dauern und ist ansonsten identisch zur Übungsphase. \par \par
+        '''
+        '''Die Zuteilung der Tasten zu &quot;positiv&quot; und &quot;negativ&quot; bleibt ebenfalls genauso wie in der Übungsphase: \par \par
+        '''
+        '''Drücken Sie bitte die Taste &quot;A&quot; auf Ihrer Tastatur, wenn das präsentierte Wort &quot;positiv&quot; ist. \par
+        '''Drücken Sie bitte die Taste &quot;L&quot; auf Ihrer Tastatur, wenn das präsentierte Wort &quot;neg [rest of string was truncated]&quot;;.
+        '''</summary>
+        Friend ReadOnly Property _3_experimentApos() As String
+            Get
+                Return ResourceManager.GetString("_3_experimentApos", resourceCulture)
             End Get
         End Property
         
@@ -449,7 +382,7 @@ Namespace My.Resources
         End Property
         
         '''<summary>
-        '''  Looks up a localized string similar to Achim Dana Hannelore Kaspar Nicolaus Valerie.
+        '''  Looks up a localized string similar to Horoskop Kaktus Ordner Pinzette Schnecke Uhr.
         '''</summary>
         Friend ReadOnly Property practiceObjects() As String
             Get

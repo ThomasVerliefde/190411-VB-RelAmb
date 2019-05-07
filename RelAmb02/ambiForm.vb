@@ -13,7 +13,6 @@
 		Me.FormBorderStyle = FormBorderStyle.None
 
 		Me.Size = New Point(screenWidth * 0.7, screenHeight * 0.6)
-		Me.BackColor = Color.Gray
 		Me.Top = (screenHeight * 0.6) - (Me.Height * 0.5)
 		Me.Left = (screenWidth * 0.5) - (Me.Width * 0.5)
 
@@ -23,10 +22,20 @@
 		Me.textBox.Multiline = True
 		Me.textBox.Height = Me.Height * 0.75
 		Me.textBox.Width = Me.Width * 0.9
+		Me.textBox.Font = sansSerif20
 		Me.Controls.Add(Me.textBox)
 		objCenter(Me.textBox, 0.4)
 		Me.textBox.Select()
 
+	End Sub
+
+	Private Sub contButton_Click(sender As Object, e As EventArgs) Handles contButton.Click
+		dataFrame("ambiSuggestions") = Me.textBox.Text
+		Me.Close()
+	End Sub
+
+	Private Sub suppressSemicolon(sender As Object, e As KeyPressEventArgs) Handles textBox.KeyPress
+		e.Handled = e.KeyChar = ";"
 	End Sub
 
 End Class

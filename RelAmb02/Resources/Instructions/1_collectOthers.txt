@@ -4,6 +4,6 @@ Damit sind Bezugspersonen gemeint, die einen großen Einfluss auf Ihr Leben nehm
 Dies können beispielsweise (Ex-)Partner, Familienmitglieder, Freunde, Konkurrenten,... sein. \par \par \par
 
 Sie werden gebeten, die Vornamen von 4 solcher wichtigen Personen anzugeben. \par
-Bitte geben Sie jedes als ein einzelnes Wort ein. \par
+Bitte geben Sie jedes als ein einzelnes Wort ein. \par \par \par
 Bitte stellen Sie sicher, dass Sie 4 eindeutige und unterschiedliche Namen nennen.
 }

@@ -15,11 +15,10 @@ Public Class explicitForm
 	Private labName As New Label
 
 	Private WithEvents relText As New TextBox
-	Private relBox As New labelledBox(Me.relText, "Was ist deine soziale Beziehung zu dieser Person?" & vbCrLf &
-		"[z.B. Mutter, Vater, Geschwister, Freund*in, Mitarbeiter*in, (Ex-)Partner*in, ...]       ", boxWidth:=600, fieldHeight:=100)
+	Private relBox As New labelledBox(Me.relText, boxWidth:=600, fieldHeight:=350)
 
 	Private WithEvents numText As New TextBox
-	Private numBox As New labelledBox(Me.numText, "Wie viele Leute kennen Sie mit diesem Vornamen?")
+	Private numBox As New labelledBox(Me.numText, "Wie viele Leute kennen Sie mit diesem Vornamen? ")
 
 	Private WithEvents contButton As New continueButton
 	Private correctRel As Boolean
@@ -62,7 +61,7 @@ Public Class explicitForm
 		End With
 
 		Me.Controls.Add(Me.labIntro)
-		objCenter(Me.labIntro, verticalDist:=0.1, setLeft:=50)
+		objCenter(Me.labIntro, verticalDist:=0.1, setLeft:=100)
 
 		Me.Controls.Add(Me.labName)
 		objCenter(Me.labName, verticalDist:=0.095)
@@ -75,20 +74,13 @@ Public Class explicitForm
 		objCenter(Me.labB1, verticalDist:=0.3)
 		objCenter(Me.labB2, verticalDist:=0.5)
 		objCenter(Me.labB3, verticalDist:=0.7)
-		objCenter(Me.numBox, 0.45, 0.4)
-		objCenter(Me.relBox, 0.5, setLeft:=100)
+		objCenter(Me.numBox, 0.35, setLeft:=100)
+		objCenter(Me.relBox, 0.55, setLeft:=100)
+
+		Me.relText.Multiline = True
 
 		Me.Controls.Add(Me.contButton)
 		objCenter(Me.contButton)
-
-		'Me.labB1.Visible = False
-		'Me.labB2.Visible = False
-		'Me.labB3.Visible = False
-		'Me.numBox.Visible = False
-		'Me.relBox.Visible = False
-
-
-		'Me.contButton.PerformClick()
 
 		Me.setQuestion()
 
@@ -155,14 +147,21 @@ Public Class explicitForm
 				Me.relBox.Visible = True
 				Me.numBox.Visible = mainForm.currentBlock = "Others"
 
+				If mainForm.currentBlock = "Others" Then
+					Me.relBox.reLabel(relText, "Was ist deine soziale Beziehung zu dieser Person?")
+					Me.numBox.Select()
+				ElseIf mainForm.currentBlock = "Objects" Then
+					Me.relBox.reLabel(relText, "Was ist dieses Objekt genau und warum ist es für Sie von Bedeutung?")
+					Me.relText.Select()
+				End If
+
 				Me.relText.ResetText()
-				Me.relText.Select()
 				Me.numText.ResetText()
 
-					'If debugMode Then
-					'	Me.relText.Text = "DEBUG"
-					'	Me.numText.Text = 1
-					'End If
+				If debugMode Then
+					Me.relText.Text = "DEBUG"
+					Me.numText.Text = 1
+				End If
 
 			Case 1 ' Explicit positive, negative, and ambivalent
 
@@ -228,13 +227,11 @@ Public Class explicitForm
 	End Sub
 
 	Private Sub suppressNonNumeric(sender As Object, e As KeyPressEventArgs) Handles numText.KeyPress
-		If e.KeyChar <> ControlChars.Back AndAlso Not IsNumeric(e.KeyChar) Then
-			e.Handled = True
-		End If
+		e.Handled = e.KeyChar <> ControlChars.Back AndAlso Not IsNumeric(e.KeyChar)
 	End Sub
 
-	Private Sub suppressSemicolon(sender As Object, e As KeyEventArgs) Handles relText.KeyDown
-		e.Handled = e.KeyCode = Keys.OemSemicolon
+	Private Sub suppressSemicolon(sender As Object, e As KeyPressEventArgs) Handles relText.KeyPress
+		e.Handled = e.KeyChar = ";"
 	End Sub
 
 End Class

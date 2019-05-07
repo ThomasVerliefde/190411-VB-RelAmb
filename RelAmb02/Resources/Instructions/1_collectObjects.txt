@@ -4,6 +4,6 @@ Damit sind Dinge gemeint, die einen großen Einfluss auf Ihr Leben nehmen. \par
 Dies können beispielsweise persönliche oder oft genutzte Gegenstände, Nahrungsmittel, Pflanzen,... sein. \par \par \par
 
 Sie werden gebeten, die Bezeichnungen von 4 solcher wichtigen Dinge anzugeben. \par
-Bitte geben Sie jedes als ein einzelnes Wort ein. \par 
+Bitte geben Sie jedes als ein einzelnes Wort ein. \par \par \par
 Bitte stellen Sie sicher, dass Sie 4 eindeutige und unterschiedliche Bezeichnungen nennen.
 }

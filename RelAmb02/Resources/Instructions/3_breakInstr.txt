@@ -1,10 +1,11 @@
 ﻿{\rtf1 \ansi \par \par \par \par \qc
 
 Sie haben nun den ersten Block beendet.\par
-Es folgt ein weiterer Block mit anderen Wörtern. \par
+Sie können nun eine kurze Pause machen.\par \par
+
+Danach folgt ein weiterer Block. \par
 Dieser wird ebenso aus einem kurzen Übungsdurchgang und einer etwas längeren Testphase bestehen.\par \par
 
-Sie können nun eine kurze Pause machen.\par \par
-Wenn Sie bereit sind, starten Sie mit dem "Weiter"-Button. \par
+Wenn Sie bereit sind, fahren Sie mit dem "Weiter"-Button fort. \par
 
 }

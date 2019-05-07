@@ -3,16 +3,15 @@ In der folgenden Phase möchten wir untersuchen, wie schnell Menschen \par
 ein präsentiertes Wort als "positiv" oder "negativ" einordnen können. \par \par
 
 Im Zuge jedes einzelnen Durchgangs werden Sie zwei Wörter sehen. \par
-Das erste Wort wird nur sehr kurz auf dem Bildschirm zu sehen sein, unter Umständen sogar so kurz, \par 
-dass Sie nicht in der Lage sind, es zu erkennen. \par
-Das zweite Wort wird so lange zu sehen sein, bis Sie es entweder als "positiv" oder "negativ" eingeordnet haben. \par
-Dieses Wort wird in GROSSBUCHSTABEN präsentiert. \par \par
+Das erste Wort wird nur kurz auf dem Bildschirm zu sehen sein. \par \par
+Das zweite Wort, das kurz nach dem ersten in GROSSBUCHSTABEN dargestellt wird, ist am wichtigsten. \par
+Das zweite Wort wird so lange zu sehen sein, bis Sie es entweder als "positiv" oder "negativ" eingeordnet haben. \par \par
 
 Die Einordnung in die Kategorien "positiv" oder "negativ" nehmen Sie vor, indem Sie mit dem \par 
 rechten bzw. linken Zeigefinger eine entsprechende Taste drücken. \par \par
 
-Drücken Sie bitte die Taste "A" auf Ihrer Tastatur, wenn das präsentierte Wort "negativ" ist. \par
-Drücken Sie bitte die Taste "L" auf Ihrer Tastatur, wenn das präsentierte Wort "positiv" ist. \par \par
+Drücken Sie bitte die Taste "A" auf Ihrer Tastatur, wenn das präsentierte Wort "positiv" ist. \par
+Drücken Sie bitte die Taste "L" auf Ihrer Tastatur, wenn das präsentierte Wort "negativ" ist. \par \par
 
 Versuchen Sie bitte, so schnell und akkurat wie möglich zu reagieren! \par
 Sie werden mit einem Hinweis darauf aufmerksam gemacht, falls Sie zu langsam reagieren ("Schneller!"). \par \par

@@ -183,8 +183,8 @@ Module mainModule
 		'I really want to find a way to integrate a textBox in the class, but still have it accessible for eventHandling..
 		Public subjLabel As New Label()
 		Private labelWidth As New Integer
-		Private fieldX As Integer
-		Private adjustTop As Integer
+		Private ReadOnly fieldX As Integer
+		Private ReadOnly adjustTop As Integer
 
 		Public Sub New(textBox As TextBox, Optional labelText As String = "PLACEHOLDER", Optional boxWidth As Integer = 100, Optional fieldHeight As Integer = 50,
 				Optional fieldLeft As Integer = 250, Optional fieldTop As Integer = 250, Optional setBox As Integer = 0)

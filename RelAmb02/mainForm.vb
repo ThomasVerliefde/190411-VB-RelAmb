@@ -60,6 +60,9 @@ Public Class mainForm
 	End Sub
 
 	Public Sub loadNext(sender As Object, e As EventArgs) Handles contButton.Click
+
+
+
 		Select Case Me.instructionCount
 			Case 0 'Start of the First Block
 				timeFrame("startT") = time.GetCurrentInstant()
@@ -67,16 +70,23 @@ Public Class mainForm
 				subjectForm.Dispose()
 				'Me.startT = time.GetCurrentInstant()
 
-				Me.instrText.Rtf = My.Resources.ResourceManager.GetString("_6_ambiInstr")
-				ambiForm.ShowDialog()
+				'dataFrame("collectOthersPos1") = "OthersPos1"
+				'dataFrame("collectOthersPos2") = "OthersPos2"
+				'dataFrame("collectOthersNeg1") = "OthersNeg1"
+				'dataFrame("collectOthersNeg2") = "OthersNeg2"
+				'dataFrame("collectObjectsPos1") = "ObjectsPos1"
+				'dataFrame("collectObjectsPos2") = "ObjectsPos2"
+				'dataFrame("collectObjectsNeg1") = "ObjectsNeg1"
+				'dataFrame("collectObjectsNeg2") = "ObjectsNeg2"
 
-
+				'Me.firstBlock = "Others"
+				'explicitForm.ShowDialog()
 
 			Case 1 'Collecting Names & Making Primes for the First Block
 				'Me.collectT = time.GetCurrentInstant()
 				timeFrame("collect" & Me.currentBlock & "T") = time.GetCurrentInstant()
 				collectForm.ShowDialog()
-				Me.instrText.Rtf = My.Resources.ResourceManager.GetString("_2_practice" & Me.currentBlock & Me.keyAss)
+				Me.instrText.Rtf = My.Resources.ResourceManager.GetString("_2_practice" & Me.keyAss)
 				collectForm.Dispose()
 
 				' Creating All Practice & Experiment Trials for the Current Block
@@ -206,7 +216,7 @@ Public Class mainForm
 				'Me.practiceT = time.GetCurrentInstant()
 				timeFrame("practice" & Me.currentBlock & "T") = time.GetCurrentInstant()
 				practiceForm.ShowDialog()
-				Me.instrText.Rtf = My.Resources.ResourceManager.GetString("_3_experiment" & Me.currentBlock & Me.keyAss)
+				Me.instrText.Rtf = My.Resources.ResourceManager.GetString("_3_experiment" & Me.keyAss)
 				practiceForm.Dispose()
 
 			Case 3 'Experiment Proper of the First Block
@@ -239,11 +249,18 @@ Public Class mainForm
 				Me.instrText.Rtf = My.Resources.ResourceManager.GetString("_6_ambiInstr")
 				demographicsForm.Dispose()
 
-			Case 6 'Ambivalent Word Collection
-				'Me.ambiT = time.GetCurrentInstant()
+				'Ambivalent Word Collection
+				' This has no separate case, as it is implemented below the _6_ambiInstr text
+
 				timeFrame("ambiT") = time.GetCurrentInstant()
 				ambiForm.ShowDialog()
+
+				'End
 				Me.instrText.Rtf = My.Resources.ResourceManager.GetString("_7_endInstr")
+
+				'Case 6 'Ambivalent Word Collection
+				'Me.ambiT = time.GetCurrentInstant()
+				'Me.instrText.Rtf = My.Resources.ResourceManager.GetString("_7_endInstr")
 				Me.instrText.Font = sansSerif40
 				ambiForm.Dispose()
 
@@ -256,7 +273,7 @@ Public Class mainForm
 				Me.timeExperiment01 = timeFrame("collect" & Me.secondBlock & "T") - timeFrame("experiment" & Me.firstBlock & "T")
 				Me.timeCollect02 = timeFrame("practice" & Me.secondBlock & "T") - timeFrame("collect" & Me.secondBlock & "T")
 				Me.timePractice02 = timeFrame("experiment" & Me.secondBlock & "T") - timeFrame("practice" & Me.secondBlock & "T")
-				Me.timeExperiment02 = timeFrame("explicit" & Me.secondBlock & "T") - timeFrame("experiment" & Me.secondBlock & "T")
+				Me.timeExperiment02 = timeFrame("explicitT") - timeFrame("experiment" & Me.secondBlock & "T")
 				Me.timeExplicit = timeFrame("demographicsT") - timeFrame("explicitT")
 				Me.timeDemographics = timeFrame("ambiT") - timeFrame("demographicsT")
 				Me.timeAmbi = timeFrame("endT") - timeFrame("ambiT")
@@ -282,9 +299,5 @@ Public Class mainForm
 		End Select
 		Me.instructionCount += 1
 	End Sub
-
-
-
-
 
 End Class
