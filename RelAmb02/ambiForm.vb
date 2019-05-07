@@ -30,12 +30,12 @@
 	End Sub
 
 	Private Sub contButton_Click(sender As Object, e As EventArgs) Handles contButton.Click
-		dataFrame("ambiSuggestions") = Me.textBox.Text
+		dataFrame("ambiSuggestions") = Me.textBox.Text.Replace(vbCr, " ").Replace(vbLf, " ")
 		Me.Close()
 	End Sub
 
-	Private Sub suppressSemicolon(sender As Object, e As KeyPressEventArgs) Handles textBox.KeyPress
-		e.Handled = e.KeyChar = ";"
+	Private Sub suppressColon(sender As Object, e As KeyPressEventArgs) Handles textBox.KeyPress
+		e.Handled = e.KeyChar = ","
 	End Sub
 
 End Class

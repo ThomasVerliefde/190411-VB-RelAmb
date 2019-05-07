@@ -82,8 +82,8 @@ Public Class demographicsForm
 		End If
 	End Sub
 
-	Private Sub suppressSemiColon(sender As Object, e As KeyEventArgs) Handles studyText.KeyDown
-		e.Handled = e.KeyCode = Keys.OemSemicolon
+	Private Sub suppressColon(sender As Object, e As KeyPressEventArgs) Handles studyText.KeyPress
+		e.Handled = e.KeyChar = ","
 	End Sub
 
 End Class

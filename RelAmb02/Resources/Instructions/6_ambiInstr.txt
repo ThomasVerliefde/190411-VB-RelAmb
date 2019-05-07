@@ -1,10 +1,9 @@
 ﻿{\rtf1\ansi \par \par \par \qc
 
-Wir möchten Sie im folgenden bitten einige Wörter aufzuschreiben, die für Sie {\b ambivalent} sind. \par
-Das bedeutet, dass diese für Sie sowohl "positiv", als auch "negativ" zugleich sind. \par \par
+Das Letzte, was wir von Ihnen verlangen, ist, dass Sie im folgenden bitte einige Wörter aufschreiben, die Sie {\b ambivalent} finden. \par
+Das bedeutet, dass diese für Sie sowohl "positiv" als auch "negativ" zugleich sind, \par
+und eine Form von widersprüchlichem Gefühl verursachen. \par \par
 
-Nennen Sie dabei bitte {\b Nomen}, für deren Bedeutung Sie sowohl "positive", als auch "negative" Gefühle hegen. \par \par
+Nennen Sie dabei bitte {\b Nomen}, für deren Bedeutung Sie diese ambivalenten Gefühle hegen. \par \par
 Schreiben Sie diese bitte in den unten stehenden Kasten. \par
-
-
 }

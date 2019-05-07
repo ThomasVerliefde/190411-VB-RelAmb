@@ -6,17 +6,8 @@ Public Class mainForm
 	Public instructionCount As New Integer 'main counter, to control the flow of the experiment; increases after each continuebutton press in this form
 
 	Friend WithEvents contButton As New continueButton 'main button, to advance the flow of the experiment
+	Private WithEvents buttonTimer As New Timer() 'Timer to disable the continuebutton after immediately pressing it, to prevent double-click registration
 	Private ReadOnly instrText As New instructionBox 'main method of displaying the instructions to participants; disabled & readonly
-
-	'All NodaTime.Instant variables, to check starting points of each part
-	'Private startT As Instant
-	'Private collectT As Instant
-	'Private practiceT As Instant
-	'Private experimentT As Instant
-	'Private explicitT As Instant
-	'Private demographicsT As Instant
-	'Private ambiT As Instant
-	'Private endT As Instant
 
 	'All NodaTime.Duration variables, to check the actual duration (difference in sequential starting points) of each part
 	Private timeCollect01 As Duration
@@ -30,7 +21,7 @@ Public Class mainForm
 	Private timeAmbi As Duration
 	Private timeTotal As Duration
 
-	'Variable necessary for grabbing the correct instruction sheet, depending on whether the 'A' key is used to categorize positive adjectives, or for negative adjectives
+	'Variable necessary for grabbing the correct instruction sheet, depending on conditions, see subjectForm.vb as well
 	Friend keyAss As String
 	Friend firstValence As String
 	Friend secondValence As String
@@ -39,6 +30,7 @@ Public Class mainForm
 	Friend secondBlock As String
 	Friend currentBlock As String
 
+	'Pools of primes for both practice and experiment blocks; see mainModule for the lists of trials (perhaps should move those here or vice versa..)
 	Public practicePrimes As List(Of List(Of String))
 	Public experimentPrimes As List(Of List(Of String))
 
@@ -57,35 +49,24 @@ Public Class mainForm
 		Me.Controls.Add(Me.contButton)
 		objCenter(Me.contButton)
 
+		Me.buttonTimer.Interval = 1500
+
 	End Sub
 
 	Public Sub loadNext(sender As Object, e As EventArgs) Handles contButton.Click
 
-
+		delayContinue()
 
 		Select Case Me.instructionCount
 			Case 0 'Start of the First Block
 				timeFrame("startT") = time.GetCurrentInstant()
 				Me.instrText.Rtf = My.Resources.ResourceManager.GetString("_1_collect" & Me.currentBlock)
-				subjectForm.Dispose()
-				'Me.startT = time.GetCurrentInstant()
-
-				'dataFrame("collectOthersPos1") = "OthersPos1"
-				'dataFrame("collectOthersPos2") = "OthersPos2"
-				'dataFrame("collectOthersNeg1") = "OthersNeg1"
-				'dataFrame("collectOthersNeg2") = "OthersNeg2"
-				'dataFrame("collectObjectsPos1") = "ObjectsPos1"
-				'dataFrame("collectObjectsPos2") = "ObjectsPos2"
-				'dataFrame("collectObjectsNeg1") = "ObjectsNeg1"
-				'dataFrame("collectObjectsNeg2") = "ObjectsNeg2"
-
-				'Me.firstBlock = "Others"
-				'explicitForm.ShowDialog()
 
 			Case 1 'Collecting Names & Making Primes for the First Block
-				'Me.collectT = time.GetCurrentInstant()
 				timeFrame("collect" & Me.currentBlock & "T") = time.GetCurrentInstant()
 				collectForm.ShowDialog()
+				subjectForm.Dispose()
+
 				Me.instrText.Rtf = My.Resources.ResourceManager.GetString("_2_practice" & Me.keyAss)
 				collectForm.Dispose()
 
@@ -113,18 +94,6 @@ Public Class mainForm
 								New List(Of String)({practicePrime_Str(0)})
 								})
 
-				If debugMode Then
-					Console.WriteLine("------" & Me.currentBlock & "------")
-					Console.WriteLine("- practicePrimes -")
-					For Each c In Me.practicePrimes
-						For Each d In c
-							Console.Write(" * " + d)
-						Next
-						Console.WriteLine("")
-					Next
-					Console.WriteLine("")
-				End If
-
 				practiceTrials = createTrials(
 										Me.practicePrimes,
 										New List(Of List(Of String))({
@@ -134,19 +103,6 @@ Public Class mainForm
 										timesPrimes:=2 'How often each prime is paired with a target from each category
 										)
 				' Results in 20 Trials (Can shorten to 10 by setting timesPrimes to 1)
-
-				If debugMode Then
-					Console.WriteLine("- practiceTrials -")
-					Dim amount As Integer
-					For Each c In practiceTrials
-						For Each d In c
-							Console.Write(" * " + d)
-						Next
-						amount += c.Count
-						Console.WriteLine("")
-					Next
-					Console.WriteLine("Amount of Trials: " & amount)
-				End If
 
 				shuffleList(practiceTrials)
 
@@ -168,17 +124,6 @@ Public Class mainForm
 					New List(Of String)(My.Resources.experimentPrime_Str.Split(" "))
 				)
 
-				If debugMode Then
-					Console.WriteLine("- experimentPrimes -")
-					For Each c In Me.experimentPrimes
-						For Each d In c
-							Console.Write(" * " + d)
-						Next
-						Console.WriteLine("")
-					Next
-					Console.WriteLine("")
-				End If
-
 				experimentTrials = createTrials(
 					Me.experimentPrimes,
 					New List(Of List(Of String))({
@@ -189,19 +134,6 @@ Public Class mainForm
 				)
 				' Results in 96 Trials (12 [2+2+2+2+4 Primes] x 2 [Targets] x 4 [timesPrimes]) 
 
-				If debugMode Then
-					Console.WriteLine("- experimentTrials -")
-					Dim amount As Integer
-					For Each c In experimentTrials
-						For Each d In c
-							Console.Write(" * " + d)
-						Next
-						amount += c.Count
-						Console.WriteLine("")
-					Next
-					Console.WriteLine("Amount of Trials: " & amount)
-				End If
-
 				shuffleList(experimentTrials)
 
 				savePrimes.Clear()
@@ -211,6 +143,51 @@ Public Class mainForm
 				saveTrials.Clear()
 				experimentTrials.ForEach(Sub(x) saveTrials.Add(String.Join(" ", x)))
 				dataFrame("experimentTrials" & Me.currentBlock) = String.Join("-", saveTrials)
+
+				If debugMode Then
+					Console.WriteLine("------" & Me.currentBlock & "------")
+					Console.WriteLine("- practicePrimes -")
+					For Each c In Me.practicePrimes
+						For Each d In c
+							Console.Write(" * " + d)
+						Next
+						Console.WriteLine("")
+					Next
+					Console.WriteLine("")
+
+					Console.WriteLine("- practiceTrials -")
+
+					Dim amount As Integer
+					For Each c In practiceTrials
+						For Each d In c
+							Console.Write(" * " + d)
+						Next
+						amount += c.Count
+						Console.WriteLine("")
+					Next
+					Console.WriteLine("Amount of Trials: " & amount)
+
+					Console.WriteLine("- experimentPrimes -")
+					For Each c In Me.experimentPrimes
+						For Each d In c
+							Console.Write(" * " + d)
+						Next
+						Console.WriteLine("")
+					Next
+					Console.WriteLine("")
+
+					Console.WriteLine("- experimentTrials -")
+
+					amount = 0
+					For Each c In experimentTrials
+						For Each d In c
+							Console.Write(" * " + d)
+						Next
+						amount += c.Count
+						Console.WriteLine("")
+					Next
+					Console.WriteLine("Amount of Trials: " & amount)
+				End If
 
 			Case 2 'Practice Trials for the First Block
 				'Me.practiceT = time.GetCurrentInstant()
@@ -227,7 +204,7 @@ Public Class mainForm
 				' Starting the second Block, or continues to Explicit
 				Select Case Me.currentBlock
 					Case Me.firstBlock
-						Me.instrText.Rtf = My.Resources.ResourceManager.GetString("_3b_breakInstr")
+						Me.instrText.Rtf = My.Resources.ResourceManager.GetString("_3_breakInstr")
 						Me.instructionCount = -1
 						Me.currentBlock = Me.secondBlock
 					Case Me.secondBlock
@@ -279,16 +256,16 @@ Public Class mainForm
 				Me.timeAmbi = timeFrame("endT") - timeFrame("ambiT")
 				Me.timeTotal = timeFrame("endT") - timeFrame("startT")
 
-				dataFrame("timeCollect01") = Me.timeCollect01.TotalMinutes.ToString
-				dataFrame("timePractice01") = Me.timePractice01.TotalMinutes.ToString
-				dataFrame("timeExperiment01") = Me.timeExperiment01.TotalMinutes.ToString
-				dataFrame("timeCollect02") = Me.timeCollect02.TotalMinutes.ToString
-				dataFrame("timePractice02") = Me.timePractice02.TotalMinutes.ToString
-				dataFrame("timeExperiment02") = Me.timeExperiment02.TotalMinutes.ToString
-				dataFrame("timeExplicit") = Me.timeExplicit.TotalMinutes.ToString
-				dataFrame("timeDemographics") = Me.timeDemographics.TotalMinutes.ToString
-				dataFrame("timeAmbi") = Me.timeAmbi.TotalMinutes.ToString
-				dataFrame("timeTotal") = Me.timeTotal.TotalMinutes.ToString
+				dataFrame("timeCollect01") = Me.timeCollect01.TotalMinutes.ToString.Replace(",", ".")
+				dataFrame("timePractice01") = Me.timePractice01.TotalMinutes.ToString.Replace(",", ".")
+				dataFrame("timeExperiment01") = Me.timeExperiment01.TotalMinutes.ToString.Replace(",", ".")
+				dataFrame("timeCollect02") = Me.timeCollect02.TotalMinutes.ToString.Replace(",", ".")
+				dataFrame("timePractice02") = Me.timePractice02.TotalMinutes.ToString.Replace(",", ".")
+				dataFrame("timeExperiment02") = Me.timeExperiment02.TotalMinutes.ToString.Replace(",", ".")
+				dataFrame("timeExplicit") = Me.timeExplicit.TotalMinutes.ToString.Replace(",", ".")
+				dataFrame("timeDemographics") = Me.timeDemographics.TotalMinutes.ToString.Replace(",", ".")
+				dataFrame("timeAmbi") = Me.timeAmbi.TotalMinutes.ToString.Replace(",", ".")
+				dataFrame("timeTotal") = Me.timeTotal.TotalMinutes.ToString.Replace(",", ".")
 				dataFrame("hostName") = Net.Dns.GetHostName()
 
 				IO.Directory.CreateDirectory("Data")
@@ -298,6 +275,21 @@ Public Class mainForm
 				Me.Close()
 		End Select
 		Me.instructionCount += 1
+		delayContinue()
+	End Sub
+
+	Private Sub delayContinue()
+
+		Me.contButton.Enabled = False
+		Me.buttonTimer.Start()
+
+	End Sub
+
+	Private Sub buttonEnabler(sender As Object, e As EventArgs) Handles buttonTimer.Tick
+
+		Me.buttonTimer.Stop()
+		Me.contButton.Enabled = True
+
 	End Sub
 
 End Class

@@ -34,9 +34,9 @@ Public Class practiceForm
 		Me.timerMask.Interval = durationMask
 
 		If debugMode Then
-			Me.timerITI.Interval = 1000
+			Me.timerITI.Interval = 200
 			Me.timerFix.Interval = 200
-			Me.timerPrime.Interval = 150
+			Me.timerPrime.Interval = 200
 			Me.timerMask.Interval = 100
 		End If
 
@@ -128,13 +128,9 @@ Public Class practiceForm
 	Private Sub responseAL(sender As Object, e As KeyEventArgs) Handles Me.KeyDown
 
 		If Me.ignoreKeys Then
-
-			Console.WriteLine("It's no go time yet")
 			e.Handled = True 'Stops the event when it is not the categorisation-phase
 
 		ElseIf e.KeyCode = Keys.A Or e.KeyCode = Keys.L Then 'Non-short-circuited "Or" (instead of OrElse) to prevent systematic differences between A and L (although these would be minimal)
-			Console.WriteLine("Is it go time?")
-			Console.WriteLine()
 			Me.answeringTime = Me.stopwatchTarget.ElapsedMilliseconds
 			Me.stopwatchTarget.Reset()
 			Me.timerITI.Start()

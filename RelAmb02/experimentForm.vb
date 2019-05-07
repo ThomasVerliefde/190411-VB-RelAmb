@@ -33,9 +33,10 @@ Public Class experimentForm
 		Me.timerMask.Interval = durationMask
 
 		If debugMode Then
-			Me.timerITI.Interval = 50
-			Me.timerFix.Interval = 50
-			Me.timerPrime.Interval = 50
+			Me.timerITI.Interval = 150
+			Me.timerFix.Interval = 150
+			Me.timerPrime.Interval = 200
+			Me.timerMask.Interval = 100
 		End If
 
 		Me.Controls.AddRange({Me.leftLab, Me.rightLab, Me.slowLab, Me.fixLab, Me.primeLab, Me.targetLab})
@@ -127,7 +128,6 @@ Public Class experimentForm
 		End If
 
 	End Sub
-
 
 	Private Sub responseAL(sender As Object, e As KeyEventArgs) Handles Me.KeyDown
 

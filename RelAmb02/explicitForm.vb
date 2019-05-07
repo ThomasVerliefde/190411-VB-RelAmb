@@ -89,7 +89,7 @@ Public Class explicitForm
 	Private Sub contButton_Click(sender As Object, e As EventArgs) Handles contButton.Click
 
 		If Me.questionCount Mod Me.amountQuestions = 0 Then
-			Me.tempFrame(mainForm.currentBlock & "_" & Me.collectKey & "_Rel") = Me.relText.Text.ToString
+			Me.tempFrame(mainForm.currentBlock & "_" & Me.collectKey & "_Rel") = Me.relText.Text.ToString.Replace(vbCr, " ").Replace(vbLf, " ")
 			Me.tempFrame(mainForm.currentBlock & "_" & Me.collectKey & "_Num") = Me.numText.Text.ToString
 			Me.tempFrame(mainForm.currentBlock & "_" & Me.collectKey & "_Dir_Pos") = Me.trackB1.Value.ToString
 			Me.tempFrame(mainForm.currentBlock & "_" & Me.collectKey & "_Dir_Neg") = Me.trackB2.Value.ToString
@@ -147,16 +147,16 @@ Public Class explicitForm
 				Me.relBox.Visible = True
 				Me.numBox.Visible = mainForm.currentBlock = "Others"
 
-				If mainForm.currentBlock = "Others" Then
-					Me.relBox.reLabel(relText, "Was ist deine soziale Beziehung zu dieser Person?")
-					Me.numBox.Select()
-				ElseIf mainForm.currentBlock = "Objects" Then
-					Me.relBox.reLabel(relText, "Was ist dieses Objekt genau und warum ist es für Sie von Bedeutung?")
-					Me.relText.Select()
-				End If
-
 				Me.relText.ResetText()
 				Me.numText.ResetText()
+
+				If mainForm.currentBlock = "Others" Then
+					Me.relBox.reLabel(Me.relText, "Was ist deine soziale Beziehung zu dieser Person?")
+					Me.numBox.Select()
+				ElseIf mainForm.currentBlock = "Objects" Then
+					Me.relBox.reLabel(Me.relText, "Was ist dieses Objekt genau und warum ist es für Sie von Bedeutung?")
+					Me.relText.Select()
+				End If
 
 				If debugMode Then
 					Me.relText.Text = "DEBUG"
@@ -230,8 +230,8 @@ Public Class explicitForm
 		e.Handled = e.KeyChar <> ControlChars.Back AndAlso Not IsNumeric(e.KeyChar)
 	End Sub
 
-	Private Sub suppressSemicolon(sender As Object, e As KeyPressEventArgs) Handles relText.KeyPress
-		e.Handled = e.KeyChar = ";"
+	Private Sub suppressColon(sender As Object, e As KeyPressEventArgs) Handles relText.KeyPress
+		e.Handled = e.KeyChar = ","
 	End Sub
 
 End Class

@@ -192,18 +192,6 @@
     <EmbeddedResource Include="Resources\Instructions\1_collectOthersPos.txt" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Resources\Instructions\2_practiceOthersAneg.txt" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Resources\Instructions\2_practiceOthersApos.txt" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Resources\Instructions\3_experimentOthersAneg.txt" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Resources\Instructions\3_experimentOthersApos.txt" />
-  </ItemGroup>
-  <ItemGroup>
     <EmbeddedResource Include="Resources\Instructions\4_explicitInstr.txt" />
   </ItemGroup>
   <ItemGroup>
@@ -275,21 +263,6 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Resources\Instructions\6_ambiInstr.txt" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Resources\Instructions\3b_breakInstr.txt" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Resources\Instructions\2_practiceObjectsAneg.txt" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Resources\Instructions\2_practiceObjectsApos.txt" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Resources\Instructions\3_experimentObjectsAneg.txt" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Resources\Instructions\3_experimentObjectsApos.txt" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Resources\Stimuli\practiceObjects.txt" />

@@ -35,8 +35,14 @@ Public Class collectForm
 
 	Private Sub contButton_Click(sender As Object, e As EventArgs) Handles contButton.Click
 
+		Console.WriteLine("collectBox1.Text: " & Me.collectBox1.Text)
+		Console.WriteLine("collectBox2.Text: " & Me.collectBox2.Text)
+
 		For Each list In collectFrame.Values
-			If list.Contains(Me.collectBox1.Text) OrElse list.Contains(Me.collectBox2.Text) Then
+			Dim sResult As String = String.Join(", ", list.ToArray())
+			Console.WriteLine("-- Strings in collectFrame.Values --")
+			Console.WriteLine(sResult)
+			If list.Contains(StrConv(Me.collectBox1.Text, VbStrConv.ProperCase)) OrElse list.Contains(StrConv(Me.collectBox2.Text, VbStrConv.ProperCase)) Then
 				MsgBox("Bitte geben Sie keine identischen Namen ein!", MsgBoxStyle.Critical, Title:="Fehler!")
 				Exit Sub
 			End If
@@ -102,9 +108,7 @@ Public Class collectForm
 	End Sub
 
 	Private Sub suppressNonAlpha(sender As Object, e As KeyPressEventArgs) Handles collectBox1.KeyPress, collectBox2.KeyPress
-		If e.KeyChar <> ControlChars.Back AndAlso Not isNoun(Me.collectBox1.Text & e.KeyChar) AndAlso Not isNoun(Me.collectBox2.Text & e.KeyChar) AndAlso Not e.KeyChar = Keys.OemSemicolon.ToString Then
-			e.Handled = True
-		End If
+		e.Handled = e.KeyChar <> ControlChars.Back AndAlso Not isNoun(Me.collectBox1.Text & e.KeyChar) AndAlso Not isNoun(Me.collectBox2.Text & e.KeyChar)
 	End Sub
 
 
