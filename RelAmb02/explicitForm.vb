@@ -156,6 +156,7 @@ Public Class explicitForm
 				ElseIf mainForm.currentBlock = "Objects" Then
 					Me.relBox.reLabel(Me.relText, "Was ist dieses Objekt genau und warum ist es für Sie von Bedeutung?")
 					Me.relText.Select()
+					Me.numBox.Text = "NA"
 				End If
 
 				If debugMode Then

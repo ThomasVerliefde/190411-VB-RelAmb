@@ -85,9 +85,9 @@ Public Class collectForm
 
 		Select Case mainForm.currentBlock
 			Case "Others"
-				CBlock = "anderen"
+				CBlock = "Andere"
 			Case "Objects"
-				CBlock = "Objekts"
+				CBlock = "Objekt"
 		End Select
 		Select Case mainForm.currentValence
 			Case "Pos"
@@ -96,8 +96,8 @@ Public Class collectForm
 				CVal = "negativen"
 		End Select
 
-		Me.collectPanel1.reLabel(collectBox1, "Name des 1. " & CVal & " signifikanten " & CBlock & ":")
-		Me.collectPanel2.reLabel(collectBox2, "Name des 2. " & CVal & " signifikanten " & CBlock & ":")
+		Me.collectPanel1.reLabel(collectBox1, "Name des 1. " & CVal & " wichtiger " & CBlock & ":")
+		Me.collectPanel2.reLabel(collectBox2, "Name des 2. " & CVal & " wichtiger " & CBlock & ":")
 
 		Me.collectBox1.Text = ""
 		Me.collectBox2.Text = ""

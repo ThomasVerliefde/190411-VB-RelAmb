@@ -20,7 +20,7 @@
 		objCenter(Me.contButton, 0.9)
 
 		Me.textBox.Multiline = True
-		Me.textBox.Height = Me.Height * 0.75
+		Me.textBox.Height = Me.Height * 0.70
 		Me.textBox.Width = Me.Width * 0.9
 		Me.textBox.Font = sansSerif20
 		Me.Controls.Add(Me.textBox)
