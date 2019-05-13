@@ -144,50 +144,50 @@ Public Class mainForm
 				experimentTrials.ForEach(Sub(x) saveTrials.Add(String.Join(" ", x)))
 				dataFrame("experimentTrials" & Me.currentBlock) = String.Join("-", saveTrials)
 
-				If debugMode Then
-					Console.WriteLine("------" & Me.currentBlock & "------")
-					Console.WriteLine("- practicePrimes -")
-					For Each c In Me.practicePrimes
-						For Each d In c
-							Console.Write(" * " + d)
-						Next
-						Console.WriteLine("")
-					Next
-					Console.WriteLine("")
+				'If debugMode Then
+				'	Console.WriteLine("------" & Me.currentBlock & "------")
+				'	Console.WriteLine("- practicePrimes -")
+				'	For Each c In Me.practicePrimes
+				'		For Each d In c
+				'			Console.Write(" * " + d)
+				'		Next
+				'		Console.WriteLine("")
+				'	Next
+				'	Console.WriteLine("")
 
-					Console.WriteLine("- practiceTrials -")
+				'	Console.WriteLine("- practiceTrials -")
 
-					Dim amount As Integer
-					For Each c In practiceTrials
-						For Each d In c
-							Console.Write(" * " + d)
-						Next
-						amount += c.Count
-						Console.WriteLine("")
-					Next
-					Console.WriteLine("Amount of Trials: " & amount)
+				'	Dim amount As Integer
+				'	For Each c In practiceTrials
+				'		For Each d In c
+				'			Console.Write(" * " + d)
+				'		Next
+				'		amount += c.Count
+				'		Console.WriteLine("")
+				'	Next
+				'	Console.WriteLine("Amount of Trials: " & amount)
 
-					Console.WriteLine("- experimentPrimes -")
-					For Each c In Me.experimentPrimes
-						For Each d In c
-							Console.Write(" * " + d)
-						Next
-						Console.WriteLine("")
-					Next
-					Console.WriteLine("")
+				'	Console.WriteLine("- experimentPrimes -")
+				'	For Each c In Me.experimentPrimes
+				'		For Each d In c
+				'			Console.Write(" * " + d)
+				'		Next
+				'		Console.WriteLine("")
+				'	Next
+				'	Console.WriteLine("")
 
-					Console.WriteLine("- experimentTrials -")
+				'	Console.WriteLine("- experimentTrials -")
 
-					amount = 0
-					For Each c In experimentTrials
-						For Each d In c
-							Console.Write(" * " + d)
-						Next
-						amount += c.Count
-						Console.WriteLine("")
-					Next
-					Console.WriteLine("Amount of Trials: " & amount)
-				End If
+				'	amount = 0
+				'	For Each c In experimentTrials
+				'		For Each d In c
+				'			Console.Write(" * " + d)
+				'		Next
+				'		amount += c.Count
+				'		Console.WriteLine("")
+				'	Next
+				'	Console.WriteLine("Amount of Trials: " & amount)
+				'End If
 
 			Case 2 'Practice Trials for the First Block
 				'Me.practiceT = time.GetCurrentInstant()

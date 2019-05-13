@@ -12,15 +12,15 @@
 		Me.WindowState = FormWindowState.Normal
 		Me.FormBorderStyle = FormBorderStyle.None
 
-		Me.Size = New Point(screenWidth * 0.7, screenHeight * 0.6)
-		Me.Top = (screenHeight * 0.6) - (Me.Height * 0.5)
+		Me.Size = New Point(screenWidth * 0.7, screenHeight * 0.5)
+		Me.Top = (screenHeight * 0.65) - (Me.Height * 0.5)
 		Me.Left = (screenWidth * 0.5) - (Me.Width * 0.5)
 
 		Me.Controls.Add(Me.contButton)
 		objCenter(Me.contButton, 0.9)
 
 		Me.textBox.Multiline = True
-		Me.textBox.Height = Me.Height * 0.70
+		Me.textBox.Height = Me.Height * 0.6
 		Me.textBox.Width = Me.Width * 0.9
 		Me.textBox.Font = sansSerif20
 		Me.Controls.Add(Me.textBox)
