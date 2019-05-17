@@ -154,9 +154,9 @@ Public Class explicitForm
 					Me.relBox.reLabel(Me.relText, "Was ist deine soziale Beziehung zu dieser Person?")
 					Me.numBox.Select()
 				ElseIf mainForm.currentBlock = "Objects" Then
-					Me.relBox.reLabel(Me.relText, "Was ist dieses Objekt genau und warum ist es für Sie von Bedeutung?")
+					Me.relBox.reLabel(Me.relText, "Was ist dieses 'Objekt' genau und warum ist es für Sie von Bedeutung?")
 					Me.relText.Select()
-					Me.numBox.Text = "NA"
+					Me.numBox.Text = 1
 				End If
 
 				If debugMode Then
@@ -224,7 +224,7 @@ Public Class explicitForm
 		ElseIf Me.relText.Text.Length <= 1 Then
 			Me.correctRel = False
 		End If
-		Me.contButton.Enabled = Me.correctNum AndAlso Me.correctRel
+		Me.contButton.Enabled = Me.correctRel AndAlso Me.correctNum
 	End Sub
 
 	Private Sub suppressNonNumeric(sender As Object, e As KeyPressEventArgs) Handles numText.KeyPress
