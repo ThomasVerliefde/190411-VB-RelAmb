@@ -22,7 +22,7 @@ Public Class explicitForm
 
 	Private WithEvents contButton As New continueButton
 	Private correctRel As Boolean
-	Private correctNum As Boolean
+	'Private correctNum As Boolean
 
 	Private collectKeys As New List(Of String)({"Pos1", "Pos2", "Neg1", "Neg2"})
 	Private collectCount As Integer
@@ -134,8 +134,8 @@ Public Class explicitForm
 		Me.B2 = False
 		Me.B3 = False
 		Me.correctRel = False
-		Me.correctNum = mainForm.currentBlock = "Objects" 'This needs to be True if we are not showing the numBox, in order to make contButton enabled
-		Me.contButton.Enabled = debugMode 'False if debugMode is off, True if debugMode is on
+		'Me.correctNum = mainForm.currentBlock = "Objects" 'This needs to be True if we are not showing the numBox, in order to make contButton enabled
+		Me.contButton.Enabled = False 'False if debugMode is off, True if debugMode is on
 
 		Select Case Me.questionCount Mod Me.amountQuestions
 
@@ -209,22 +209,21 @@ Public Class explicitForm
 
 	End Sub
 
-	Private Sub enableNum(sender As Object, e As EventArgs) Handles numText.TextChanged
-		If Val(Me.numText.Text) < 1 OrElse Val(Me.numText.Text) > 25 Then
-			Me.correctNum = False
-		ElseIf Val(Me.numText.Text) > 0 Then
-			Me.correctNum = True
-		End If
-		Me.contButton.Enabled = Me.correctNum AndAlso Me.correctRel
-	End Sub
+	'Private Sub enableNum(sender As Object, e As EventArgs) Handles numText.TextChanged
+	'	If Val(Me.numText.Text) < 1 OrElse Val(Me.numText.Text) > 25 Then
+	'		Me.correctNum = False
+	'	ElseIf Val(Me.numText.Text) > 0 Then
+	'		Me.correctNum = True
+	'	End If
+	'	Me.contButton.Enabled = Me.correctNum AndAlso Me.correctRel
+	'End Sub
 
 	Private Sub enableRel(sender As Object, e As EventArgs) Handles relText.TextChanged
 		If Me.relText.Text.Length > 1 Then
-			Me.correctRel = True
+			Me.contButton.Enabled = True
 		ElseIf Me.relText.Text.Length <= 1 Then
-			Me.correctRel = False
+			Me.contButton.Enabled = False
 		End If
-		Me.contButton.Enabled = Me.correctRel AndAlso Me.correctNum
 	End Sub
 
 	Private Sub suppressNonNumeric(sender As Object, e As KeyPressEventArgs) Handles numText.KeyPress
