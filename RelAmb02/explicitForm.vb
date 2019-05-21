@@ -141,6 +141,8 @@ Public Class explicitForm
 
 			Case 0
 
+				Me.contButton.Enabled = True
+
 				Me.labB1.Visible = False
 				Me.labB2.Visible = Me.labB1.Visible
 				Me.labB3.Visible = Me.labB1.Visible
@@ -218,13 +220,13 @@ Public Class explicitForm
 	'	Me.contButton.Enabled = Me.correctNum AndAlso Me.correctRel
 	'End Sub
 
-	Private Sub enableRel(sender As Object, e As EventArgs) Handles relText.TextChanged
-		If Me.relText.Text.Length > 1 Then
-			Me.contButton.Enabled = True
-		ElseIf Me.relText.Text.Length <= 1 Then
-			Me.contButton.Enabled = False
-		End If
-	End Sub
+	'Private Sub enableRel(sender As Object, e As EventArgs) Handles relText.TextChanged
+	'	If Me.relText.Text.Length > 1 Then
+	'		Me.contButton.Enabled = True
+	'	ElseIf Me.relText.Text.Length <= 1 Then
+	'		Me.contButton.Enabled = False
+	'	End If
+	'End Sub
 
 	Private Sub suppressNonNumeric(sender As Object, e As KeyPressEventArgs) Handles numText.KeyPress
 		e.Handled = e.KeyChar <> ControlChars.Back AndAlso Not IsNumeric(e.KeyChar)
